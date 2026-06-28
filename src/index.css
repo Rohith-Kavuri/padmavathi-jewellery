@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap");
+
+.vj-root {
+  --cream: #fffbf2;
+  --cream-dim: #f3e9d6;
+  --cream-card: #ffffff;
+  --ink: #2b2230;
+  --ink-soft: #6b5f70;
+  --plum-950: #1f1825;
+  --plum-900: #2b2230;
+  --plum-800: #3d3245;
+  --gold-700: #c8941a;
+  --gold-500: #f2b705;
+  --gold-300: #ffc93c;
+  --gold-100: #fff1c9;
+  --ruby-500: #e0335f;
+  --ruby-700: #9c1238;
+  --emerald-500: #16c172;
+  --emerald-700: #0b6e3f;
+  --sapphire-500: #2e7be0;
+  --sapphire-700: #1a3f8c;
+  --amethyst-500: #9c5be0;
+  --amethyst-700: #5e2c8c;
+  --success-600: #2f7d52;
+  --line: rgba(43, 34, 48, 0.12);
+  font-family: "Jost", sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  position: relative;
+}
+
+.vj-root * {
+  box-sizing: border-box;
+}
+
+.vj-display {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.vj-mono {
+  font-family: "Space Mono", monospace;
+}
+
+.vj-arch {
+  border-radius: 999px 999px 10px 10px;
+}
+
+.vj-archlg {
+  border-radius: 50% 50% 12px 12px / 38% 38% 12px 12px;
+}
+
+.vj-marquee-track {
+  animation: vj-marquee 16s linear infinite;
+}
+
+@keyframes vj-marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.vj-fadeshift {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.vj-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.vj-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 34px -18px rgba(43, 34, 48, 0.28);
+}
+
+.vj-icon-wrap svg {
+  width: 64px;
+  height: 64px;
+}
+
+.vj-chip {
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.vj-drawer {
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.vj-modal-enter {
+  animation: vj-pop 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes vj-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.vj-toast {
+  animation: vj-slidein 0.35s ease;
+}
+
+@keyframes vj-slidein {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vj-underline {
+  position: relative;
+}
+
+.vj-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -6px;
+  height: 1.5px;
+  background: var(--gold-500);
+  transition: right 0.3s ease;
+}
+
+.vj-underline:hover::after {
+  right: 0;
+}
+
+.vj-scrollx::-webkit-scrollbar {
+  height: 6px;
+}
+
+.vj-scrollx::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+
+.vj-focus:focus-visible {
+  outline: 2px solid var(--gold-500);
+  outline-offset: 2px;
+}
+
+.vj-float-panel {
+  animation: vj-float 6s ease-in-out infinite;
+}
+
+@keyframes vj-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.vj-slide {
+  transition: opacity 1s ease;
+}
+
+.vj-hero-copy {
+  transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vj-marquee-track {
+    animation: none;
+  }
+  .vj-card:hover {
+    transform: none;
+  }
+  .vj-float-panel {
+    animation: none;
+  }
+}
+
