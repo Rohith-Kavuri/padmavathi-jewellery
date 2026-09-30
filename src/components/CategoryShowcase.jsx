@@ -1,13 +1,16 @@
 import { CATEGORIES, getGem } from "../data/products";
+import { useLang } from "../i18n/LanguageContext";
 import JewelGlyph from "./JewelGlyph";
 
 export default function CategoryShowcase({ onSelectCategory }) {
+  const { t, tx } = useLang();
+
   return (
-    <section className="px-4 md:px-6 pb-4">
+    <section className="px-4 md:px-6 pt-8 pb-4">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-baseline justify-between mb-4">
           <h2 className="vj-display text-2xl" style={{ color: "var(--plum-900)" }}>
-            Shop by gemstone and category
+            {t("category.heading")}
           </h2>
         </div>
         <div className="flex gap-4 overflow-x-auto vj-scrollx pb-2">
@@ -27,8 +30,8 @@ export default function CategoryShowcase({ onSelectCategory }) {
                 <div className="vj-icon-wrap" style={{ color: gem.tint }}>
                   <JewelGlyph category={c.key} />
                 </div>
-                <span className="text-xs" style={{ color: gem.tint }}>
-                  {c.label}
+                <span className="text-xs whitespace-nowrap" style={{ color: gem.tint }}>
+                  {tx(c.label)}
                 </span>
               </button>
             );

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { TESTIMONIALS } from "../data/products";
+import { useLang } from "../i18n/LanguageContext";
 
 export default function Testimonials() {
+  const { t, tx } = useLang();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -22,23 +24,23 @@ export default function Testimonials() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="max-w-2xl mx-auto text-center">
-        <div className="flex justify-center gap-1 mb-4" style={{ color: "var(--gold-500)" }}>
+        <div className="flex justify-center gap-1 mb-4" style={{ color: "var(--gold-500)" }} role="img" aria-label={t("testimonials.rating")}>
           {[...Array(5)].map((_, i) => (
             <Star key={i} size={16} fill="var(--gold-500)" />
           ))}
         </div>
         <p key={index} className="vj-fadeshift vj-display text-2xl" style={{ color: "var(--gold-100)" }}>
-          "{current.quote}"
+          "{tx(current.quote)}"
         </p>
         <div className="mt-4 text-sm" style={{ color: "rgba(255,251,242,0.7)" }}>
-          {current.name} · {current.city}
+          {tx(current.name)} · {tx(current.city)}
         </div>
         <div className="flex justify-center gap-4 mt-6">
           <button
             className="vj-focus"
             onClick={() => setIndex((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
             style={{ color: "var(--gold-300)" }}
-            aria-label="Previous testimonial"
+            aria-label={t("testimonials.prev")}
           >
             <ChevronLeft size={20} />
           </button>
@@ -59,7 +61,7 @@ export default function Testimonials() {
             className="vj-focus"
             onClick={() => setIndex((i) => (i + 1) % TESTIMONIALS.length)}
             style={{ color: "var(--gold-300)" }}
-            aria-label="Next testimonial"
+            aria-label={t("testimonials.next")}
           >
             <ChevronRight size={20} />
           </button>

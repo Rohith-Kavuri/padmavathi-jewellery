@@ -1,9 +1,10 @@
-import { Heart } from "lucide-react";
 import JewelGlyph from "./JewelGlyph";
-import { fmtINR } from "../utils/format";
+import { fmtINR, fmtWeight } from "../utils/format";
 import { getGem } from "../data/products";
+import { useLang } from "../i18n/LanguageContext";
 
-export default function ProductCard({ product, isWishlisted, onToggleWishlist, onQuickView }) {
+export default function ProductCard({ product, onQuickView }) {
+  const { t, tx } = useLang();
   const gem = getGem(product.category);
 
   return (
@@ -25,24 +26,17 @@ export default function ProductCard({ product, isWishlisted, onToggleWishlist, o
               : { background: "var(--ruby-500)", color: "var(--cream)" }
           }
         >
-          {product.tag}
+          {t(`tag.${product.tag}`)}
         </span>
       )}
-      <button onClick={() => onToggleWishlist(product.id)} className="absolute top-3 right-3 vj-focus" aria-label="Save to wishlist">
-        <Heart
-          size={16}
-          fill={isWishlisted ? "var(--ruby-500)" : "none"}
-          style={{ color: isWishlisted ? "var(--ruby-500)" : "var(--ink-soft)" }}
-        />
-      </button>
       <div className="vj-icon-wrap my-3" style={{ color: gem[500] }}>
         <JewelGlyph category={product.category} />
       </div>
       <div className="text-sm" style={{ color: "var(--ink)" }}>
-        {product.name}
+        {tx(product.name)}
       </div>
       <div className="vj-mono text-[10px] mt-1" style={{ color: "var(--ink-soft)" }}>
-        {product.metal} · {product.weight}
+        {t(`metal.${product.metal}`)} · {fmtWeight(product.weight, t("unit.g"))}
       </div>
       <div className="vj-display text-lg font-semibold mt-2" style={{ color: "var(--ink)" }}>
         {fmtINR(product.base22)}
@@ -52,7 +46,7 @@ export default function ProductCard({ product, isWishlisted, onToggleWishlist, o
         className="vj-focus mt-3 text-xs px-4 py-1.5 rounded-full border"
         style={{ borderColor: gem[500], color: gem[700] }}
       >
-        Quick view
+        {t("card.quickView")}
       </button>
     </div>
   );

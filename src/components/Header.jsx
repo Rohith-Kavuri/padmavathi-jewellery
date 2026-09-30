@@ -1,83 +1,78 @@
-import { Search, Heart, ShoppingBag, Menu } from "lucide-react";
+import { Search, ShoppingBag, Menu } from "lucide-react";
+import { useLang } from "../i18n/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Header({
   searchTerm,
   setSearchTerm,
-  wishlistCount,
   cartCount,
   onOpenMobileMenu,
   onOpenCart,
-  onWishlistClick,
   onGoCollections,
   onGoBridal,
   onGoRates,
   onGoHeritage,
   onBookVisit,
 }) {
+  const { t } = useLang();
+
+  const links = [
+    ["nav.collections", onGoCollections],
+    ["nav.bridal", onGoBridal],
+    ["nav.rates", onGoRates],
+    ["nav.heritage", onGoHeritage],
+    ["nav.book", onBookVisit],
+  ];
+
   return (
     <header style={{ background: "var(--cream)", borderBottom: "1px solid var(--line)" }} className="sticky top-0 z-40">
-      <div className="flex items-center justify-between px-4 md:px-6 py-3">
-        <div className="flex items-center gap-3">
-          <button className="md:hidden vj-focus" onClick={onOpenMobileMenu} aria-label="Open menu">
+      <div className="flex items-center justify-between gap-3 px-4 md:px-6 py-3">
+        <div className="flex items-center gap-3 min-w-0">
+          <button className="lg:hidden vj-focus" onClick={onOpenMobileMenu} aria-label={t("aria.openMenu")}>
             <Menu size={22} />
           </button>
-          <div>
+          <div className="min-w-0">
             <div
-              className="vj-display text-2xl md:text-3xl"
+              className="vj-display text-2xl md:text-3xl whitespace-nowrap"
               style={{ letterSpacing: "0.04em", color: "var(--plum-900)", fontWeight: 600 }}
             >
-              PADMAVATHI
+              {t("brand.name")}
             </div>
-            <div className="vj-mono text-[10px] tracking-widest" style={{ color: "var(--gold-700)", marginTop: -4 }}>
-              JEWELLERY · EST. 1971
+            <div className="vj-mono text-[10px] tracking-widest whitespace-nowrap" style={{ color: "var(--gold-700)", marginTop: -4 }}>
+              {t("brand.sub")}
             </div>
           </div>
         </div>
 
-        <nav className="hidden md:flex items-center gap-7 text-sm" style={{ color: "var(--ink)" }}>
-          <button className="vj-underline vj-focus" onClick={onGoCollections}>
-            Collections
-          </button>
-          <button className="vj-underline vj-focus" onClick={onGoBridal}>
-            Bridal
-          </button>
-          <button className="vj-underline vj-focus" onClick={onGoRates}>
-            Gold Rates
-          </button>
-          <button className="vj-underline vj-focus" onClick={onGoHeritage}>
-            Heritage
-          </button>
-          <button className="vj-underline vj-focus" onClick={onBookVisit}>
-            Book a Visit
-          </button>
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-7 text-sm whitespace-nowrap" style={{ color: "var(--ink)" }}>
+          {links.map(([key, fn]) => (
+            <button key={key} className="vj-underline vj-focus" onClick={fn}>
+              {t(key)}
+            </button>
+          ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 md:gap-4">
           <div className="hidden sm:flex items-center border rounded-full px-3 py-1.5" style={{ borderColor: "var(--line)" }}>
             <Search size={15} style={{ color: "var(--gold-700)" }} />
             <input
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search jewellery"
+              placeholder={t("search.placeholder")}
+              aria-label={t("search.aria")}
               className="vj-focus bg-transparent border-none outline-none text-sm ml-2 w-36"
             />
           </div>
-          <button className="relative vj-focus" onClick={onWishlistClick} aria-label="Wishlist">
-            <Heart
-              size={20}
-              fill={wishlistCount ? "var(--ruby-500)" : "none"}
-              style={{ color: wishlistCount ? "var(--ruby-500)" : "var(--ink)" }}
-            />
-            {wishlistCount > 0 && (
-              <span
-                className="absolute -top-2 -right-2 text-[10px] rounded-full w-4 h-4 flex items-center justify-center"
-                style={{ background: "var(--plum-900)", color: "var(--gold-100)" }}
-              >
-                {wishlistCount}
-              </span>
-            )}
-          </button>
-          <button className="relative vj-focus" onClick={onOpenCart} aria-label="Bag">
+
+          {/* language toggle — replaces the old wishlist icon */}
+          <div className="hidden sm:block">
+            <LanguageToggle />
+          </div>
+          <div className="sm:hidden">
+            <LanguageToggle compact />
+          </div>
+
+          <button className="relative vj-focus" onClick={onOpenCart} aria-label={t("aria.bag")}>
             <ShoppingBag size={20} />
             {cartCount > 0 && (
               <span

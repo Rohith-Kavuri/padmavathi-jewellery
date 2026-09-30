@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { ANNOUNCEMENTS } from "../data/products";
+import { useLang } from "../i18n/LanguageContext";
 
 export default function AnnouncementBar() {
+  const { tx } = useLang();
   const [annIndex, setAnnIndex] = useState(0);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ export default function AnnouncementBar() {
       className="text-center text-xs py-2 px-4"
     >
       <span key={annIndex} className="vj-fadeshift inline-block">
-        {ANNOUNCEMENTS[annIndex]}
+        {tx(ANNOUNCEMENTS[annIndex])}
       </span>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import { PRODUCTS, CITIES } from "./data/products";
+import { PRODUCTS, CITIES, CATEGORIES } from "./data/products";
 import { priceFor } from "./utils/format";
 
 import AnnouncementBar from "./components/AnnouncementBar";
@@ -17,19 +17,34 @@ import CartDrawer from "./components/CartDrawer";
 import QuickViewModal from "./components/QuickViewModal";
 import AppointmentModal from "./components/AppointmentModal";
 import ToastStack from "./components/ToastStack";
+import { useLang } from "./i18n/LanguageContext";
+
+// Search matches English and Telugu names/categories, so a query in either
+// script finds the same piece regardless of the language currently shown.
+function matchesSearch(product, query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return true;
+  const cat = CATEGORIES.find((c) => c.key === product.category);
+  const haystack = [product.name.en, product.name.te, product.category, cat?.label.en, cat?.label.te]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return haystack.includes(q);
+}
 
 export default function App() {
+  const { lang } = useLang();
+
   // navigation / layout
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // catalogue state
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeMetal, setActiveMetal] = useState("All");
-  const [sortBy, setSortBy] = useState("Featured");
+  const [sortBy, setSortBy] = useState("featured");
   const [searchTerm, setSearchTerm] = useState("");
 
   // commerce state
-  const [wishlist, setWishlist] = useState(new Set());
   const [cart, setCart] = useState([]); // {id, purity, qty}
   const [cartOpen, setCartOpen] = useState(false);
   const [quickView, setQuickView] = useState(null); // product id
@@ -46,7 +61,7 @@ export default function App() {
   const [apptForm, setApptForm] = useState({ name: "", phone: "", date: "" });
   const [apptDone, setApptDone] = useState(false);
 
-  // toasts
+  // toasts — stored as translation keys so they follow the language toggle
   const [toasts, setToasts] = useState([]);
 
   const catalogRef = useRef(null);
@@ -81,15 +96,11 @@ export default function App() {
     let list = PRODUCTS.filter((p) => {
       const catOk = activeCategory === "All" || p.category === activeCategory;
       const metalOk = activeMetal === "All" || p.metal === activeMetal;
-      const searchOk =
-        !searchTerm.trim() ||
-        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.category.toLowerCase().includes(searchTerm.toLowerCase());
-      return catOk && metalOk && searchOk;
+      return catOk && metalOk && matchesSearch(p, searchTerm);
     });
-    if (sortBy === "Price: Low to High") list = [...list].sort((a, b) => a.base22 - b.base22);
-    if (sortBy === "Price: High to Low") list = [...list].sort((a, b) => b.base22 - a.base22);
-    if (sortBy === "Newest") list = [...list].sort((a, b) => b.id - a.id);
+    if (sortBy === "priceAsc") list = [...list].sort((a, b) => a.base22 - b.base22);
+    if (sortBy === "priceDesc") list = [...list].sort((a, b) => b.base22 - a.base22);
+    if (sortBy === "newest") list = [...list].sort((a, b) => b.id - a.id);
     return list;
   }, [activeCategory, activeMetal, sortBy, searchTerm]);
 
@@ -101,25 +112,11 @@ export default function App() {
 
   /* ---------------- handlers ---------------- */
 
-  const addToast = useCallback((message) => {
+  const addToast = useCallback((key, vars) => {
     const id = Date.now() + Math.random();
-    setToasts((t) => [...t, { id, message }]);
+    setToasts((t) => [...t, { id, key, vars }]);
     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 3000);
   }, []);
-
-  function toggleWishlist(id) {
-    setWishlist((w) => {
-      const next = new Set(w);
-      if (next.has(id)) {
-        next.delete(id);
-        addToast("Removed from wishlist");
-      } else {
-        next.add(id);
-        addToast("Saved to wishlist");
-      }
-      return next;
-    });
-  }
 
   function openQuickView(product) {
     setQuickView(product.id);
@@ -134,7 +131,7 @@ export default function App() {
       }
       return [...c, { id: product.id, purity, qty }];
     });
-    addToast(`${product.name} added to your bag`);
+    addToast("toast.added", { name: product.name });
   }
 
   function updateQty(id, purity, delta) {
@@ -161,7 +158,7 @@ export default function App() {
   function submitAppointment(e) {
     e.preventDefault();
     if (!apptForm.name || !apptForm.phone || !apptForm.date) {
-      addToast("Please fill every field to confirm a visit");
+      addToast("toast.apptIncomplete");
       return;
     }
     setApptDone(true);
@@ -183,17 +180,15 @@ export default function App() {
   /* ---------------- render ---------------- */
 
   return (
-    <div className="vj-root">
+    <div className="vj-root" data-lang={lang}>
       <AnnouncementBar />
 
       <Header
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        wishlistCount={wishlist.size}
         cartCount={cartCount}
         onOpenMobileMenu={() => setMobileOpen(true)}
         onOpenCart={() => setCartOpen(true)}
-        onWishlistClick={() => addToast(wishlist.size ? `${wishlist.size} piece${wishlist.size > 1 ? "s" : ""} saved` : "Your wishlist is empty")}
         onGoCollections={() => scrollToCatalog("All")}
         onGoBridal={() => scrollToCatalog("Bridal Set")}
         onGoRates={goRates}
@@ -213,7 +208,7 @@ export default function App() {
         onBookVisit={() => setApptOpen(true)}
       />
 
-      <Hero onExplore={() => scrollToCatalog("All")} onBookVisit={() => setApptOpen(true)} />
+      <Hero />
 
       <CategoryShowcase onSelectCategory={(key) => scrollToCatalog(key)} />
 
@@ -226,8 +221,6 @@ export default function App() {
         sortBy={sortBy}
         setSortBy={setSortBy}
         filteredProducts={filteredProducts}
-        wishlist={wishlist}
-        onToggleWishlist={toggleWishlist}
         onQuickView={openQuickView}
       />
 

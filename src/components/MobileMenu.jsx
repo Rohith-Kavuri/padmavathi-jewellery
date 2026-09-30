@@ -1,4 +1,6 @@
 import { X, Search } from "lucide-react";
+import { useLang } from "../i18n/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
 
 export default function MobileMenu({
   open,
@@ -11,14 +13,15 @@ export default function MobileMenu({
   onGoHeritage,
   onBookVisit,
 }) {
+  const { t } = useLang();
   if (!open) return null;
 
   const links = [
-    ["Collections", onGoCollections],
-    ["Bridal", onGoBridal],
-    ["Gold Rates", onGoRates],
-    ["Heritage", onGoHeritage],
-    ["Book a Visit", onBookVisit],
+    ["nav.collections", onGoCollections],
+    ["nav.bridal", onGoBridal],
+    ["nav.rates", onGoRates],
+    ["nav.heritage", onGoHeritage],
+    ["nav.book", onBookVisit],
   ];
 
   return (
@@ -26,9 +29,9 @@ export default function MobileMenu({
       <div className="w-72 h-full p-5 flex flex-col gap-5" style={{ background: "var(--cream)" }}>
         <div className="flex justify-between items-center">
           <span className="vj-display text-xl" style={{ color: "var(--plum-900)" }}>
-            PADMAVATHI
+            {t("brand.name")}
           </span>
-          <button onClick={onClose} className="vj-focus" aria-label="Close menu">
+          <button onClick={onClose} className="vj-focus" aria-label={t("aria.closeMenu")}>
             <X size={20} />
           </button>
         </div>
@@ -37,23 +40,27 @@ export default function MobileMenu({
           <input
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search jewellery"
+            placeholder={t("search.placeholder")}
+            aria-label={t("search.aria")}
             className="bg-transparent border-none outline-none text-sm ml-2 w-full"
           />
         </div>
         <div className="flex flex-col gap-4 text-base mt-2">
-          {links.map(([label, fn]) => (
+          {links.map(([key, fn]) => (
             <button
-              key={label}
+              key={key}
               className="text-left"
               onClick={() => {
                 fn();
                 onClose();
               }}
             >
-              {label}
+              {t(key)}
             </button>
           ))}
+        </div>
+        <div className="mt-auto">
+          <LanguageToggle />
         </div>
       </div>
       <div className="flex-1" style={{ background: "rgba(43,34,48,0.5)" }} onClick={onClose} />

@@ -22,16 +22,20 @@ npm run preview
 
 ```
 src/
-  data/products.js        Catalog, categories, testimonials, rates, stats
-  utils/format.js         Price formatting + purity-based price calculation
+  data/products.js        Catalog, categories, testimonials, rates, stats (bilingual { en, te } text)
+  i18n/strings.js         Every interface string in English and Telugu
+  i18n/LanguageContext.jsx  Language provider: lang, toggleLang, t(key, vars), tx({en,te})
+  utils/format.js         Price/weight formatting + purity-based price calculation
   hooks/useCountUp.js      Animated count-up hook (stats section)
   hooks/useInView.js       IntersectionObserver hook (triggers count-up)
   components/
     AnnouncementBar.jsx    Rotating top banner
-    TopUtilityBar.jsx      Gold rate marquee + city selector + contact
-    Header.jsx             Logo, nav, search, wishlist/cart icons
+    TopUtilityBar.jsx      (unused) Gold rate marquee + city selector + contact
+    Header.jsx             Wordmark, nav, search, EN/తె language toggle, bag icon
+    LanguageToggle.jsx     EN | తె switch (saved in the browser, restored on reload)
     MobileMenu.jsx         Slide-in mobile nav
-    Hero.jsx               Hero banner with CTAs
+    Hero.jsx               Full-width hero wrapper
+    HeroImageCarousel.jsx  Hero slides: logo + temple-gold necklace, poster, two gem illustrations
     CategoryShowcase.jsx   Horizontal scroll of category icons
     JewelGlyph.jsx         Hand-drawn line-art icon per jewellery category
     Catalog.jsx            Filters, sort, and product grid
@@ -50,6 +54,25 @@ src/
   main.jsx                 React root
   index.css                Tailwind directives + brand design tokens/animations
 ```
+
+## Language (English / Telugu)
+
+The EN | తె toggle in the header switches every piece of text on the site. The
+choice is saved in the browser and restored on the next visit, and the page's
+`lang` attribute and title update with it.
+
+- Interface text lives in `src/i18n/strings.js`, one key per string, with an
+  `en` and a `te` value. Components call `t("key")`, or `t("key", { name })`
+  when the string has placeholders.
+- Record text (product names and descriptions, categories, cities,
+  testimonials, announcements, stats) sits beside each record in
+  `src/data/products.js` as `{ en: "...", te: "..." }`, read with `tx(value)`.
+- Search matches both English and Telugu names in either mode.
+- Telugu uses Noto Sans Telugu / Noto Serif Telugu, loaded in `index.html`.
+  Letter-spacing is turned off in Telugu mode so conjuncts render correctly.
+
+To add a string, add the key to both `en` and `te` in `strings.js`. A missing
+Telugu key falls back to the English text.
 
 ## Notes
 

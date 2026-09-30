@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap");
-
 .vj-root {
   --cream: #fffbf2;
   --cream-dim: #f3e9d6;
@@ -27,7 +25,7 @@
   --amethyst-700: #5e2c8c;
   --success-600: #2f7d52;
   --line: rgba(43, 34, 48, 0.12);
-  font-family: "Jost", sans-serif;
+  font-family: "Jost", "Noto Sans Telugu", sans-serif;
   background: var(--cream);
   color: var(--ink);
   min-height: 100vh;
@@ -39,11 +37,28 @@
 }
 
 .vj-display {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Cormorant Garamond", "Noto Serif Telugu", serif;
 }
 
 .vj-mono {
-  font-family: "Space Mono", monospace;
+  font-family: "Space Mono", "Noto Sans Telugu", monospace;
+}
+
+/* ---------- Telugu ----------
+   Fonts load in index.html. Each font stack above lists a Telugu companion,
+   so Telugu glyphs fall through to Noto automatically. Letter-spacing
+   breaks up Telugu conjuncts, so it is switched off, and line-height gets a
+   little extra room for the taller vowel signs. */
+.vj-root[data-lang="te"] * {
+  letter-spacing: normal !important;
+}
+
+.vj-root[data-lang="te"] .vj-display {
+  line-height: 1.45;
+}
+
+.vj-root[data-lang="te"] .vj-mono {
+  font-family: "Noto Sans Telugu", "Space Mono", sans-serif;
 }
 
 .vj-arch {

@@ -2,8 +2,10 @@ import { X, Minus, Plus } from "lucide-react";
 import JewelGlyph from "./JewelGlyph";
 import { PRODUCTS, getGem } from "../data/products";
 import { fmtINR, priceFor } from "../utils/format";
+import { useLang } from "../i18n/LanguageContext";
 
 export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal, onCheckoutRequest }) {
+  const { t, tx } = useLang();
   return (
     <div className="fixed inset-0 z-50" style={{ pointerEvents: open ? "auto" : "none" }}>
       <div
@@ -17,16 +19,16 @@ export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal
       >
         <div className="flex justify-between items-center mb-5">
           <h3 className="vj-display text-xl" style={{ color: "var(--plum-900)" }}>
-            Your bag
+            {t("cart.title")}
           </h3>
-          <button onClick={onClose} className="vj-focus" aria-label="Close bag">
+          <button onClick={onClose} className="vj-focus" aria-label={t("cart.closeAria")}>
             <X size={20} />
           </button>
         </div>
 
         {cart.length === 0 ? (
           <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.7 }}>
-            Nothing here yet. Add a piece from the collection.
+            {t("cart.empty")}
           </p>
         ) : (
           <div className="flex-1 overflow-y-auto flex flex-col gap-4">
@@ -44,17 +46,17 @@ export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm truncate">{p.name}</div>
+                    <div className="text-sm truncate">{tx(p.name)}</div>
                     <div className="vj-mono text-xs" style={{ color: "var(--gold-700)" }}>
                       {p.metal === "Gold" ? c.purity + "K · " : ""}
                       {fmtINR(priceFor(p, c.purity))}
                     </div>
                     <div className="flex items-center gap-2 mt-1">
-                      <button onClick={() => onUpdateQty(c.id, c.purity, -1)} className="vj-focus" aria-label="Decrease quantity">
+                      <button onClick={() => onUpdateQty(c.id, c.purity, -1)} className="vj-focus" aria-label={t("cart.decrease")}>
                         <Minus size={13} />
                       </button>
                       <span className="text-xs">{c.qty}</span>
-                      <button onClick={() => onUpdateQty(c.id, c.purity, 1)} className="vj-focus" aria-label="Increase quantity">
+                      <button onClick={() => onUpdateQty(c.id, c.purity, 1)} className="vj-focus" aria-label={t("cart.increase")}>
                         <Plus size={13} />
                       </button>
                     </div>
@@ -67,7 +69,7 @@ export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal
 
         <div className="pt-4" style={{ borderTop: "1px solid var(--line)" }}>
           <div className="flex justify-between text-sm mb-3">
-            <span>Estimated total</span>
+            <span>{t("cart.total")}</span>
             <span className="vj-mono">{fmtINR(cartTotal)}</span>
           </div>
           <button
@@ -76,10 +78,10 @@ export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal
             className="vj-focus w-full py-3 rounded-full text-sm font-medium disabled:opacity-40"
             style={{ background: "linear-gradient(90deg, var(--gold-300), var(--gold-500))", color: "var(--plum-950)", fontWeight: 600 }}
           >
-            Request a callback to finalise
+            {t("cart.cta")}
           </button>
           <p className="text-xs text-center mt-2" style={{ color: "var(--ink)", opacity: 0.6 }}>
-            High-value pieces are confirmed in showroom, with hallmarking shown in person.
+            {t("cart.note")}
           </p>
         </div>
       </div>

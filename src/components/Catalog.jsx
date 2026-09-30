@@ -1,40 +1,41 @@
 import { forwardRef } from "react";
-import { CATEGORIES, METALS } from "../data/products";
+import { CATEGORIES, METALS, SORTS, categoryLabel } from "../data/products";
+import { useLang } from "../i18n/LanguageContext";
 import ProductCard from "./ProductCard";
 
 const Catalog = forwardRef(function Catalog(
-  {
-    activeCategory,
-    setActiveCategory,
-    activeMetal,
-    setActiveMetal,
-    sortBy,
-    setSortBy,
-    filteredProducts,
-    wishlist,
-    onToggleWishlist,
-    onQuickView,
-  },
+  { activeCategory, setActiveCategory, activeMetal, setActiveMetal, sortBy, setSortBy, filteredProducts, onQuickView },
   ref
 ) {
+  const { t, tx } = useLang();
+  const count = filteredProducts.length;
+
+  const chipStyle = (active) =>
+    active
+      ? { background: "var(--plum-900)", color: "var(--gold-100)", borderColor: "var(--plum-900)" }
+      : { borderColor: "var(--line)", color: "var(--ink)" };
+
   return (
-    <section ref={ref} className="px-4 md:px-6 py-10">
+    <section ref={ref} className="px-4 md:px-6 py-10" style={{ scrollMarginTop: 80 }}>
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
           <h2 className="vj-display text-2xl" style={{ color: "var(--plum-900)" }}>
-            {activeCategory === "All" ? "The collection" : activeCategory}
+            {activeCategory === "All" ? t("catalog.title") : tx(categoryLabel(activeCategory))}
             <span className="text-sm vj-mono ml-3" style={{ color: "var(--gold-700)" }}>
-              {filteredProducts.length} pieces
+              {t(count === 1 ? "catalog.count.one" : "catalog.count.other", { count })}
             </span>
           </h2>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
+            aria-label={t("catalog.sortAria")}
             className="vj-focus border rounded-full px-4 py-2 text-sm"
             style={{ borderColor: "var(--line)", background: "transparent" }}
           >
-            {["Featured", "Price: Low to High", "Price: High to Low", "Newest"].map((s) => (
-              <option key={s}>{s}</option>
+            {SORTS.map((s) => (
+              <option key={s} value={s}>
+                {t(`sort.${s}`)}
+              </option>
             ))}
           </select>
         </div>
@@ -43,31 +44,23 @@ const Catalog = forwardRef(function Catalog(
           <button
             onClick={() => setActiveCategory("All")}
             className="vj-chip vj-focus text-xs px-4 py-1.5 rounded-full border"
-            style={
-              activeCategory === "All"
-                ? { background: "var(--plum-900)", color: "var(--gold-100)", borderColor: "var(--plum-900)" }
-                : { borderColor: "var(--line)", color: "var(--ink)" }
-            }
+            style={chipStyle(activeCategory === "All")}
           >
-            All
+            {t("catalog.all")}
           </button>
           {CATEGORIES.map((c) => (
             <button
               key={c.key}
               onClick={() => setActiveCategory(c.key)}
               className="vj-chip vj-focus text-xs px-4 py-1.5 rounded-full border"
-              style={
-                activeCategory === c.key
-                  ? { background: "var(--plum-900)", color: "var(--gold-100)", borderColor: "var(--plum-900)" }
-                  : { borderColor: "var(--line)", color: "var(--ink)" }
-              }
+              style={chipStyle(activeCategory === c.key)}
             >
-              {c.label}
+              {tx(c.label)}
             </button>
           ))}
         </div>
 
-        <div className="flex gap-2 mb-8">
+        <div className="flex flex-wrap gap-2 mb-8">
           {METALS.map((m) => (
             <button
               key={m}
@@ -79,26 +72,20 @@ const Catalog = forwardRef(function Catalog(
                   : { background: "var(--cream-dim)", color: "var(--plum-900)" }
               }
             >
-              {m}
+              {t(`metal.${m}`)}
             </button>
           ))}
         </div>
 
-        {filteredProducts.length === 0 ? (
+        {count === 0 ? (
           <div className="text-center py-16" style={{ color: "var(--ink)", opacity: 0.7 }}>
-            <p className="vj-display text-xl mb-2">Nothing matches yet</p>
-            <p className="text-sm">Try a different category, metal, or clear the search.</p>
+            <p className="vj-display text-xl mb-2">{t("catalog.empty.title")}</p>
+            <p className="text-sm">{t("catalog.empty.body")}</p>
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {filteredProducts.map((p) => (
-              <ProductCard
-                key={p.id}
-                product={p}
-                isWishlisted={wishlist.has(p.id)}
-                onToggleWishlist={onToggleWishlist}
-                onQuickView={onQuickView}
-              />
+              <ProductCard key={p.id} product={p} onQuickView={onQuickView} />
             ))}
           </div>
         )}

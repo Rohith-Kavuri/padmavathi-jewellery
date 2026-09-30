@@ -1,6 +1,8 @@
 import { X, Check } from "lucide-react";
+import { useLang } from "../i18n/LanguageContext";
 
 export default function AppointmentModal({ open, form, setForm, done, onClose, onSubmit, onDoneClose }) {
+  const { t } = useLang();
   if (!open) return null;
 
   return (
@@ -10,22 +12,26 @@ export default function AppointmentModal({ open, form, setForm, done, onClose, o
           <>
             <div className="flex justify-between items-start mb-4">
               <h3 className="vj-display text-xl" style={{ color: "var(--plum-900)" }}>
-                Book a private visit
+                {t("appt.title")}
               </h3>
-              <button onClick={onClose} className="vj-focus" aria-label="Close">
+              <button onClick={onClose} className="vj-focus" aria-label={t("aria.close")}>
                 <X size={18} />
               </button>
             </div>
             <form onSubmit={onSubmit} className="flex flex-col gap-3">
               <input
-                placeholder="Full name"
+                placeholder={t("appt.name")}
+                aria-label={t("appt.name")}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="vj-focus border rounded-lg px-3 py-2.5 text-sm"
                 style={{ borderColor: "var(--line)" }}
               />
               <input
-                placeholder="Mobile number"
+                placeholder={t("appt.phone")}
+                aria-label={t("appt.phone")}
+                type="tel"
+                inputMode="tel"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 className="vj-focus border rounded-lg px-3 py-2.5 text-sm"
@@ -33,13 +39,15 @@ export default function AppointmentModal({ open, form, setForm, done, onClose, o
               />
               <input
                 type="date"
+                aria-label={t("appt.date")}
+                title={t("appt.date")}
                 value={form.date}
                 onChange={(e) => setForm({ ...form, date: e.target.value })}
                 className="vj-focus border rounded-lg px-3 py-2.5 text-sm"
                 style={{ borderColor: "var(--line)" }}
               />
               <button type="submit" className="vj-focus mt-2 py-3 rounded-full text-sm font-medium" style={{ background: "linear-gradient(90deg, var(--gold-300), var(--gold-500))", color: "var(--plum-950)", fontWeight: 600 }}>
-                Confirm visit
+                {t("appt.submit")}
               </button>
             </form>
           </>
@@ -47,13 +55,13 @@ export default function AppointmentModal({ open, form, setForm, done, onClose, o
           <div className="text-center py-4">
             <Check size={28} style={{ color: "var(--success-600)" }} className="mx-auto mb-3" />
             <h3 className="vj-display text-xl mb-1" style={{ color: "var(--plum-900)" }}>
-              Visit booked
+              {t("appt.done.title")}
             </h3>
             <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.8 }}>
-              We'll call {form.phone} to confirm a showroom near you for {form.date || "your chosen date"}.
+              {t("appt.done.body", { phone: form.phone, date: form.date || t("appt.done.dateFallback") })}
             </p>
             <button onClick={onDoneClose} className="vj-focus mt-5 px-6 py-2.5 rounded-full text-sm" style={{ background: "linear-gradient(90deg, var(--gold-300), var(--gold-500))", color: "var(--plum-950)", fontWeight: 600 }}>
-              Done
+              {t("appt.done.button")}
             </button>
           </div>
         )}
