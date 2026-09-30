@@ -39,11 +39,15 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
             className="absolute inset-0 vj-slide"
             style={{ opacity: mediaIndex === 0 ? 1 : 0, pointerEvents: mediaIndex === 0 ? "auto" : "none" }}
           >
-            <div className="absolute inset-0 flex items-center justify-center" style={{ background: `linear-gradient(160deg, ${gem[500]}, ${gem[700]})` }}>
-              <div style={{ color: gem.tint, width: 110, height: 110 }}>
-                <JewelGlyph category={product.category} className="w-full h-full" />
+            {product.image ? (
+              <img src={product.image} alt={tx(product.name)} className="absolute inset-0 w-full h-full object-cover" />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center" style={{ background: `linear-gradient(160deg, ${gem[500]}, ${gem[700]})` }}>
+                <div style={{ color: gem.tint, width: 110, height: 110 }}>
+                  <JewelGlyph category={product.category} className="w-full h-full" />
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div

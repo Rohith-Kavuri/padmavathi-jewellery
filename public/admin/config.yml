@@ -1,0 +1,114 @@
+# Decap CMS — admin page for Padmavathi Jewellery (open /admin/ on the site)
+#
+# Live site: staff sign in with GitHub; every "Publish" becomes a commit on
+# the main branch, and Netlify rebuilds the site automatically (~1 minute).
+backend:
+  name: github
+  repo: Rohith-Kavuri/padmavathi-jewellery
+  branch: main
+  commit_messages:
+    update: "Admin: update {{collection}} ({{slug}})"
+    uploadMedia: "Admin: upload {{path}}"
+    deleteMedia: "Admin: delete {{path}}"
+
+# Local testing: run `npx decap-server` in a second terminal next to
+# `npm run dev`, then open http://localhost:5173/admin/index.html.
+# No login is needed locally and changes are saved straight to your files.
+local_backend: true
+
+# Uploaded photos go here and are served from /images/uploads/...
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+site_url: https://padmavathijewellery.netlify.app
+display_url: https://padmavathijewellery.netlify.app
+
+collections:
+  - name: catalog
+    label: Catalogue
+    editor:
+      preview: false
+    files:
+      # ---------------------------------------------------------------- categories
+      - name: categories
+        label: Categories
+        file: src/content/categories.json
+        fields:
+          - name: categories
+            label: Categories
+            label_singular: Category
+            widget: list
+            summary: "{{fields.label_en}}"
+            fields:
+              - name: key
+                label: Key (internal — don't change for existing categories)
+                widget: string
+                hint: "Used to link products to this category, e.g. Necklace, Bangles"
+              - { name: label_en, label: Name (English), widget: string }
+              - { name: label_te, label: Name (Telugu), widget: string, required: false }
+              - name: image
+                label: Photo
+                widget: image
+                required: false
+                hint: "Square photo works best (at least 400 × 400 px). Leave empty to show the line icon."
+                choose_url: false
+
+      # ---------------------------------------------------------------- products
+      - name: products
+        label: Products
+        file: src/content/products.json
+        fields:
+          - name: products
+            label: Products
+            label_singular: Product
+            widget: list
+            summary: "{{fields.name_en}} — {{fields.category}}"
+            fields:
+              - name: image
+                label: Photo
+                widget: image
+                required: false
+                hint: "Square photo works best (at least 800 × 800 px). Leave empty to show the line icon."
+                choose_url: false
+              - { name: name_en, label: Name (English), widget: string }
+              - { name: name_te, label: Name (Telugu), widget: string, required: false }
+              - name: category
+                label: Category
+                widget: relation
+                collection: catalog
+                file: categories
+                search_fields: ["categories.*.label_en"]
+                display_fields: ["categories.*.label_en"]
+                value_field: "categories.*.key"
+              - name: metal
+                label: Metal
+                widget: select
+                options: [Gold, Diamond, Platinum, Silver]
+              - name: price
+                label: Price (₹)
+                widget: number
+                value_type: int
+                min: 0
+                hint: "For gold pieces enter the 22K price — 18K and 24K prices are worked out automatically."
+              - name: weight
+                label: Weight (grams)
+                widget: number
+                value_type: float
+                required: false
+                hint: "Leave empty for diamond pieces."
+              - name: tag
+                label: Badge
+                widget: select
+                required: false
+                default: ""
+                options:
+                  - { label: "None", value: "" }
+                  - { label: "Bestseller", value: "Bestseller" }
+                  - { label: "New", value: "New" }
+              - { name: desc_en, label: Description (English), widget: text, required: false }
+              - { name: desc_te, label: Description (Telugu), widget: text, required: false }
+              - name: id
+                label: Product number
+                widget: number
+                value_type: int
+                hint: "Must be unique. For a new product use the next number after the highest one. Higher numbers show first under 'Newest'."

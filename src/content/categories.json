@@ -1,0 +1,58 @@
+{
+  "categories": [
+    {
+      "key": "Necklace",
+      "label_en": "Necklaces",
+      "label_te": "నెక్లెస్‌లు",
+      "image": ""
+    },
+    {
+      "key": "Earrings",
+      "label_en": "Earrings",
+      "label_te": "చెవిపోగులు",
+      "image": ""
+    },
+    {
+      "key": "Bangles",
+      "label_en": "Bangles",
+      "label_te": "గాజులు",
+      "image": ""
+    },
+    {
+      "key": "Bracelets",
+      "label_en": "Bracelets",
+      "label_te": "బ్రేస్‌లెట్లు",
+      "image": ""
+    },
+    {
+      "key": "Rings",
+      "label_en": "Rings",
+      "label_te": "ఉంగరాలు",
+      "image": ""
+    },
+    {
+      "key": "Mangalsutra",
+      "label_en": "Mangalsutra",
+      "label_te": "మంగళసూత్రం",
+      "image": ""
+    },
+    {
+      "key": "Bridal Set",
+      "label_en": "Bridal Sets",
+      "label_te": "పెళ్లి సెట్లు",
+      "image": ""
+    },
+    {
+      "key": "Chains",
+      "label_en": "Chains",
+      "label_te": "గొలుసులు",
+      "image": ""
+    },
+    {
+      "key": "Pendant",
+      "label_en": "Pendants",
+      "label_te": "లాకెట్లు",
+      "image": ""
+    }
+  ]
+}

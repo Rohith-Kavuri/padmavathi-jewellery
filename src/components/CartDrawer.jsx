@@ -38,12 +38,16 @@ export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal
               return (
                 <div key={c.id + "-" + c.purity} className="flex gap-3 items-center pb-4" style={{ borderBottom: "1px solid var(--line)" }}>
                   <div
-                    className="vj-arch flex items-center justify-center"
+                    className="vj-arch overflow-hidden flex items-center justify-center"
                     style={{ width: 56, height: 56, background: `linear-gradient(160deg, ${gem[500]}, ${gem[700]})`, flexShrink: 0 }}
                   >
-                    <div style={{ color: gem.tint, width: 32, height: 32 }}>
-                      <JewelGlyph category={p.category} className="w-full h-full" />
-                    </div>
+                    {p.image ? (
+                      <img src={p.image} alt="" className="w-full h-full object-cover" />
+                    ) : (
+                      <div style={{ color: gem.tint, width: 32, height: 32 }}>
+                        <JewelGlyph category={p.category} className="w-full h-full" />
+                      </div>
+                    )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-sm truncate">{tx(p.name)}</div>
