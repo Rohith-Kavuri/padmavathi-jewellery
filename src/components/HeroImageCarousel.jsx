@@ -2,7 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import logoImg from "../assets/padmavathi-logo-transparent.webp";
 import necklaceImg from "../assets/hero-temple-necklace-hd.webp";
-import posterImg from "../assets/padmavathi-poster-hd.webp";
+import templeJewelleryImg from "../assets/hero-temple-jewellery.webp";
+import designerNecklacesImg from "../assets/hero-designer-necklaces.webp";
 import { useLang } from "../i18n/LanguageContext";
 
 // Four hero panels.
@@ -10,16 +11,18 @@ import { useLang } from "../i18n/LanguageContext";
 //     removed) on one half and a temple-gold necklace on the other, on the
 //     brand's maroon velvet. The necklace image is cropped from the brand's
 //     own collections poster, upscaled 4x with Real-ESRGAN for sharpness.
-//  2. "poster" — the full collections poster (Real-ESRGAN upscaled, 2560px).
-//  3–4.        — hand-built gradient + glow illustrations, one per gemstone.
+//  2–3.       — collection banners (Temple Jewellery, Designer Necklaces).
+//               They are portrait images with their own headline text, so
+//               they are shown whole ("contain") on a blurred copy of
+//               themselves. To add a slide: import the image and add one
+//               { type: "image", fit: "contain" } entry to SLIDES.
 // Captions/alt text are translation keys (see src/i18n/strings.js).
 
 const SLIDES = [
   { id: "brand", type: "brand", caption: null },
-  // the poster carries its own headings, so no floating caption on this slide
-  { id: "poster", type: "image", src: posterImg, bg: "#1F1825", fit: "contain", caption: null, alt: "hero.alt.poster" },
-  { id: "sapphire", caption: "hero.caption.sapphire" },
-  { id: "amethyst", caption: "hero.caption.amethyst" },
+  // these banners carry their own headings, so no floating caption
+  { id: "temple-jewellery", type: "image", src: templeJewelleryImg, bg: "#2C0610", fit: "contain", caption: null, alt: "hero.alt.templeJewellery" },
+  { id: "designer-necklaces", type: "image", src: designerNecklacesImg, bg: "#2C0610", fit: "contain", caption: null, alt: "hero.alt.designerNecklaces" },
 ];
 
 function BrandSlide({ t }) {
@@ -86,90 +89,6 @@ function BrandSlide({ t }) {
   );
 }
 
-function SlideArt({ variant }) {
-  switch (variant) {
-    case "sapphire":
-      return (
-        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
-          <defs>
-            <radialGradient id="bg-sapphire" cx="50%" cy="38%" r="75%">
-              <stop offset="0%" stopColor="#1A3F8C" />
-              <stop offset="100%" stopColor="#1F1825" />
-            </radialGradient>
-            <radialGradient id="glow-sapphire" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#7FB4FF" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#7FB4FF" stopOpacity="0" />
-            </radialGradient>
-            <linearGradient id="gem-sapphire" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#AFD2FF" />
-              <stop offset="55%" stopColor="#2E7BE0" />
-              <stop offset="100%" stopColor="#1A3F8C" />
-            </linearGradient>
-            <linearGradient id="gold-sapphire" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#FFF1C9" />
-              <stop offset="100%" stopColor="#C8941A" />
-            </linearGradient>
-            <filter id="blur-sapphire"><feGaussianBlur stdDeviation="14" /></filter>
-          </defs>
-          <rect width="400" height="400" fill="url(#bg-sapphire)" />
-          <circle cx="200" cy="210" r="120" fill="url(#glow-sapphire)" filter="url(#blur-sapphire)" />
-          <g>
-            <circle cx="140" cy="130" r="6" fill="url(#gold-sapphire)" />
-            <path d="M140 136c0 22-18 28-18 50a18 18 0 0 0 36 0c0-22-18-28-18-50" fill="url(#gem-sapphire)" />
-            <path d="M140 136c0 22-18 28-18 50a18 18 0 0 0 36 0c0-22-18-28-18-50" fill="none" stroke="url(#gold-sapphire)" strokeWidth="2" opacity="0.6" />
-          </g>
-          <g>
-            <circle cx="260" cy="118" r="6" fill="url(#gold-sapphire)" />
-            <path d="M260 124c0 22-18 28-18 50a18 18 0 0 0 36 0c0-22-18-28-18-50" fill="url(#gem-sapphire)" />
-            <path d="M260 124c0 22-18 28-18 50a18 18 0 0 0 36 0c0-22-18-28-18-50" fill="none" stroke="url(#gold-sapphire)" strokeWidth="2" opacity="0.6" />
-          </g>
-          <g stroke="#E1ECFF" strokeWidth="1.8" opacity="0.9">
-            <path d="M90 220l14 14M104 220l-14 14" />
-            <path d="M310 250l12 12M322 250l-12 12" />
-            <path d="M150 300l10 10M160 300l-10 10" />
-          </g>
-        </svg>
-      );
-    case "amethyst":
-    default:
-      return (
-        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
-          <defs>
-            <radialGradient id="bg-amethyst" cx="50%" cy="45%" r="75%">
-              <stop offset="0%" stopColor="#5E2C8C" />
-              <stop offset="100%" stopColor="#1F1825" />
-            </radialGradient>
-            <radialGradient id="glow-amethyst" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#D8B3FF" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#D8B3FF" stopOpacity="0" />
-            </radialGradient>
-            <linearGradient id="gold-amethyst" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#A8790C" />
-              <stop offset="50%" stopColor="#FFC93C" />
-              <stop offset="100%" stopColor="#A8790C" />
-            </linearGradient>
-            <filter id="blur-amethyst"><feGaussianBlur stdDeviation="14" /></filter>
-          </defs>
-          <rect width="400" height="400" fill="url(#bg-amethyst)" />
-          <circle cx="210" cy="210" r="120" fill="url(#glow-amethyst)" filter="url(#blur-amethyst)" />
-          <circle cx="160" cy="225" r="82" fill="none" stroke="url(#gold-amethyst)" strokeWidth="10" />
-          <circle cx="205" cy="195" r="82" fill="none" stroke="url(#gold-amethyst)" strokeWidth="10" opacity="0.9" />
-          {[0, 60, 120, 180, 240, 300].map((deg) => {
-            const rad = (deg * Math.PI) / 180;
-            const cx = 205 + 82 * Math.cos(rad);
-            const cy = 195 + 82 * Math.sin(rad);
-            return <circle key={deg} cx={cx} cy={cy} r="6" fill="#9C5BE0" stroke="#FFF1C9" strokeWidth="1" />;
-          })}
-          <g opacity="0.85">
-            <circle cx="320" cy="120" r="2.2" fill="#F3EAFE" />
-            <circle cx="90" cy="140" r="2" fill="#F3EAFE" />
-            <circle cx="300" cy="320" r="1.8" fill="#F3EAFE" />
-          </g>
-        </svg>
-      );
-  }
-}
-
 export default function HeroImageCarousel({ fullBleed = false, children }) {
   const { t } = useLang();
   const [index, setIndex] = useState(0);
@@ -226,9 +145,7 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
                 style={{ objectFit: s.fit || "cover", objectPosition: "center", filter: s.fit === "contain" ? "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" : undefined }}
               />
             </>
-          ) : (
-            <SlideArt variant={s.id} />
-          )}
+          ) : null}
         </div>
       ))}
 
