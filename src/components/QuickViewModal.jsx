@@ -32,9 +32,15 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
       style={{ background: "rgba(31,24,37,0.55)" }}
       onClick={onClose}
     >
-      <div className="vj-modal-enter w-full max-w-lg rounded-2xl overflow-hidden" style={{ background: "var(--cream)" }} onClick={(e) => e.stopPropagation()}>
-        {/* sliding media view: product glyph <-> video */}
-        <div className="relative" style={{ height: 220, background: "#000" }}>
+      <div
+        className="vj-modal-enter w-full max-w-lg md:max-w-4xl md:flex rounded-2xl overflow-hidden overflow-y-auto"
+        style={{ background: "var(--cream)", maxHeight: "92vh" }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* sliding media view: product photo/glyph <-> video.
+            Square so product photos show in full: full width on phones,
+            left half of the window from tablet size up. */}
+        <div className="relative w-full md:w-1/2 flex-shrink-0 aspect-square" style={{ background: "#000" }}>
           <div
             className="absolute inset-0 vj-slide"
             style={{ opacity: mediaIndex === 0 ? 1 : 0, pointerEvents: mediaIndex === 0 ? "auto" : "none" }}
@@ -100,7 +106,7 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
           </div>
         </div>
 
-        <div className="p-6">
+        <div className="p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
           <div className="flex justify-between items-start">
             <div>
               <h3 className="vj-display text-2xl" style={{ color: "var(--plum-900)" }}>
