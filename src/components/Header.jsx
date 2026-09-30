@@ -1,6 +1,7 @@
 import { Search, ShoppingBag, Menu } from "lucide-react";
 import { useLang } from "../i18n/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
+import wordmark from "../assets/padmavathi-wordmark.webp";
 
 export default function Header({
   searchTerm,
@@ -31,17 +32,8 @@ export default function Header({
           <button className="lg:hidden vj-focus" onClick={onOpenMobileMenu} aria-label={t("aria.openMenu")}>
             <Menu size={22} />
           </button>
-          <div className="min-w-0">
-            <div
-              className="vj-display text-2xl md:text-3xl whitespace-nowrap"
-              style={{ letterSpacing: "0.04em", color: "var(--plum-900)", fontWeight: 600 }}
-            >
-              {t("brand.name")}
-            </div>
-            <div className="vj-mono text-[10px] tracking-widest whitespace-nowrap" style={{ color: "var(--gold-700)", marginTop: -4 }}>
-              {t("brand.sub")}
-            </div>
-          </div>
+          {/* gold wordmark from the logo */}
+          <img src={wordmark} alt={t("brand.name")} className="block h-9 md:h-12 w-auto" />
         </div>
 
         <nav className="hidden lg:flex items-center gap-6 xl:gap-7 text-sm whitespace-nowrap" style={{ color: "var(--ink)" }}>
