@@ -20,17 +20,26 @@ export default function CategoryShowcase({ onSelectCategory }) {
               <button
                 key={c.key}
                 onClick={() => onSelectCategory(c.key)}
-                className="vj-focus vj-card flex-shrink-0 flex flex-col items-center gap-2 px-5 py-4 vj-arch"
+                className={`vj-focus vj-card relative overflow-hidden flex-shrink-0 flex flex-col items-center gap-2 px-5 py-4 vj-arch ${c.image ? "justify-end" : "justify-center"}`}
                 style={{
                   background: `linear-gradient(160deg, ${gem[500]}, ${gem[700]})`,
                   border: "1px solid var(--line)",
                   minWidth: 110,
+                  height: 132,
                 }}
               >
-                <div className="vj-icon-wrap" style={{ color: gem.tint }}>
-                  <JewelGlyph category={c.key} />
-                </div>
-                <span className="text-xs whitespace-nowrap" style={{ color: gem.tint }}>
+                {c.image ? (
+                  <>
+                    {/* photo from the admin page, darkened at the bottom so the label stays readable */}
+                    <img src={c.image} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                    <span className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, ${gem[700]}E6)` }} />
+                  </>
+                ) : (
+                  <div className="vj-icon-wrap" style={{ color: gem.tint }}>
+                    <JewelGlyph category={c.key} />
+                  </div>
+                )}
+                <span className="relative text-xs whitespace-nowrap" style={{ color: gem.tint }}>
                   {tx(c.label)}
                 </span>
               </button>

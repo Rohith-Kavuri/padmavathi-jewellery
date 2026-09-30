@@ -29,8 +29,18 @@ export default function ProductCard({ product, onQuickView }) {
           {t(`tag.${product.tag}`)}
         </span>
       )}
-      <div className="vj-icon-wrap my-3" style={{ color: gem[500] }}>
-        <JewelGlyph category={product.category} />
+      {/* photo from the admin page if uploaded, otherwise the line icon */}
+      <div
+        className="w-full aspect-square rounded-xl overflow-hidden flex items-center justify-center mt-5 mb-3"
+        style={{ background: gem.tint }}
+      >
+        {product.image ? (
+          <img src={product.image} alt={tx(product.name)} loading="lazy" className="w-full h-full object-cover" />
+        ) : (
+          <div className="vj-icon-wrap" style={{ color: gem[500] }}>
+            <JewelGlyph category={product.category} />
+          </div>
+        )}
       </div>
       <div className="text-sm" style={{ color: "var(--ink)" }}>
         {tx(product.name)}
