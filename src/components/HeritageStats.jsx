@@ -10,7 +10,7 @@ export default function HeritageStats() {
   const [ref, inView] = useInView();
 
   return (
-    <section id="heritage-section" ref={ref} className="px-4 md:px-6 py-14" style={{ background: "var(--cream)", scrollMarginTop: 80 }}>
+    <section id="heritage-section" ref={ref} className="px-4 md:px-6 py-14" style={{ scrollMarginTop: 80 }}>
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>

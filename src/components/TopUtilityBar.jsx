@@ -1,6 +1,7 @@
 import { Phone } from "lucide-react";
 import { CITIES, ANNOUNCEMENTS } from "../data/products";
 import { fmtINR } from "../utils/format";
+import { STORE, PHONE_URL } from "../data/site";
 import { useLang } from "../i18n/LanguageContext";
 
 // Top bar: a slow scrolling ticker with today's metal rates and the shop
@@ -67,9 +68,11 @@ export default function TopUtilityBar({ city, setCity, displayRate22, displayRat
             </option>
           ))}
         </select>
-        <span className="flex items-center gap-1 whitespace-nowrap">
-          <Phone size={12} /> 1800 425 7333
-        </span>
+        {STORE.phone && (
+          <a href={PHONE_URL} className="vj-focus flex items-center gap-1 whitespace-nowrap">
+            <Phone size={12} /> {STORE.phone}
+          </a>
+        )}
       </div>
     </div>
   );

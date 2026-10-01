@@ -18,6 +18,7 @@ export const STRINGS = {
     "nav.rates": "Gold Rates",
     "nav.heritage": "Heritage",
     "nav.book": "Book a Visit",
+    "nav.visit": "Visit Us",
     "search.placeholder": "Search jewellery",
     "search.aria": "Search jewellery",
     "aria.openMenu": "Open menu",
@@ -125,6 +126,26 @@ export const STRINGS = {
     "trust.buyback": "Best Gold Buyback",
     "trust.packaging": "Premium Packaging",
 
+    // occasions, visit us, bottom bar
+    "occasion.heading": "Shop by occasion",
+    "occasion.explore": "Explore",
+    "visit.eyebrow": "VISIT US",
+    "visit.title": "Visit our showroom",
+    "visit.directions": "Get directions",
+    "visit.whatsapp": "WhatsApp us",
+    "visit.mapTitle": "Map showing our showroom",
+    "footer.tagline": "Crafted with devotion. Made for generations.",
+    "footer.help": "HELP",
+    "footer.follow": "Follow us",
+    "bottom.aria": "Quick links",
+    "bottom.home": "Home",
+    "bottom.categories": "Categories",
+    "bottom.rates": "Gold rate",
+    "bottom.bag": "Bag",
+    "bottom.whatsapp": "WhatsApp",
+    "bottom.visit": "Visit",
+    "aria.whatsapp": "Chat with us on WhatsApp",
+
     // heritage
     "heritage.eyebrow": "SINCE 1971",
     "heritage.title": "Built guild by guild, not factory by factory",
@@ -147,7 +168,7 @@ export const STRINGS = {
 
     // footer
     "footer.about":
-      "Fine jewellery, made by nine artisan guilds across South India, sold from 120 showrooms in three countries.",
+      "Temple gold, diamond, silver and gemstone jewellery — 100% BIS hallmarked.",
     "footer.shop": "SHOP",
     "footer.company": "COMPANY",
     "footer.visit": "VISIT",
@@ -156,8 +177,8 @@ export const STRINGS = {
     "footer.locator": "Showroom locator",
     "footer.careers": "Careers",
     "footer.book": "Book a private visit",
-    "footer.copyright": "© 2026 Padmavathi Jewellery. A fictional brand built for demonstration.",
-    "footer.legal": "Privacy · Terms · Hallmarking standards",
+    "footer.copyright": "© 2026 {name}. All rights reserved.",
+    "footer.legal": "100% BIS Hallmarked jewellery",
   },
 
   te: {
@@ -173,6 +194,7 @@ export const STRINGS = {
     "nav.rates": "బంగారం ధరలు",
     "nav.heritage": "మా వారసత్వం",
     "nav.book": "సందర్శన బుక్ చేయండి",
+    "nav.visit": "మమ్మల్ని సందర్శించండి",
     "search.placeholder": "ఆభరణాలు వెతకండి",
     "search.aria": "ఆభరణాలు వెతకండి",
     "aria.openMenu": "మెనూ తెరవండి",
@@ -280,6 +302,26 @@ export const STRINGS = {
     "trust.buyback": "ఉత్తమ బంగారం బైబ్యాక్",
     "trust.packaging": "ప్రీమియం ప్యాకేజింగ్",
 
+    // occasions, visit us, bottom bar
+    "occasion.heading": "సందర్భం వారీగా షాపింగ్ చేయండి",
+    "occasion.explore": "చూడండి",
+    "visit.eyebrow": "మమ్మల్ని సందర్శించండి",
+    "visit.title": "మా షోరూమ్‌ను సందర్శించండి",
+    "visit.directions": "దారి చూపించు",
+    "visit.whatsapp": "వాట్సాప్ చేయండి",
+    "visit.mapTitle": "మా షోరూమ్ మ్యాప్",
+    "footer.tagline": "భక్తితో తీర్చిదిద్దినవి. తరతరాలకు నిలిచేవి.",
+    "footer.help": "సహాయం",
+    "footer.follow": "మమ్మల్ని ఫాలో అవ్వండి",
+    "bottom.aria": "త్వరిత లింకులు",
+    "bottom.home": "హోమ్",
+    "bottom.categories": "రకాలు",
+    "bottom.rates": "బంగారం ధర",
+    "bottom.bag": "బ్యాగ్",
+    "bottom.whatsapp": "వాట్సాప్",
+    "bottom.visit": "సందర్శన",
+    "aria.whatsapp": "వాట్సాప్‌లో మాతో మాట్లాడండి",
+
     // heritage
     "heritage.eyebrow": "1971 నుంచి",
     "heritage.title": "ఫ్యాక్టరీలతో కాదు, కళాకారుల సంఘాలతో నిర్మించినది",
@@ -302,7 +344,7 @@ export const STRINGS = {
 
     // footer
     "footer.about":
-      "దక్షిణ భారతదేశంలోని తొమ్మిది కళాకారుల సంఘాలు తయారుచేసిన నాణ్యమైన ఆభరణాలు, మూడు దేశాల్లోని 120 షోరూమ్‌లలో లభ్యం.",
+      "టెంపుల్ గోల్డ్, వజ్రాలు, వెండి, రత్నాల ఆభరణాలు — 100% BIS హాల్‌మార్క్.",
     "footer.shop": "షాపింగ్",
     "footer.company": "సంస్థ",
     "footer.visit": "సందర్శన",
@@ -311,7 +353,7 @@ export const STRINGS = {
     "footer.locator": "షోరూమ్ చిరునామాలు",
     "footer.careers": "ఉద్యోగాలు",
     "footer.book": "ప్రైవేట్ సందర్శన బుక్ చేయండి",
-    "footer.copyright": "© 2026 పద్మావతి జ్యువెలరీ. ప్రదర్శన కోసం రూపొందించిన కల్పిత బ్రాండ్.",
-    "footer.legal": "గోప్యత · నిబంధనలు · హాల్‌మార్కింగ్ ప్రమాణాలు",
+    "footer.copyright": "© 2026 {name}. సర్వ హక్కులు ప్రత్యేకించబడినవి.",
+    "footer.legal": "100% BIS హాల్‌మార్క్ ఆభరణాలు",
   },
 };

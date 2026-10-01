@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import logoImg from "../assets/padmavathi-logo-transparent.webp";
 import necklaceImg from "../assets/hero-temple-necklace-hd.webp";
@@ -30,6 +30,11 @@ const imageSlides = (heroFile.slides || [])
 
 // The logo slide can be switched off in the admin page; it's always kept if
 // there are no banner images, so the hero is never empty.
+//
+// On laptops (1024px+) the "show whole image" banners are portrait, so a
+// single one leaves wide empty sides. There, they're grouped into one
+// "gallery" slide that shows them side by side like a shop window. Phones
+// keep one banner per slide.
 const SLIDES = [
   ...(heroFile.show_brand_slide !== false || imageSlides.length === 0 ? [{ id: "brand", type: "brand", caption: null }] : []),
   ...imageSlides,
@@ -99,22 +104,78 @@ function BrandSlide({ t }) {
   );
 }
 
+function useIsWide(query = "(min-width: 1024px)") {
+  const get = () => typeof window !== "undefined" && window.matchMedia(query).matches;
+  const [wide, setWide] = useState(get);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const on = () => setWide(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, [query]);
+  return wide;
+}
+
+function GallerySlide({ images, tx }) {
+  const n = images.length;
+  return (
+    <>
+      <img
+        src={images[0].src}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full"
+        style={{ objectFit: "cover", filter: "blur(30px) brightness(0.4) saturate(1.2)", transform: "scale(1.15)" }}
+      />
+      <div className="vj-kb absolute inset-0 flex items-center justify-center gap-8 px-16">
+        {images.map((im) => (
+          <img
+            key={im.id}
+            src={im.src}
+            alt={tx(im.alt)}
+            className="block w-auto h-auto rounded-xl"
+            style={{
+              maxHeight: "calc(var(--hero-h) - 80px)",
+              maxWidth: `calc((100vw - 8rem - ${(n - 1) * 2}rem) / ${n})`,
+              border: "2px solid rgba(255,201,60,0.6)",
+              boxShadow: "0 30px 60px -20px rgba(0,0,0,0.75)",
+            }}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
+
 export default function HeroImageCarousel({ fullBleed = false, children }) {
   const { t, tx } = useLang();
+  const isWide = useIsWide();
+  const slides = useMemo(() => {
+    const contain = SLIDES.filter((s) => s.type === "image" && s.fit === "contain");
+    if (!isWide || contain.length < 2) return SLIDES;
+    const gallery = { id: "gallery", type: "gallery", images: contain.slice(0, 3), caption: null };
+    const out = [];
+    SLIDES.forEach((s) => {
+      if (s === contain[0]) out.push(gallery);
+      else if (!contain.slice(0, 3).includes(s)) out.push(s);
+    });
+    return out;
+  }, [isWide]);
   const [index, setIndex] = useState(0);
+  useEffect(() => setIndex((i) => (i < slides.length ? i : 0)), [slides.length]);
   const [paused, setPaused] = useState(false);
   const intervalRef = useRef(null);
 
   useEffect(() => {
     if (paused) return;
     intervalRef.current = setInterval(() => {
-      setIndex((i) => (i + 1) % SLIDES.length);
+      setIndex((i) => (i + 1) % slides.length);
     }, 4500);
     return () => clearInterval(intervalRef.current);
-  }, [paused]);
+  }, [paused, slides.length]);
 
   function goTo(i) {
-    setIndex(((i % SLIDES.length) + SLIDES.length) % SLIDES.length);
+    setIndex(((i % slides.length) + slides.length) % slides.length);
   }
 
   const containerClass = fullBleed
@@ -127,15 +188,17 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
 
   return (
     <div className={containerClass} style={containerStyle} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      {SLIDES.map((s, i) => (
+      {slides.map((s, i) => (
         <div
           key={s.id}
           className="absolute inset-0 vj-slide"
-          style={{ opacity: i === index ? 1 : 0, background: s.type === "image" ? s.bg : undefined }}
+          style={{ opacity: i === index ? 1 : 0, background: s.type === "image" || s.type === "gallery" ? "#2C0610" : undefined }}
           aria-hidden={i !== index}
         >
           {s.type === "brand" ? (
             <BrandSlide t={t} />
+          ) : s.type === "gallery" ? (
+            <GallerySlide images={s.images} tx={tx} />
           ) : s.type === "image" ? (
             <>
               {/* blurred copy fills the side bands so a "contain" image never sits on flat bars */}
@@ -183,12 +246,12 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
       )}
 
       {/* slide tag (the brand slide carries its own text) */}
-      {SLIDES[index].caption && (
+      {slides[index]?.caption && (
         <div
           className={fullBleed ? "absolute top-5 right-5 md:right-8 vj-mono text-[10px]" : "absolute bottom-4 left-5 right-16 vj-mono text-[10px]"}
           style={{ color: "var(--gold-100)", opacity: 0.9 }}
         >
-          {t(SLIDES[index].caption)}
+          {t(slides[index].caption)}
         </div>
       )}
 
@@ -212,7 +275,7 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
 
       {/* dots */}
       <div className="absolute bottom-5 right-5 md:right-8 flex gap-1.5">
-        {SLIDES.map((s, i) => (
+        {slides.map((s, i) => (
           <button
             key={s.id}
             onClick={() => goTo(i)}

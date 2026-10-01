@@ -162,3 +162,94 @@ collections:
                 label: Short description (Telugu)
                 widget: string
                 required: false
+
+      - name: featured
+        label: Featured collection (big maroon spotlight)
+        file: src/content/featured.json
+        fields:
+          - name: image
+            label: Photo
+            widget: image
+            choose_url: false
+            hint: "Portrait works best (about 900 × 1100 px). Avoid photos with text printed on them — the title and text below are shown next to it."
+          - { name: eyebrow_en, label: Small heading (English), widget: string, required: false }
+          - { name: eyebrow_te, label: Small heading (Telugu), widget: string, required: false }
+          - { name: title_en, label: Title (English), widget: string }
+          - { name: title_te, label: Title (Telugu), widget: string, required: false }
+          - { name: text_en, label: Text (English), widget: text }
+          - { name: text_te, label: Text (Telugu), widget: text, required: false }
+          - { name: button_en, label: Button (English), widget: string }
+          - { name: button_te, label: Button (Telugu), widget: string, required: false }
+          - name: category
+            label: Button opens
+            widget: select
+            options:
+              - { label: "All jewellery", value: "All" }
+              - { label: "Necklaces", value: "Necklace" }
+              - { label: "Earrings", value: "Earrings" }
+              - { label: "Bangles", value: "Bangles" }
+              - { label: "Bracelets", value: "Bracelets" }
+              - { label: "Rings", value: "Rings" }
+              - { label: "Mangalsutra", value: "Mangalsutra" }
+              - { label: "Bridal Sets", value: "Bridal Set" }
+              - { label: "Chains", value: "Chains" }
+              - { label: "Pendants", value: "Pendant" }
+
+      - name: occasions
+        label: Shop by occasion
+        file: src/content/occasions.json
+        fields:
+          - name: occasions
+            label: Occasion cards
+            label_singular: Occasion
+            widget: list
+            summary: "{{fields.title_en}}  ·  {{fields.image | ternary('✓ has photo', 'no photo yet')}}"
+            hint: "Drag to reorder. Four cards look best."
+            fields:
+              - name: image
+                label: Photo
+                widget: image
+                required: false
+                choose_url: false
+                hint: "Portrait works best (about 900 × 1200 px)."
+              - { name: title_en, label: Title (English), widget: string }
+              - { name: title_te, label: Title (Telugu), widget: string, required: false }
+              - { name: text_en, label: Short line (English), widget: string, required: false }
+              - { name: text_te, label: Short line (Telugu), widget: string, required: false }
+              - name: category
+                label: Card opens
+                widget: select
+                options:
+                  - { label: "All jewellery", value: "All" }
+                  - { label: "Necklaces", value: "Necklace" }
+                  - { label: "Earrings", value: "Earrings" }
+                  - { label: "Bangles", value: "Bangles" }
+                  - { label: "Bracelets", value: "Bracelets" }
+                  - { label: "Rings", value: "Rings" }
+                  - { label: "Mangalsutra", value: "Mangalsutra" }
+                  - { label: "Bridal Sets", value: "Bridal Set" }
+                  - { label: "Chains", value: "Chains" }
+                  - { label: "Pendants", value: "Pendant" }
+
+      - name: store
+        label: Shop details (address, phone, WhatsApp, hours)
+        file: src/content/store.json
+        fields:
+          - { name: name, label: Shop name, widget: string }
+          - { name: address_en, label: Address (English), widget: string }
+          - { name: address_te, label: Address (Telugu), widget: string, required: false }
+          - name: map_query
+            label: Map search text
+            widget: string
+            hint: "What to search on Google Maps to find the shop, e.g. 'Padmavathi Jewellers, Main Road, Giddalur'."
+          - { name: phone, label: Phone number (shown on the site), widget: string, required: false, hint: "e.g. +91 98765 43210. Leave empty to hide." }
+          - name: whatsapp
+            label: WhatsApp number
+            widget: string
+            required: false
+            hint: "Turns on the WhatsApp buttons. Digits with country code, e.g. 919876543210 (a 10-digit number gets +91 added). Leave empty to hide."
+          - { name: email, label: Email, widget: string, required: false }
+          - { name: hours_en, label: Opening hours (English), widget: text, required: false, hint: "e.g. Mon–Sat 10:00 am – 8:30 pm" }
+          - { name: hours_te, label: Opening hours (Telugu), widget: text, required: false }
+          - { name: instagram, label: Instagram link, widget: string, required: false, hint: "Full link, e.g. https://instagram.com/yourshop" }
+          - { name: facebook, label: Facebook link, widget: string, required: false }

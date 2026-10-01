@@ -88,6 +88,14 @@ same buttons → **Publish**.
 
 **Homepage banners:** Homepage → Hero slides.
 
+**Featured collection** (big maroon spotlight), **Shop by occasion** cards:
+Homepage → Featured collection / Shop by occasion.
+
+**Shop details** — address, phone, WhatsApp number, opening hours,
+Instagram/Facebook links: Homepage → Shop details. Empty fields are hidden
+on the site. Adding a WhatsApp number turns on the WhatsApp buttons (the
+floating button, the phone bottom bar and the Visit Us section).
+
 The list shows "✓ has photo" / "no photo yet" next to each category and
 product, so you can see at a glance what still needs a photo.
 
@@ -99,6 +107,9 @@ product, so you can see at a glance what still needs a photo.
 | Categories (name EN/TE, photo) | `src/content/categories.json` |
 | Products (all details, photo) | `src/content/products.json` |
 | Hero slides (top banner images, order, phone images) | `src/content/hero.json` |
+| Featured collection | `src/content/featured.json` |
+| Shop by occasion cards | `src/content/occasions.json` |
+| Shop details (address, phone, WhatsApp, hours, social links) | `src/content/store.json` |
 | Uploaded photos | `public/images/uploads/` |
 
 Tips:
