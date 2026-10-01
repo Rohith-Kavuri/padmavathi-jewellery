@@ -113,6 +113,15 @@ export const STRINGS = {
     "rates.platinum": "Platinum / g",
     "rates.silver": "Silver / g",
 
+    // top ticker + trust strip
+    "topbar.goldRate": "TODAY'S RATES",
+    "trust.aria": "Our promises",
+    "trust.bis": "100% BIS Hallmarked Gold",
+    "trust.exchange": "Lifetime Exchange",
+    "trust.cleaning": "Free Cleaning & Polishing",
+    "trust.buyback": "Best Gold Buyback",
+    "trust.packaging": "Premium Packaging",
+
     // heritage
     "heritage.eyebrow": "SINCE 1971",
     "heritage.title": "Built guild by guild, not factory by factory",
@@ -255,6 +264,15 @@ export const STRINGS = {
     "rates.k24": "24K బంగారం / గ్రా.",
     "rates.platinum": "ప్లాటినం / గ్రా.",
     "rates.silver": "వెండి / గ్రా.",
+
+    // top ticker + trust strip
+    "topbar.goldRate": "నేటి ధరలు",
+    "trust.aria": "మా హామీలు",
+    "trust.bis": "100% BIS హాల్‌మార్క్ బంగారం",
+    "trust.exchange": "జీవితకాల ఎక్స్ఛేంజ్",
+    "trust.cleaning": "ఉచిత క్లీనింగ్ & పాలిషింగ్",
+    "trust.buyback": "ఉత్తమ బంగారం బైబ్యాక్",
+    "trust.packaging": "ప్రీమియం ప్యాకేజింగ్",
 
     // heritage
     "heritage.eyebrow": "1971 నుంచి",

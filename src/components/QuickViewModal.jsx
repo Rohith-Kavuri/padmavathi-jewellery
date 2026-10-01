@@ -154,7 +154,7 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
             </div>
             <button
               onClick={() => onAddToCart(product, product.metal === "Gold" ? purity : 22)}
-              className="vj-focus px-6 py-2.5 rounded-full text-sm font-semibold"
+              className="vj-shimmer vj-focus px-6 py-2.5 rounded-full text-sm font-semibold"
               style={{ background: "linear-gradient(90deg, var(--ruby-500), var(--amethyst-500))", color: "white" }}
             >
               {t("quickview.add")}

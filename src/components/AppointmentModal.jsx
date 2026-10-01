@@ -46,7 +46,7 @@ export default function AppointmentModal({ open, form, setForm, done, onClose, o
                 className="vj-focus border rounded-lg px-3 py-2.5 text-sm"
                 style={{ borderColor: "var(--line)" }}
               />
-              <button type="submit" className="vj-focus mt-2 py-3 rounded-full text-sm font-medium" style={{ background: "linear-gradient(90deg, var(--gold-300), var(--gold-500))", color: "var(--plum-950)", fontWeight: 600 }}>
+              <button type="submit" className="vj-shimmer vj-focus mt-2 py-3 rounded-full text-sm font-medium" style={{ background: "linear-gradient(90deg, var(--gold-300), var(--gold-500))", color: "var(--plum-950)", fontWeight: 600 }}>
                 {t("appt.submit")}
               </button>
             </form>
@@ -60,7 +60,7 @@ export default function AppointmentModal({ open, form, setForm, done, onClose, o
             <p className="text-sm" style={{ color: "var(--ink)", opacity: 0.8 }}>
               {t("appt.done.body", { phone: form.phone, date: form.date || t("appt.done.dateFallback") })}
             </p>
-            <button onClick={onDoneClose} className="vj-focus mt-5 px-6 py-2.5 rounded-full text-sm" style={{ background: "linear-gradient(90deg, var(--gold-300), var(--gold-500))", color: "var(--plum-950)", fontWeight: 600 }}>
+            <button onClick={onDoneClose} className="vj-shimmer vj-focus mt-5 px-6 py-2.5 rounded-full text-sm" style={{ background: "linear-gradient(90deg, var(--gold-300), var(--gold-500))", color: "var(--plum-950)", fontWeight: 600 }}>
               {t("appt.done.button")}
             </button>
           </div>

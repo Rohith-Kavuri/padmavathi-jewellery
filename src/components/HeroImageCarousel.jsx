@@ -75,7 +75,7 @@ function BrandSlide({ t }) {
               boxShadow: "0 0 0 6px rgba(255,201,60,0.12), 0 30px 60px -20px rgba(0,0,0,0.65)",
             }}
           >
-            <img src={necklaceImg} alt={t("hero.alt.necklace")} className="block w-full h-full" style={{ objectFit: "cover" }} />
+            <img src={necklaceImg} alt={t("hero.alt.necklace")} className="vj-kb block w-full h-full" style={{ objectFit: "cover" }} />
           </div>
           <div
             className="vj-mono tracking-widest text-center"
@@ -141,7 +141,7 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
               <img
                 src={s.src}
                 alt={t(s.alt || s.caption)}
-                className="relative w-full h-full"
+                className="vj-kb relative w-full h-full"
                 style={{ objectFit: s.fit || "cover", objectPosition: "center", filter: s.fit === "contain" ? "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" : undefined }}
               />
             </>
