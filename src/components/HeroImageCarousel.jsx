@@ -2,27 +2,37 @@ import { useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import logoImg from "../assets/padmavathi-logo-transparent.webp";
 import necklaceImg from "../assets/hero-temple-necklace-hd.webp";
-import templeJewelleryImg from "../assets/hero-temple-jewellery.webp";
-import designerNecklacesImg from "../assets/hero-designer-necklaces.webp";
 import { useLang } from "../i18n/LanguageContext";
+import heroFile from "../content/hero.json";
 
 // Four hero panels.
 //  1. "brand"  — the first thing visitors see: the logo (black background
 //     removed) on one half and a temple-gold necklace on the other, on the
 //     brand's maroon velvet. The necklace image is cropped from the brand's
 //     own collections poster, upscaled 4x with Real-ESRGAN for sharpness.
-//  2–3.       — collection banners (Temple Jewellery, Designer Necklaces).
-//               They are portrait images with their own headline text, so
-//               they are shown whole ("contain") on a blurred copy of
-//               themselves. To add a slide: import the image and add one
-//               { type: "image", fit: "contain" } entry to SLIDES.
-// Captions/alt text are translation keys (see src/i18n/strings.js).
+//  2+.        — banner images managed from the admin page (Homepage →
+//               Hero slides), saved in src/content/hero.json. Each can have
+//               a separate phone image, and is shown either whole ("contain",
+//               on a blurred copy of itself) or filling the slide ("cover").
 
+const imageSlides = (heroFile.slides || [])
+  .filter((s) => s && s.image)
+  .map((s, i) => ({
+    id: `slide-${i}`,
+    type: "image",
+    src: s.image,
+    srcMobile: s.image_mobile || null,
+    fit: s.fit === "cover" ? "cover" : "contain",
+    bg: "#2C0610",
+    caption: null,
+    alt: { en: s.alt_en || "", te: s.alt_te || s.alt_en || "" },
+  }));
+
+// The logo slide can be switched off in the admin page; it's always kept if
+// there are no banner images, so the hero is never empty.
 const SLIDES = [
-  { id: "brand", type: "brand", caption: null },
-  // these banners carry their own headings, so no floating caption
-  { id: "temple-jewellery", type: "image", src: templeJewelleryImg, bg: "#2C0610", fit: "contain", caption: null, alt: "hero.alt.templeJewellery" },
-  { id: "designer-necklaces", type: "image", src: designerNecklacesImg, bg: "#2C0610", fit: "contain", caption: null, alt: "hero.alt.designerNecklaces" },
+  ...(heroFile.show_brand_slide !== false || imageSlides.length === 0 ? [{ id: "brand", type: "brand", caption: null }] : []),
+  ...imageSlides,
 ];
 
 function BrandSlide({ t }) {
@@ -75,7 +85,7 @@ function BrandSlide({ t }) {
               boxShadow: "0 0 0 6px rgba(255,201,60,0.12), 0 30px 60px -20px rgba(0,0,0,0.65)",
             }}
           >
-            <img src={necklaceImg} alt={t("hero.alt.necklace")} className="block w-full h-full" style={{ objectFit: "cover" }} />
+            <img src={necklaceImg} alt={t("hero.alt.necklace")} className="vj-kb block w-full h-full" style={{ objectFit: "cover" }} />
           </div>
           <div
             className="vj-mono tracking-widest text-center"
@@ -90,7 +100,7 @@ function BrandSlide({ t }) {
 }
 
 export default function HeroImageCarousel({ fullBleed = false, children }) {
-  const { t } = useLang();
+  const { t, tx } = useLang();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const intervalRef = useRef(null);
@@ -138,12 +148,16 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
                   style={{ objectFit: "cover", filter: "blur(28px) brightness(0.45) saturate(1.2)", transform: "scale(1.15)" }}
                 />
               )}
-              <img
-                src={s.src}
-                alt={t(s.alt || s.caption)}
-                className="relative w-full h-full"
-                style={{ objectFit: s.fit || "cover", objectPosition: "center", filter: s.fit === "contain" ? "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" : undefined }}
-              />
+              {/* phones get the optional phone image, everything else the main one */}
+              <picture>
+                {s.srcMobile && <source media="(max-width: 639px)" srcSet={s.srcMobile} />}
+                <img
+                  src={s.src}
+                  alt={tx(s.alt)}
+                  className="vj-kb relative w-full h-full"
+                  style={{ objectFit: s.fit || "cover", objectPosition: "center", filter: s.fit === "contain" ? "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" : undefined }}
+                />
+              </picture>
             </>
           ) : null}
         </div>

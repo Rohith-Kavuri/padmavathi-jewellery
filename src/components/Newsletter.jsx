@@ -39,7 +39,7 @@ export default function Newsletter() {
           />
           <button
             type="submit"
-            className="vj-focus px-6 py-2.5 rounded-full text-sm font-medium"
+            className="vj-shimmer vj-focus px-6 py-2.5 rounded-full text-sm font-medium"
             style={{ background: "linear-gradient(90deg, var(--gold-300), var(--gold-500))", color: "var(--plum-950)", fontWeight: 600 }}
           >
             {t("newsletter.submit")}

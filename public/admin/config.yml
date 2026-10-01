@@ -112,3 +112,52 @@ collections:
                 widget: number
                 value_type: int
                 hint: "Must be unique. For a new product use the next number after the highest one. Higher numbers show first under 'Newest'."
+
+  # ------------------------------------------------------------------ homepage
+  - name: homepage
+    label: Homepage
+    editor:
+      preview: false
+    files:
+      - name: hero
+        label: Hero slides (top banner)
+        file: src/content/hero.json
+        fields:
+          - name: show_brand_slide
+            label: Show the logo slide first
+            widget: boolean
+            default: true
+            hint: "The maroon slide with the Padmavathi logo and necklace."
+          - name: slides
+            label: Banner slides
+            label_singular: Slide
+            widget: list
+            summary: "{{fields.alt_en}}"
+            hint: "Drag slides to change their order. They play after the logo slide."
+            fields:
+              - name: image
+                label: Image (laptop / desktop)
+                widget: image
+                choose_url: false
+                hint: "Wide images fill best: about 2560 × 960 px. Portrait images also work — they're shown whole with a soft blurred background. JPG or WebP, under ~500 KB."
+              - name: image_mobile
+                label: Image for phones (optional)
+                widget: image
+                required: false
+                choose_url: false
+                hint: "Leave empty to use the image above. Portrait works best on phones: about 1080 × 1350 px."
+              - name: fit
+                label: How to show it
+                widget: select
+                default: contain
+                options:
+                  - { label: "Show the whole image (blurred edges fill any space)", value: contain }
+                  - { label: "Fill the whole banner (edges may be cropped)", value: cover }
+              - name: alt_en
+                label: Short description (English)
+                widget: string
+                hint: "What's in the picture — read out by screen readers and used by Google."
+              - name: alt_te
+                label: Short description (Telugu)
+                widget: string
+                required: false

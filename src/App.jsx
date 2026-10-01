@@ -2,7 +2,9 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { PRODUCTS, CITIES, CATEGORIES } from "./data/products";
 import { priceFor } from "./utils/format";
 
-import AnnouncementBar from "./components/AnnouncementBar";
+import TopUtilityBar from "./components/TopUtilityBar";
+import TrustStrip from "./components/TrustStrip";
+import Ornament from "./components/Ornament";
 import Header from "./components/Header";
 import MobileMenu from "./components/MobileMenu";
 import Hero from "./components/Hero";
@@ -84,6 +86,27 @@ export default function App() {
       setLastUpdated(new Date());
     }, 5000);
     return () => clearInterval(id);
+  }, []);
+
+  // Sections fade up as they scroll into view. The hidden starting state is
+  // only switched on once this runs (the "reveal-ready" class), so the page
+  // still shows everything if JavaScript is slow or the observer is missing.
+  useEffect(() => {
+    const root = document.querySelector(".vj-root");
+    if (!root || !("IntersectionObserver" in window)) return;
+    root.classList.add("reveal-ready");
+    const obs = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-in");
+            obs.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+    root.querySelectorAll(".vj-reveal").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
   }, []);
 
   /* ---------------- derived ---------------- */
@@ -181,7 +204,13 @@ export default function App() {
 
   return (
     <div className="vj-root" data-lang={lang}>
-      <AnnouncementBar />
+      <TopUtilityBar
+        city={city}
+        setCity={setCity}
+        displayRate22={displayRate22}
+        displayRate24={displayRate24}
+        rates={rates}
+      />
 
       <Header
         searchTerm={searchTerm}
@@ -210,8 +239,15 @@ export default function App() {
 
       <Hero />
 
-      <CategoryShowcase onSelectCategory={(key) => scrollToCatalog(key)} />
+      <TrustStrip />
 
+      <div className="vj-reveal">
+        <CategoryShowcase onSelectCategory={(key) => scrollToCatalog(key)} />
+      </div>
+
+      <Ornament className="pt-6" />
+
+      <div className="vj-reveal">
       <Catalog
         ref={catalogRef}
         activeCategory={activeCategory}
@@ -223,7 +259,9 @@ export default function App() {
         filteredProducts={filteredProducts}
         onQuickView={openQuickView}
       />
+      </div>
 
+      <div className="vj-reveal">
       <GoldRateSection
         city={city}
         setCity={setCity}
@@ -233,12 +271,19 @@ export default function App() {
         rateDrift={rateDrift}
         lastUpdated={lastUpdated}
       />
+      </div>
 
-      <HeritageStats />
+      <div className="vj-reveal">
+        <HeritageStats />
+      </div>
 
-      <Testimonials />
+      <div className="vj-reveal">
+        <Testimonials />
+      </div>
 
-      <Newsletter />
+      <div className="vj-reveal">
+        <Newsletter />
+      </div>
 
       <Footer onSelectCategory={(key) => scrollToCatalog(key)} onBookVisit={() => setApptOpen(true)} />
 

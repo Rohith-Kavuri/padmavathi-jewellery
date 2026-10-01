@@ -79,7 +79,7 @@ export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal
           <button
             disabled={cart.length === 0}
             onClick={onCheckoutRequest}
-            className="vj-focus w-full py-3 rounded-full text-sm font-medium disabled:opacity-40"
+            className="vj-shimmer vj-focus w-full py-3 rounded-full text-sm font-medium disabled:opacity-40"
             style={{ background: "linear-gradient(90deg, var(--gold-300), var(--gold-500))", color: "var(--plum-950)", fontWeight: 600 }}
           >
             {t("cart.cta")}
