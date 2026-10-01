@@ -1,0 +1,19 @@
+{
+  "show_brand_slide": true,
+  "slides": [
+    {
+      "image": "/images/uploads/hero-temple-jewellery.webp",
+      "image_mobile": "",
+      "alt_en": "Temple Jewellery — three temple gold necklaces on velvet busts",
+      "alt_te": "టెంపుల్ జ్యువెలరీ — వెల్వెట్ బొమ్మలపై మూడు టెంపుల్ గోల్డ్ నెక్లెస్‌లు",
+      "fit": "contain"
+    },
+    {
+      "image": "/images/uploads/hero-designer-necklaces.webp",
+      "image_mobile": "",
+      "alt_en": "Designer Necklaces — diamond and gemstone necklaces on black velvet busts",
+      "alt_te": "డిజైనర్ నెక్లెస్‌లు — నల్ల వెల్వెట్ బొమ్మలపై వజ్రాలు, రత్నాల నెక్లెస్‌లు",
+      "fit": "contain"
+    }
+  ]
+}

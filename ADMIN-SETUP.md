@@ -1,7 +1,7 @@
 # Admin page (Decap CMS) — setup
 
-The site has an admin page at **/admin/** where you can change category and
-product photos, names (English + Telugu), prices, weights, badges and
+The site has an admin page at **/admin/** where you can change the homepage
+hero banners, category and product photos, names (English + Telugu), prices, weights, badges and
 descriptions — without touching code.
 
 Every **Publish** in the admin saves a commit to GitHub (`main` branch) and
@@ -83,6 +83,7 @@ They create a free GitHub account and accept the invite.
 | Admin page settings (fields, labels) | `public/admin/config.yml` |
 | Categories (name EN/TE, photo) | `src/content/categories.json` |
 | Products (all details, photo) | `src/content/products.json` |
+| Hero slides (top banner images, order, phone images) | `src/content/hero.json` |
 | Uploaded photos | `public/images/uploads/` |
 
 Tips:
