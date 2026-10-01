@@ -38,20 +38,21 @@ collections:
             label: Categories
             label_singular: Category
             widget: list
-            summary: "{{fields.label_en}}"
+            summary: "{{fields.label_en}}  ·  {{fields.image | ternary('✓ has photo', 'no photo yet')}}"
+            hint: "Click a category to change its photo or name. The photo is shown on its big card under 'Shop by category' on the homepage."
             fields:
-              - name: key
-                label: Key (internal — don't change for existing categories)
-                widget: string
-                hint: "Used to link products to this category, e.g. Necklace, Bangles"
-              - { name: label_en, label: Name (English), widget: string }
-              - { name: label_te, label: Name (Telugu), widget: string, required: false }
               - name: image
-                label: Photo
+                label: Category card photo
                 widget: image
                 required: false
-                hint: "Square photo works best (at least 400 × 400 px). Leave empty to show the line icon."
                 choose_url: false
+                hint: "Upload: click 'Choose an image'. Replace: 'Choose different image'. Remove (shows the gold icon instead): 'Remove image'. Best: one piece on a dark or velvet background, square or portrait, at least 1000 × 1000 px, JPG or WebP under ~500 KB."
+              - { name: label_en, label: Name (English), widget: string }
+              - { name: label_te, label: Name (Telugu), widget: string, required: false }
+              - name: key
+                label: Category code (internal — don't change for existing categories)
+                widget: string
+                hint: "Links products to this category, e.g. Necklace, Bangles. Only set this when adding a new category."
 
       # ---------------------------------------------------------------- products
       - name: products
@@ -62,7 +63,7 @@ collections:
             label: Products
             label_singular: Product
             widget: list
-            summary: "{{fields.name_en}} — {{fields.category}}"
+            summary: "{{fields.name_en}}  ·  {{fields.category}}  ·  {{fields.image | ternary('✓ has photo', 'no photo yet')}}"
             fields:
               - name: image
                 label: Photo

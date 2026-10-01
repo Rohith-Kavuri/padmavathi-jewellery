@@ -76,6 +76,21 @@ They create a free GitHub account and accept the invite.
 
 ---
 
+## Changing photos
+
+**Category card photo** (the big cards under "Shop by category"):
+Catalogue → Categories → click the category → *Category card photo* →
+**Choose an image** (or **Choose different image** to replace, **Remove
+image** to go back to the gold icon) → **Publish** → **Publish now**.
+
+**Product photo:** Catalogue → Products → click the product → *Photo* →
+same buttons → **Publish**.
+
+**Homepage banners:** Homepage → Hero slides.
+
+The list shows "✓ has photo" / "no photo yet" next to each category and
+product, so you can see at a glance what still needs a photo.
+
 ## Where things live
 
 | What | File |
