@@ -109,11 +109,12 @@ export const STRINGS = {
     "rates.eyebrow": "TODAY'S RATE",
     "rates.title": "Gold & metal rates",
     "rates.body":
-      "Indicative rates for {city}, updated through the day. Showroom prices include making charges and GST, shown separately at billing.",
-    "rates.updated": "Updated {time}",
+      "Today's rates at our showroom, per gram. Final prices include making charges and GST, shown separately on your bill.",
+    "rates.updated": "Updated on {date}",
     "rates.cityAria": "Select city",
     "rates.k22": "22K Gold / g",
     "rates.k24": "24K Gold / g",
+    "rates.k18": "18K Gold / g",
     "rates.platinum": "Platinum / g",
     "rates.silver": "Silver / g",
 
@@ -285,11 +286,12 @@ export const STRINGS = {
     "rates.eyebrow": "నేటి ధర",
     "rates.title": "బంగారం & లోహాల ధరలు",
     "rates.body":
-      "{city} నగరానికి సూచిక ధరలు, రోజంతా అప్‌డేట్ అవుతాయి. షోరూమ్ ధరల్లో తయారీ ఛార్జీలు, GST ఉంటాయి — బిల్లులో వేరుగా చూపిస్తాం.",
-    "rates.updated": "అప్‌డేట్: {time}",
+      "మా షోరూమ్‌లో నేటి ధరలు, గ్రాముకు. తుది ధరల్లో తయారీ ఛార్జీలు, GST ఉంటాయి — మీ బిల్లులో వేరుగా చూపిస్తాం.",
+    "rates.updated": "{date} న అప్‌డేట్ చేయబడింది",
     "rates.cityAria": "నగరం ఎంచుకోండి",
     "rates.k22": "22K బంగారం / గ్రా.",
     "rates.k24": "24K బంగారం / గ్రా.",
+    "rates.k18": "18K బంగారం / గ్రా.",
     "rates.platinum": "ప్లాటినం / గ్రా.",
     "rates.silver": "వెండి / గ్రా.",
 

@@ -76,6 +76,17 @@ They create a free GitHub account and accept the invite.
 
 ---
 
+## Updating today's gold rates
+
+Homepage → **Today's gold & metal rates** → enter the per-gram rates
+(24K, 22K, 18K, silver, platinum), set **Rates date** to today →
+**Publish** → **Publish now**. The site shows them in the top ticker and
+the "Gold & metal rates" section within about a minute. Leave a rate
+empty (or 0) to hide it.
+
+Product prices are separate: Catalogue → Products → open a product →
+**Price (₹)** → Publish.
+
 ## Changing photos
 
 **Category card photo** (the big cards under "Shop by category"):

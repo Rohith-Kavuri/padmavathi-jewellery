@@ -1,23 +1,18 @@
 import { Phone } from "lucide-react";
-import { CITIES, ANNOUNCEMENTS } from "../data/products";
+import { ANNOUNCEMENTS } from "../data/products";
 import { fmtINR } from "../utils/format";
 import { STORE, PHONE_URL } from "../data/site";
+import { RATE_ROWS, fmtRatesDate } from "../data/rates";
 import { useLang } from "../i18n/LanguageContext";
 
-// Top bar: a slow scrolling ticker with today's metal rates and the shop
-// announcements, plus (from tablet size up) a city picker and phone number.
-// Replaces the old rotating announcement bar.
-export default function TopUtilityBar({ city, setCity, displayRate22, displayRate24, rates }) {
-  const { t, tx } = useLang();
-  const cityLabel = tx(CITIES.find((c) => c.name === city)?.label ?? city);
+// Top bar: a slow scrolling ticker with today's metal rates (entered in the
+// admin page) and the shop announcements, plus the phone number on larger
+// screens.
+export default function TopUtilityBar() {
+  const { lang, t, tx } = useLang();
+  const date = fmtRatesDate(lang);
 
-  const items = [
-    `${t("rates.k22")} ${fmtINR(displayRate22)}`,
-    `${t("rates.k24")} ${fmtINR(displayRate24)}`,
-    `${t("rates.platinum")} ${fmtINR(rates.platinum)}`,
-    `${t("rates.silver")} ${fmtINR(rates.silver)}`,
-    ...ANNOUNCEMENTS.map(tx),
-  ];
+  const items = [...RATE_ROWS.map((r) => `${t(r.key)} ${fmtINR(r.value)}`), ...ANNOUNCEMENTS.map(tx)];
 
   // rendered twice so the -50% scroll loops seamlessly
   const run = (copy) => (
@@ -44,7 +39,8 @@ export default function TopUtilityBar({ city, setCity, displayRate22, displayRat
         className="vj-mono flex-shrink-0 px-3 md:px-5 py-2 tracking-widest"
         style={{ background: "var(--plum-950)", color: "var(--gold-300)", fontSize: 10 }}
       >
-        {t("topbar.goldRate")} · {cityLabel}
+        {t("topbar.goldRate")}
+        {date && <span className="hidden sm:inline"> · {date}</span>}
       </div>
 
       <div className="vj-ticker relative flex-1 overflow-hidden whitespace-nowrap py-2">
@@ -55,19 +51,6 @@ export default function TopUtilityBar({ city, setCity, displayRate22, displayRat
       </div>
 
       <div className="hidden md:flex items-center gap-4 flex-shrink-0 px-5" style={{ color: "var(--gold-300)" }}>
-        <select
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          aria-label={t("rates.cityAria")}
-          className="vj-focus bg-transparent border-none text-xs cursor-pointer"
-          style={{ color: "var(--gold-300)" }}
-        >
-          {CITIES.map((c) => (
-            <option key={c.name} value={c.name} style={{ color: "var(--ink)" }}>
-              {tx(c.label)}
-            </option>
-          ))}
-        </select>
         {STORE.phone && (
           <a href={PHONE_URL} className="vj-focus flex items-center gap-1 whitespace-nowrap">
             <Phone size={12} /> {STORE.phone}
