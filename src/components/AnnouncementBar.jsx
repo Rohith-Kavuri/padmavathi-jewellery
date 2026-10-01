@@ -14,8 +14,9 @@ export default function AnnouncementBar() {
   return (
     <div
       style={{
-        background: "linear-gradient(90deg, var(--ruby-500), var(--amethyst-500), var(--sapphire-500))",
-        color: "var(--cream)",
+        background: "linear-gradient(90deg, var(--plum-950), var(--ruby-500) 50%, var(--plum-950))",
+        color: "var(--gold-100)",
+        borderBottom: "1px solid rgba(227,170,44,0.45)",
       }}
       className="text-center text-xs py-2 px-4"
     >

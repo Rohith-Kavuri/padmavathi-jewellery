@@ -30,12 +30,16 @@ export const SORTS = ["featured", "priceAsc", "priceDesc", "newest"];
 
 // Five-color gemstone system — every category gets a gem identity so the
 // catalogue reads as colorful and varied rather than one flat brand color.
+// Maroon-velvet theme: every category now shares the same maroon + champagne
+// look (matching the first hero slide). To bring back per-category colours,
+// give these entries different values again.
+const VELVET = { 500: "#8E1D33", 700: "#4A0B18", tint: "#F6E3C3" };
 export const GEMS = {
-  ruby: { 500: "#E0335F", 700: "#9C1238", tint: "#FDEAF0" },
-  emerald: { 500: "#16C172", 700: "#0B6E3F", tint: "#E8FBF0" },
-  sapphire: { 500: "#2E7BE0", 700: "#1A3F8C", tint: "#EAF2FE" },
-  amethyst: { 500: "#9C5BE0", 700: "#5E2C8C", tint: "#F3EAFE" },
-  gold: { 500: "#F2B705", 700: "#C8941A", tint: "#FFF6DF" },
+  ruby: VELVET,
+  emerald: VELVET,
+  sapphire: VELVET,
+  amethyst: VELVET,
+  gold: VELVET,
 };
 
 export const CATEGORY_GEM = {

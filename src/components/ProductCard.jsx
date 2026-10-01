@@ -13,7 +13,7 @@ export default function ProductCard({ product, onQuickView }) {
       style={{
         background: "var(--cream-card)",
         border: "1px solid var(--line)",
-        borderTop: `4px solid ${gem[500]}`,
+        borderTop: "3px solid var(--gold-500)",
         borderRadius: "4px 4px 14px 14px",
       }}
     >
