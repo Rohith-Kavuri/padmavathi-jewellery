@@ -5,7 +5,7 @@ import { useLang } from "../i18n/LanguageContext";
 export default function ToastStack({ toasts }) {
   const { t } = useLang();
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 items-end" role="status" aria-live="polite">
+    <div className="fixed bottom-20 md:bottom-24 right-5 z-50 flex flex-col gap-2 items-end" role="status" aria-live="polite">
       {toasts.map((toast) => (
         <div
           key={toast.id}

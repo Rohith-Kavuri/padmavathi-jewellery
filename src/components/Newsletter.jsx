@@ -15,7 +15,7 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="px-4 md:px-6 py-14" style={{ background: "var(--cream)" }}>
+    <section className="px-4 md:px-6 py-14">
       <div className="max-w-xl mx-auto text-center">
         <Sparkles size={22} style={{ color: "var(--gold-700)" }} className="mx-auto mb-3" />
         <h2 className="vj-display text-2xl mb-2" style={{ color: "var(--plum-900)" }}>

@@ -1,0 +1,8 @@
+{
+  "occasions": [
+    { "image": "/images/uploads/occasion-bridal.webp", "title_en": "Bridal", "title_te": "పెళ్లి", "text_en": "For your big day", "text_te": "మీ పెళ్లి రోజు కోసం", "category": "Bridal Set" },
+    { "image": "/images/uploads/occasion-festive.webp", "title_en": "Festive", "title_te": "పండుగలు", "text_en": "Shine at every celebration", "text_te": "ప్రతి వేడుకలో మెరిసిపోండి", "category": "Necklace" },
+    { "image": "/images/uploads/occasion-daily.webp", "title_en": "Daily Wear", "title_te": "రోజువారీ", "text_en": "Light pieces for every day", "text_te": "ప్రతిరోజూ ధరించే తేలికపాటి ఆభరణాలు", "category": "Earrings" },
+    { "image": "/images/uploads/occasion-gifting.webp", "title_en": "Gifting", "title_te": "బహుమతులు", "text_en": "Gifts they'll treasure", "text_te": "ఎప్పటికీ దాచుకునే బహుమతులు", "category": "Pendant" }
+  ]
+}

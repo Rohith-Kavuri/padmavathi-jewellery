@@ -5,6 +5,10 @@ import { priceFor } from "./utils/format";
 import TopUtilityBar from "./components/TopUtilityBar";
 import TrustStrip from "./components/TrustStrip";
 import Ornament from "./components/Ornament";
+import OccasionShowcase from "./components/OccasionShowcase";
+import FeaturedSpotlight from "./components/FeaturedSpotlight";
+import VisitUs from "./components/VisitUs";
+import BottomBar from "./components/BottomBar";
 import Header from "./components/Header";
 import MobileMenu from "./components/MobileMenu";
 import Hero from "./components/Hero";
@@ -174,6 +178,14 @@ export default function App() {
     document.getElementById("rates-section")?.scrollIntoView({ behavior: "smooth" });
   }
 
+  function goVisit() {
+    document.getElementById("visit-section")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function goCategories() {
+    document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   function goHeritage() {
     document.getElementById("heritage-section")?.scrollIntoView({ behavior: "smooth" });
   }
@@ -203,7 +215,7 @@ export default function App() {
   /* ---------------- render ---------------- */
 
   return (
-    <div className="vj-root" data-lang={lang}>
+    <div className="vj-root pb-16 md:pb-0" data-lang={lang}>
       <TopUtilityBar
         city={city}
         setCity={setCity}
@@ -222,6 +234,7 @@ export default function App() {
         onGoBridal={() => scrollToCatalog("Bridal Set")}
         onGoRates={goRates}
         onGoHeritage={goHeritage}
+        onGoVisit={goVisit}
         onBookVisit={() => setApptOpen(true)}
       />
 
@@ -234,6 +247,7 @@ export default function App() {
         onGoBridal={() => scrollToCatalog("Bridal Set")}
         onGoRates={goRates}
         onGoHeritage={goHeritage}
+        onGoVisit={goVisit}
         onBookVisit={() => setApptOpen(true)}
       />
 
@@ -245,7 +259,15 @@ export default function App() {
         <CategoryShowcase onSelectCategory={(key) => scrollToCatalog(key)} />
       </div>
 
-      <Ornament className="pt-6" />
+      <div className="vj-reveal">
+        <OccasionShowcase onSelect={(key) => scrollToCatalog(key)} />
+      </div>
+
+      <div className="vj-reveal">
+        <FeaturedSpotlight onExplore={(key) => scrollToCatalog(key)} />
+      </div>
+
+      <Ornament className="pt-2" />
 
       <div className="vj-reveal">
       <Catalog
@@ -258,6 +280,7 @@ export default function App() {
         setSortBy={setSortBy}
         filteredProducts={filteredProducts}
         onQuickView={openQuickView}
+        onAddToCart={(product) => addToCart(product, 22)}
         onBackToCategories={() => {
           setActiveCategory("All");
           document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -286,10 +309,28 @@ export default function App() {
       </div>
 
       <div className="vj-reveal">
+        <VisitUs onBookVisit={() => setApptOpen(true)} />
+      </div>
+
+      <div className="vj-reveal">
         <Newsletter />
       </div>
 
-      <Footer onSelectCategory={(key) => scrollToCatalog(key)} onBookVisit={() => setApptOpen(true)} />
+      <Footer
+        onSelectCategory={(key) => scrollToCatalog(key)}
+        onBookVisit={() => setApptOpen(true)}
+        onGoVisit={goVisit}
+        onGoRates={goRates}
+      />
+
+      <BottomBar
+        cartCount={cartCount}
+        onHome={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onCategories={goCategories}
+        onRates={goRates}
+        onBag={() => setCartOpen(true)}
+        onVisit={goVisit}
+      />
 
       <CartDrawer
         open={cartOpen}

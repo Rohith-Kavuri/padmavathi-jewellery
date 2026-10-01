@@ -197,6 +197,34 @@
 
 /* ---------- richer finish ---------- */
 
+/* Faint kolam / lotus pattern behind the light sections */
+.vj-root {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23a8761c' stroke-opacity='0.075' stroke-width='0.9'%3E%3Cpath d='M48 14c9 9 9 25 0 34-9-9-9-25 0-34zM48 48c9 9 9 25 0 34-9-9-9-25 0-34zM14 48c9-9 25-9 34 0-9 9-25 9-34 0zM48 48c9-9 25-9 34 0-9 9-25 9-34 0z'/%3E%3Ccircle cx='48' cy='48' r='4'/%3E%3C/g%3E%3Cg fill='%23a8761c' fill-opacity='0.11'%3E%3Ccircle cx='0' cy='0' r='1.8'/%3E%3Ccircle cx='96' cy='0' r='1.8'/%3E%3Ccircle cx='0' cy='96' r='1.8'/%3E%3Ccircle cx='96' cy='96' r='1.8'/%3E%3Ccircle cx='22' cy='22' r='1.2'/%3E%3Ccircle cx='74' cy='22' r='1.2'/%3E%3Ccircle cx='22' cy='74' r='1.2'/%3E%3Ccircle cx='74' cy='74' r='1.2'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+}
+
+/* Ribbon badge on product cards (notched tail on the right) */
+.vj-ribbon {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%);
+  box-shadow: 0 4px 10px -4px rgba(36, 5, 13, 0.5);
+  letter-spacing: 0.04em;
+}
+
+/* Featured photo zooms gently when the section is hovered */
+.vj-kb-hover {
+  transition: transform 1.4s ease;
+}
+
+.group:hover .vj-kb-hover {
+  transform: scale(1.05);
+}
+
+/* Laptop menu line under the centred wordmark */
+.vj-navline {
+  letter-spacing: 0.22em;
+}
+
+
 /* Gold-foil section headings: deep antique gold on ivory… */
 .vj-root h2.vj-display {
   background: linear-gradient(100deg, #7a4f0e 0%, #a8761c 50%, #7a4f0e 100%);
@@ -206,7 +234,8 @@
 }
 
 /* …and bright gold on the maroon sections */
-.vj-root #rates-section h2.vj-display {
+.vj-root #rates-section h2.vj-display,
+.vj-root .vj-on-dark h2.vj-display {
   background-image: linear-gradient(100deg, #f2c45a 0%, #fbecc8 50%, #f2c45a 100%);
 }
 
@@ -237,8 +266,12 @@
 }
 
 /* Gold shimmer that sweeps across primary buttons on hover */
-.vj-shimmer {
+/* :where() keeps this at zero specificity so Tailwind's absolute/fixed win */
+:where(.vj-shimmer) {
   position: relative;
+}
+
+.vj-shimmer {
   overflow: hidden;
   isolation: isolate;
 }
