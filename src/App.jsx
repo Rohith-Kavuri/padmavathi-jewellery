@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import { PRODUCTS, CITIES, CATEGORIES } from "./data/products";
+import { PRODUCTS, CATEGORIES } from "./data/products";
 import { priceFor } from "./utils/format";
 
 import TopUtilityBar from "./components/TopUtilityBar";
@@ -56,12 +56,6 @@ export default function App() {
   const [quickView, setQuickView] = useState(null); // product id
   const [quickViewPurity, setQuickViewPurity] = useState(22);
 
-  // gold rate
-  const [city, setCity] = useState(CITIES[0].name);
-  const [rates, setRates] = useState({ k22: 8250, k24: 9000, platinum: 3450, silver: 98 });
-  const [rateDrift, setRateDrift] = useState({ k22: 0, k24: 0 });
-  const [lastUpdated, setLastUpdated] = useState(new Date());
-
   // appointment modal
   const [apptOpen, setApptOpen] = useState(false);
   const [apptForm, setApptForm] = useState({ name: "", phone: "", date: "" });
@@ -73,24 +67,6 @@ export default function App() {
   const catalogRef = useRef(null);
 
   /* ---------------- effects ---------------- */
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setRates((r) => {
-        const dK22 = Math.round((Math.random() - 0.5) * 16);
-        const dK24 = Math.round((Math.random() - 0.5) * 18);
-        setRateDrift({ k22: dK22, k24: dK24 });
-        return {
-          k22: Math.max(7800, r.k22 + dK22),
-          k24: Math.max(8500, r.k24 + dK24),
-          platinum: r.platinum,
-          silver: r.silver,
-        };
-      });
-      setLastUpdated(new Date());
-    }, 5000);
-    return () => clearInterval(id);
-  }, []);
 
   // Sections fade up as they scroll into view. The hidden starting state is
   // only switched on once this runs (the "reveal-ready" class), so the page
@@ -115,9 +91,6 @@ export default function App() {
 
   /* ---------------- derived ---------------- */
 
-  const cityOffset = CITIES.find((c) => c.name === city)?.offset || 0;
-  const displayRate22 = rates.k22 + cityOffset;
-  const displayRate24 = rates.k24 + cityOffset;
 
   const filteredProducts = useMemo(() => {
     let list = PRODUCTS.filter((p) => {
@@ -216,13 +189,7 @@ export default function App() {
 
   return (
     <div className="vj-root pb-16 md:pb-0" data-lang={lang}>
-      <TopUtilityBar
-        city={city}
-        setCity={setCity}
-        displayRate22={displayRate22}
-        displayRate24={displayRate24}
-        rates={rates}
-      />
+      <TopUtilityBar />
 
       <Header
         searchTerm={searchTerm}
@@ -289,15 +256,7 @@ export default function App() {
       </div>
 
       <div className="vj-reveal">
-      <GoldRateSection
-        city={city}
-        setCity={setCity}
-        displayRate22={displayRate22}
-        displayRate24={displayRate24}
-        rates={rates}
-        rateDrift={rateDrift}
-        lastUpdated={lastUpdated}
-      />
+      <GoldRateSection />
       </div>
 
       <div className="vj-reveal">

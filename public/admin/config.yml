@@ -120,6 +120,23 @@ collections:
     editor:
       preview: false
     files:
+      - name: rates
+        label: "Today's gold & metal rates"
+        file: src/content/rates.json
+        fields:
+          - name: updated
+            label: Rates date
+            widget: datetime
+            format: "YYYY-MM-DD"
+            date_format: "DD MMM YYYY"
+            time_format: false
+            hint: "Change this to today's date whenever you update the rates. Shown on the site as 'Updated on …'."
+          - { name: gold_24k, label: "24K gold (₹ per gram)", widget: number, value_type: int, min: 0 }
+          - { name: gold_22k, label: "22K gold (₹ per gram)", widget: number, value_type: int, min: 0 }
+          - { name: gold_18k, label: "18K gold (₹ per gram)", widget: number, value_type: int, min: 0, required: false, hint: "Leave empty or 0 to hide." }
+          - { name: silver, label: "Silver (₹ per gram)", widget: number, value_type: int, min: 0, required: false, hint: "Leave empty or 0 to hide." }
+          - { name: platinum, label: "Platinum (₹ per gram)", widget: number, value_type: int, min: 0, required: false, hint: "Leave empty or 0 to hide." }
+
       - name: hero
         label: Hero slides (top banner)
         file: src/content/hero.json
