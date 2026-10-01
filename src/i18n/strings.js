@@ -45,7 +45,10 @@ export const STRINGS = {
     "aria.goToSlide": "Go to slide {n}",
 
     // categories + catalogue
-    "category.heading": "Shop by gemstone and category",
+    "category.heading": "Shop by category",
+    "category.showMore": "Show more",
+    "catalog.showMore": "Show {count} more",
+    "catalog.backToCategories": "All categories",
     "catalog.title": "The collection",
     "catalog.count.one": "{count} piece",
     "catalog.count.other": "{count} pieces",
@@ -197,7 +200,10 @@ export const STRINGS = {
     "aria.goToSlide": "స్లయిడ్ {n}కి వెళ్లండి",
 
     // categories + catalogue
-    "category.heading": "రత్నాలు, రకాల వారీగా షాపింగ్ చేయండి",
+    "category.heading": "రకాల వారీగా షాపింగ్ చేయండి",
+    "category.showMore": "మరిన్ని చూడండి",
+    "catalog.showMore": "మరో {count} చూపించు",
+    "catalog.backToCategories": "అన్ని రకాలు",
     "catalog.title": "మా కలెక్షన్",
     "catalog.count.one": "{count} ఆభరణం",
     "catalog.count.other": "{count} ఆభరణాలు",
