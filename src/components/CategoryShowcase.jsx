@@ -23,7 +23,7 @@ export default function CategoryShowcase({ onSelectCategory }) {
                 className={`vj-focus vj-card relative overflow-hidden flex-shrink-0 flex flex-col items-center gap-2 px-5 py-4 vj-arch ${c.image ? "justify-end" : "justify-center"}`}
                 style={{
                   background: `linear-gradient(160deg, ${gem[500]}, ${gem[700]})`,
-                  border: "1px solid var(--line)",
+                  border: "1px solid rgba(227,170,44,0.55)",
                   minWidth: 110,
                   height: 132,
                 }}
