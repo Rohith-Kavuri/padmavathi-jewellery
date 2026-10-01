@@ -258,6 +258,10 @@ export default function App() {
         setSortBy={setSortBy}
         filteredProducts={filteredProducts}
         onQuickView={openQuickView}
+        onBackToCategories={() => {
+          setActiveCategory("All");
+          document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
       />
       </div>
 
