@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import JewelGlyph from "./JewelGlyph";
 import { fmtINR, priceFor, fmtWeight } from "../utils/format";
 import { getGem, categoryLabel } from "../data/products";
@@ -10,7 +10,7 @@ import { useLang } from "../i18n/LanguageContext";
 const VIDEO_ID = "3-3hAZZwMss"; // https://youtu.be/3-3hAZZwMss
 const MEDIA_SLIDES = ["image", "video"];
 
-export default function QuickViewModal({ product, purity, setPurity, onClose, onAddToCart }) {
+export default function QuickViewModal({ product, purity, setPurity, onClose, onAddToCart, onViewImage }) {
   const { t, tx } = useLang();
   const [mediaIndex, setMediaIndex] = useState(0);
 
@@ -46,7 +46,28 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
             style={{ opacity: mediaIndex === 0 ? 1 : 0, pointerEvents: mediaIndex === 0 ? "auto" : "none" }}
           >
             {product.image ? (
-              <img src={product.image} alt={tx(product.name)} className="absolute inset-0 w-full h-full object-cover" />
+              <button
+                type="button"
+                className="vj-focus group absolute inset-0 w-full h-full cursor-zoom-in"
+                aria-label={t("lightbox.view", { name: product.name })}
+                onClick={(e) =>
+                  onViewImage?.({
+                    src: product.image,
+                    alt: tx(product.name),
+                    rect: e.currentTarget.querySelector("img").getBoundingClientRect(),
+                    title: tx(product.name),
+                    subtitle: `${t(`metal.${product.metal}`)} · ${fmtWeight(product.weight, t("unit.g"))} · ${fmtINR(priceFor(product, purity))}`,
+                  })
+                }
+              >
+                <img src={product.image} alt={tx(product.name)} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <span
+                  className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-semibold"
+                  style={{ background: "rgba(36,5,13,0.65)", color: "var(--gold-100)", border: "1px solid rgba(227,170,44,0.6)" }}
+                >
+                  <ZoomIn size={13} /> {t("lightbox.tapToZoom")}
+                </span>
+              </button>
             ) : (
               <div className="absolute inset-0 flex items-center justify-center" style={{ background: `linear-gradient(160deg, ${gem[500]}, ${gem[700]})` }}>
                 <div style={{ color: gem.tint, width: 110, height: 110 }}>

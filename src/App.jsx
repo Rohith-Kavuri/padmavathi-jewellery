@@ -9,6 +9,7 @@ import OccasionShowcase from "./components/OccasionShowcase";
 import FeaturedSpotlight from "./components/FeaturedSpotlight";
 import VisitUs from "./components/VisitUs";
 import BottomBar from "./components/BottomBar";
+import Lightbox from "./components/Lightbox";
 import Header from "./components/Header";
 import MobileMenu from "./components/MobileMenu";
 import Hero from "./components/Hero";
@@ -55,6 +56,7 @@ export default function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [quickView, setQuickView] = useState(null); // product id
   const [quickViewPurity, setQuickViewPurity] = useState(22);
+  const [lightbox, setLightbox] = useState(null); // full-screen photo {src, alt, rect, title, subtitle}
 
   // appointment modal
   const [apptOpen, setApptOpen] = useState(false);
@@ -248,6 +250,7 @@ export default function App() {
         filteredProducts={filteredProducts}
         onQuickView={openQuickView}
         onAddToCart={(product) => addToCart(product, 22)}
+        onViewImage={setLightbox}
         onBackToCategories={() => {
           setActiveCategory("All");
           document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -312,6 +315,7 @@ export default function App() {
           addToCart(product, purity);
           setQuickView(null);
         }}
+        onViewImage={setLightbox}
       />
 
       <AppointmentModal
@@ -323,6 +327,8 @@ export default function App() {
         onSubmit={submitAppointment}
         onDoneClose={finishAppointment}
       />
+
+      <Lightbox item={lightbox} onClose={() => setLightbox(null)} />
 
       <ToastStack toasts={toasts} />
     </div>

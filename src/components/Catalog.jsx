@@ -5,7 +5,7 @@ import { useLang } from "../i18n/LanguageContext";
 import ProductCard from "./ProductCard";
 
 const Catalog = forwardRef(function Catalog(
-  { activeCategory, setActiveCategory, activeMetal, setActiveMetal, sortBy, setSortBy, filteredProducts, onQuickView, onAddToCart, onBackToCategories },
+  { activeCategory, setActiveCategory, activeMetal, setActiveMetal, sortBy, setSortBy, filteredProducts, onQuickView, onAddToCart, onViewImage, onBackToCategories },
   ref
 ) {
   const { t, tx } = useLang();
@@ -104,7 +104,7 @@ const Catalog = forwardRef(function Catalog(
           <>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {visible.map((p) => (
-                <ProductCard key={p.id} product={p} onQuickView={onQuickView} onAddToCart={onAddToCart} />
+                <ProductCard key={p.id} product={p} onQuickView={onQuickView} onAddToCart={onAddToCart} onViewImage={onViewImage} />
               ))}
             </div>
             {limited && (

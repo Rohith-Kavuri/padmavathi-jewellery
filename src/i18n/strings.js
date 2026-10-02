@@ -146,6 +146,12 @@ export const STRINGS = {
     "bottom.whatsapp": "WhatsApp",
     "bottom.visit": "Visit",
     "aria.whatsapp": "Chat with us on WhatsApp",
+    "lightbox.view": "View larger photo of {name}",
+    "lightbox.tapToZoom": "Tap to zoom",
+    "lightbox.zoomIn": "Zoom in",
+    "lightbox.zoomOut": "Zoom out",
+    "lightbox.hintDesktop": "Click or scroll to zoom · move the mouse to look around · Esc to close",
+    "lightbox.hintPhone": "Pinch or double-tap to zoom · swipe down to close",
 
     // heritage
     "heritage.eyebrow": "SINCE 1971",
@@ -323,6 +329,12 @@ export const STRINGS = {
     "bottom.whatsapp": "వాట్సాప్",
     "bottom.visit": "సందర్శన",
     "aria.whatsapp": "వాట్సాప్‌లో మాతో మాట్లాడండి",
+    "lightbox.view": "{name} పెద్ద ఫోటో చూడండి",
+    "lightbox.tapToZoom": "జూమ్ చేయడానికి నొక్కండి",
+    "lightbox.zoomIn": "జూమ్ ఇన్",
+    "lightbox.zoomOut": "జూమ్ అవుట్",
+    "lightbox.hintDesktop": "జూమ్ చేయడానికి క్లిక్ లేదా స్క్రోల్ చేయండి · చుట్టూ చూడటానికి మౌస్ కదపండి · మూసివేయడానికి Esc",
+    "lightbox.hintPhone": "జూమ్ చేయడానికి రెండు వేళ్లతో సాగదీయండి లేదా రెండుసార్లు నొక్కండి · మూసివేయడానికి కిందికి లాగండి",
 
     // heritage
     "heritage.eyebrow": "1971 నుంచి",
