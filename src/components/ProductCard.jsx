@@ -1,10 +1,10 @@
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag, ZoomIn } from "lucide-react";
 import JewelGlyph from "./JewelGlyph";
 import { fmtINR, fmtWeight } from "../utils/format";
 import { getGem } from "../data/products";
 import { useLang } from "../i18n/LanguageContext";
 
-export default function ProductCard({ product, onQuickView, onAddToCart }) {
+export default function ProductCard({ product, onQuickView, onAddToCart, onViewImage }) {
   const { t, tx } = useLang();
   const gem = getGem(product.category);
 
@@ -38,12 +38,38 @@ export default function ProductCard({ product, onQuickView, onAddToCart }) {
         style={{ background: gem.tint }}
       >
         {product.image ? (
-          <img
-            src={product.image}
-            alt={tx(product.name)}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
+          <button
+            type="button"
+            className="vj-focus block w-full h-full cursor-zoom-in"
+            aria-label={t("lightbox.view", { name: product.name })}
+            onClick={(e) => {
+              const img = e.currentTarget.querySelector("img");
+              if (onViewImage) {
+                onViewImage({
+                  src: product.image,
+                  alt: tx(product.name),
+                  rect: img.getBoundingClientRect(),
+                  title: tx(product.name),
+                  subtitle: `${t(`metal.${product.metal}`)} · ${fmtWeight(product.weight, t("unit.g"))} · ${fmtINR(product.base22)}`,
+                });
+              } else onQuickView(product);
+            }}
+          >
+            <img
+              src={product.image}
+              alt={tx(product.name)}
+              loading="lazy"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* zoom hint on hover */}
+            <span
+              className="absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+              style={{ background: "rgba(36,5,13,0.6)", color: "var(--gold-100)", border: "1px solid rgba(227,170,44,0.6)" }}
+              aria-hidden="true"
+            >
+              <ZoomIn size={15} />
+            </span>
+          </button>
         ) : (
           <div className="vj-icon-wrap" style={{ color: gem[500] }}>
             <JewelGlyph category={product.category} />
