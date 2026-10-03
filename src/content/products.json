@@ -94,15 +94,15 @@
     {
       "name_te": "",
       "metal": "Gold",
-      "price": 8200,
-      "desc_en": "Oxidised silver kada with a rope-twist rim.",
-      "weight": 42,
+      "price": 0,
+      "desc_en": "",
+      "weight": 0,
       "tag": "",
       "id": 8,
-      "image": "",
+      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_31_33-pm.png",
       "name_en": "Gold Watch",
       "category": "Bangles",
-      "desc_te": "తాడు మెలికల అంచుతో ఆక్సిడైజ్డ్ వెండి కడియం."
+      "desc_te": ""
     },
     {
       "name_te": "జియా వజ్రాల టెన్నిస్ బ్రేస్‌లెట్",
@@ -118,17 +118,17 @@
       "desc_te": "తెల్ల బంగారంలో గోళ్ల అమరికతో పొదిగిన నిరంతర వజ్రాల వరుస."
     },
     {
-      "name_te": "సుహానా ముత్యాల బ్రేస్‌లెట్",
-      "metal": "Gold",
-      "price": 22300,
-      "desc_en": "Freshwater pearls strung between gold rondelles.",
-      "weight": 9.4,
+      "name_te": "",
+      "metal": "Diamond",
+      "price": 0,
+      "desc_en": "Freshwater Diamond strung between gold rondelles.",
+      "weight": 0,
       "tag": "",
       "id": 10,
-      "image": "",
-      "name_en": "Suhana Pearl Bracelet",
+      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_26_32-pm.png",
+      "name_en": "Diamond- Rose gold Bracelet",
       "category": "Bracelets",
-      "desc_te": "బంగారు రాండెల్స్ మధ్య గుచ్చిన మంచినీటి ముత్యాలు."
+      "desc_te": ""
     },
     {
       "name_te": "ఇరా సాలిటైర్ ఉంగరం",
