@@ -68,12 +68,12 @@
     {
       "name_te": "వైభవ్ కడియం",
       "metal": "Gold",
-      "price": 138900,
+      "price": 0,
       "desc_en": "A single broad kada with a hand-engraved border.",
-      "weight": 17.6,
+      "weight": 0,
       "tag": "",
       "id": 6,
-      "image": "",
+      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_52_37-pm.png",
       "name_en": "Vaibhav Kada",
       "category": "Bangles",
       "desc_te": "చేతితో చెక్కిన అంచుతో ఒకే వెడల్పాటి కడియం."
@@ -105,17 +105,17 @@
       "desc_te": ""
     },
     {
-      "name_te": "జియా వజ్రాల టెన్నిస్ బ్రేస్‌లెట్",
-      "metal": "Diamond",
-      "price": 215000,
-      "desc_en": "A continuous line of diamonds, claw-set in white gold.",
+      "name_te": "",
+      "metal": "Gold",
+      "price": 0,
+      "desc_en": "A continuous line of gold, claw-set in white gold.",
       "weight": null,
       "tag": "",
       "id": 9,
-      "image": "",
-      "name_en": "Ziya Diamond Tennis Bracelet",
-      "category": "Bracelets",
-      "desc_te": "తెల్ల బంగారంలో గోళ్ల అమరికతో పొదిగిన నిరంతర వజ్రాల వరుస."
+      "image": "/images/uploads/chatgpt-image-oct-3-2026-07_11_44-pm.png",
+      "name_en": "Choker",
+      "category": "Necklace",
+      "desc_te": ""
     },
     {
       "name_te": "",
@@ -157,15 +157,15 @@
       "desc_te": "సున్నితమైన మెరుపు కోసం చేతితో బ్రష్ చేసిన సాదా బ్యాండ్."
     },
     {
-      "name_te": "బృంద రోజ్ గోల్డ్ ఉంగరం",
+      "name_te": "",
       "metal": "Gold",
-      "price": 54300,
-      "desc_en": "Rose gold with a low-set cluster of small diamonds.",
-      "weight": 4.9,
+      "price": 0,
+      "desc_en": "gold with a low-set cluster of small diamonds.",
+      "weight": 0,
       "tag": "",
       "id": 13,
       "image": "/images/uploads/whatsapp-image-2026-10-03-at-5.32.17-am-2-.jpeg",
-      "name_en": "Vrinda Rose Gold Ring",
+      "name_en": "Gold Ring",
       "category": "Rings",
       "desc_te": "చిన్న వజ్రాల గుత్తిని తక్కువ ఎత్తులో పొదిగిన రోజ్ గోల్డ్ ఉంగరం."
     },
@@ -177,7 +177,7 @@
       "weight": 8.1,
       "tag": "Bestseller",
       "id": 14,
-      "image": "",
+      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_48_33-pm.png",
       "name_en": "Mangal Vow Mangalsutra",
       "category": "Mangalsutra",
       "desc_te": "జంట బంగారు తాళిబొట్లతో నల్లపూసల గొలుసు."
@@ -222,16 +222,16 @@
       "desc_te": "సన్నని గొలుసుపై లక్ష్మీ రూపం ముద్రించిన నాణెం లాకెట్."
     },
     {
-      "name_te": "సెలెస్టియా ప్లాటినం లాకెట్",
-      "metal": "Platinum",
-      "price": 47600,
-      "desc_en": "A teardrop pendant in platinum, set with a single diamond.",
-      "weight": 3.4,
+      "name_te": "",
+      "metal": "Diamond",
+      "price": 0,
+      "desc_en": "A teardrop pendant in diamond , set with a single diamond.",
+      "weight": 0,
       "tag": "New",
       "id": 18,
-      "image": "",
-      "name_en": "Celestia Platinum Pendant",
-      "category": "Pendant",
+      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_59_41-pm.png",
+      "name_en": "Rose Gold Diamond Ring",
+      "category": "Rings",
       "desc_te": "ఒకే వజ్రం పొదిగిన ప్లాటినం కన్నీటిబొట్టు ఆకారపు లాకెట్."
     },
     {
@@ -242,7 +242,7 @@
       "weight": 26.3,
       "tag": "",
       "id": 19,
-      "image": "",
+      "image": "/images/uploads/chatgpt-image-oct-3-2026-07_08_01-pm.png",
       "name_en": "Antara Temple Chain",
       "category": "Chains",
       "desc_te": "గోపుర ఆకృతి లింకులు వరుసగా ఉండే పొడవైన టెంపుల్ గొలుసు."
