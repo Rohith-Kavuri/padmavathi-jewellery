@@ -211,12 +211,12 @@
     {
       "name_te": "కనక బంగారు నాణెం లాకెట్",
       "metal": "Gold",
-      "price": 41200,
+      "price": 0,
       "desc_en": "A coin pendant struck with a Lakshmi motif, on a fine chain.",
-      "weight": 6,
+      "weight": 3,
       "tag": "",
       "id": 17,
-      "image": "",
+      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_36_48-pm.png",
       "name_en": "Kanaka Gold Coin Pendant",
       "category": "Pendant",
       "desc_te": "సన్నని గొలుసుపై లక్ష్మీ రూపం ముద్రించిన నాణెం లాకెట్."
