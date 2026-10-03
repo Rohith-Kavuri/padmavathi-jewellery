@@ -277,6 +277,16 @@
       "image": "/images/uploads/whatsapp-image-2026-10-03-at-5.32.17-am-1-.jpeg",
       "price": 0,
       "id": 5
+    },
+    {
+      "tag": "",
+      "category": "Necklace",
+      "metal": "Gold",
+      "price": 0,
+      "name_en": "Chandra Haram",
+      "image": "/images/uploads/chatgpt-image-oct-3-2026-05_33_13-pm.png",
+      "weight": 0,
+      "id": 1
     }
   ]
 }
