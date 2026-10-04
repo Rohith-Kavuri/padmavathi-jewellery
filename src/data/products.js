@@ -129,9 +129,3 @@ export const ANNOUNCEMENTS = [
   },
 ];
 
-export const STATS = [
-  { value: 54, suffix: "+", label: { en: "Years in trade", te: "వ్యాపారంలో సంవత్సరాలు" } },
-  { value: 120, suffix: "+", label: { en: "Showrooms", te: "షోరూమ్‌లు" } },
-  { value: 9, suffix: "", label: { en: "Artisan guilds", te: "కళాకారుల సంఘాలు" } },
-  { value: 3, suffix: "", label: { en: "Countries", te: "దేశాలు" } },
-];

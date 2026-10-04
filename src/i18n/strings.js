@@ -10,13 +10,12 @@ export const STRINGS = {
 
     // brand
     "brand.name": "PADMAVATHI",
-    "brand.sub": "JEWELLERS · EST. 1971",
 
     // navigation
     "nav.collections": "Collections",
     "nav.bridal": "Bridal",
     "nav.rates": "Gold Rates",
-    "nav.heritage": "Heritage",
+    "nav.heritage": "Why Us",
     "nav.book": "Book a Visit",
     "nav.visit": "Visit Us",
     "search.placeholder": "Search jewellery",
@@ -153,11 +152,22 @@ export const STRINGS = {
     "lightbox.hintDesktop": "Click or scroll to zoom · move the mouse to look around · Esc to close",
     "lightbox.hintPhone": "Pinch or double-tap to zoom · swipe down to close",
 
-    // heritage
-    "heritage.eyebrow": "SINCE 1971",
-    "heritage.title": "Built guild by guild, not factory by factory",
-    "heritage.body":
-      "Padmavathi began as a single workshop in Thanjavur. We still commission from the same nine artisan guilds today — each known for one craft: temple work, polki setting, filigree, enamel.",
+    // why us (lightweight, affordable jewellery)
+    "why.eyebrow": "OUR SPECIALITY",
+    "why.title1": "Weighs less.",
+    "why.title2": "Shines more.",
+    "why.body":
+      "At Padmavathi Jewellers we make lightweight jewellery that keeps the grand, traditional look. Each design uses fewer grams of gold — so it costs less, feels lighter and still turns heads.",
+    "why.quote": "Pay for the beauty, not the extra grams.",
+    "why.cta": "Explore the collection",
+    "why.light.title": "Light as a feather",
+    "why.light.text": "Grand designs in fewer grams",
+    "why.price.title": "Easy on the pocket",
+    "why.price.text": "Prices that fit every budget",
+    "why.daily.title": "Made for every day",
+    "why.daily.text": "Comfortable from morning to night",
+    "why.detail.title": "Rich in detail",
+    "why.detail.text": "The full traditional look, only lighter",
 
     // testimonials
     "testimonials.prev": "Previous testimonial",
@@ -180,7 +190,6 @@ export const STRINGS = {
     "footer.company": "COMPANY",
     "footer.visit": "VISIT",
     "footer.aboutUs": "About Padmavathi",
-    "footer.guilds": "Our artisan guilds",
     "footer.locator": "Showroom locator",
     "footer.careers": "Careers",
     "footer.book": "Book a private visit",
@@ -193,13 +202,12 @@ export const STRINGS = {
 
     // brand
     "brand.name": "పద్మావతి",
-    "brand.sub": "జ్యువెలర్స్ · స్థాపన 1971",
 
     // navigation
     "nav.collections": "కలెక్షన్లు",
     "nav.bridal": "పెళ్లి నగలు",
     "nav.rates": "బంగారం ధరలు",
-    "nav.heritage": "మా వారసత్వం",
+    "nav.heritage": "మా ప్రత్యేకత",
     "nav.book": "సందర్శన బుక్ చేయండి",
     "nav.visit": "మమ్మల్ని సందర్శించండి",
     "search.placeholder": "ఆభరణాలు వెతకండి",
@@ -336,11 +344,22 @@ export const STRINGS = {
     "lightbox.hintDesktop": "జూమ్ చేయడానికి క్లిక్ లేదా స్క్రోల్ చేయండి · చుట్టూ చూడటానికి మౌస్ కదపండి · మూసివేయడానికి Esc",
     "lightbox.hintPhone": "జూమ్ చేయడానికి రెండు వేళ్లతో సాగదీయండి లేదా రెండుసార్లు నొక్కండి · మూసివేయడానికి కిందికి లాగండి",
 
-    // heritage
-    "heritage.eyebrow": "1971 నుంచి",
-    "heritage.title": "ఫ్యాక్టరీలతో కాదు, కళాకారుల సంఘాలతో నిర్మించినది",
-    "heritage.body":
-      "పద్మావతి తంజావూరులో ఒకే ఒక్క వర్క్‌షాప్‌గా ప్రారంభమైంది. ఈరోజుకీ అవే తొమ్మిది కళాకారుల సంఘాలతో నగలు చేయిస్తున్నాం — ఒక్కొక్కటి ఒక్కో కళకు ప్రసిద్ధి: టెంపుల్ వర్క్, పోల్కీ సెట్టింగ్, ఫిలిగ్రీ, ఎనామెల్.",
+    // why us (lightweight, affordable jewellery)
+    "why.eyebrow": "మా ప్రత్యేకత",
+    "why.title1": "బరువు తక్కువ.",
+    "why.title2": "మెరుపు ఎక్కువ.",
+    "why.body":
+      "పద్మావతి జ్యువెలర్స్‌లో ఘనమైన సాంప్రదాయ అందాన్ని అలాగే ఉంచుతూ తేలికైన ఆభరణాలు తయారు చేస్తాం. ప్రతి డిజైన్‌లో బంగారం గ్రాములు తక్కువ — అందుకే ధర తక్కువ, ధరించడానికి తేలిక, అయినా చూపు తిప్పుకోలేని అందం.",
+    "why.quote": "అదనపు గ్రాములకు కాదు, అందానికే మీ డబ్బు.",
+    "why.cta": "కలెక్షన్ చూడండి",
+    "why.light.title": "ఈకలా తేలిక",
+    "why.light.text": "తక్కువ గ్రాముల్లో ఘనమైన డిజైన్లు",
+    "why.price.title": "అందుబాటు ధరలు",
+    "why.price.text": "ప్రతి బడ్జెట్‌కు తగిన ధరలు",
+    "why.daily.title": "రోజూ ధరించేలా",
+    "why.daily.text": "ఉదయం నుంచి రాత్రి వరకు సౌకర్యంగా",
+    "why.detail.title": "నిండైన పనితనం",
+    "why.detail.text": "పూర్తి సాంప్రదాయ అందం, తక్కువ బరువుతో",
 
     // testimonials
     "testimonials.prev": "మునుపటి అభిప్రాయం",
@@ -363,7 +382,6 @@ export const STRINGS = {
     "footer.company": "సంస్థ",
     "footer.visit": "సందర్శన",
     "footer.aboutUs": "పద్మావతి గురించి",
-    "footer.guilds": "మా కళాకారుల సంఘాలు",
     "footer.locator": "షోరూమ్ చిరునామాలు",
     "footer.careers": "ఉద్యోగాలు",
     "footer.book": "ప్రైవేట్ సందర్శన బుక్ చేయండి",
