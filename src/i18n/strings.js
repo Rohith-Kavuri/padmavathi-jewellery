@@ -156,13 +156,12 @@ export const STRINGS = {
     "nav.catalogue": "Catalogue",
     "catalogue.eyebrow": "OUR CATALOGUE",
     "catalogue.title": "Take the collection home",
-    "catalogue.body": "Browse every design at your own pace — on your phone, or save it and share it with family before you visit.",
+    "catalogue.body": "Tap a catalogue to browse every design at your own pace — right on your phone, before you visit.",
     "catalogue.soon": "Our new catalogue is on its way. Visit us to see the full collection.",
     "catalogue.view": "View catalogue",
-    "catalogue.download": "Download PDF",
     "catalogue.pages": "{count} pages",
     "catalogue.updated": "Updated {date}",
-    "catalogue.coverAlt": "Padmavathi Jewellers catalogue cover",
+    "catalogue.coverAlt": "{name} catalogue cover",
 
     // why us (lightweight, affordable jewellery)
     "why.eyebrow": "OUR SPECIALITY",
@@ -360,13 +359,12 @@ export const STRINGS = {
     "nav.catalogue": "కేటలాగ్",
     "catalogue.eyebrow": "మా కేటలాగ్",
     "catalogue.title": "కలెక్షన్‌ను ఇంటికి తీసుకెళ్లండి",
-    "catalogue.body": "మీకు నచ్చిన సమయంలో ప్రతి డిజైన్‌ను చూడండి — ఫోన్‌లోనే, లేదా సేవ్ చేసి మా షాప్‌కి రాకముందే కుటుంబంతో పంచుకోండి.",
+    "catalogue.body": "ఏదైనా కేటలాగ్‌ను తాకి ప్రతి డిజైన్‌ను మీకు నచ్చిన సమయంలో చూడండి — మా షాప్‌కి రాకముందే, మీ ఫోన్‌లోనే.",
     "catalogue.soon": "మా కొత్త కేటలాగ్ త్వరలో వస్తుంది. పూర్తి కలెక్షన్ చూడటానికి మా షాప్‌కి రండి.",
     "catalogue.view": "కేటలాగ్ చూడండి",
-    "catalogue.download": "PDF డౌన్‌లోడ్",
     "catalogue.pages": "{count} పేజీలు",
     "catalogue.updated": "{date}న అప్‌డేట్ చేశాం",
-    "catalogue.coverAlt": "పద్మావతి జ్యువెలర్స్ కేటలాగ్ కవర్",
+    "catalogue.coverAlt": "{name} కేటలాగ్ కవర్",
 
     // why us (lightweight, affordable jewellery)
     "why.eyebrow": "మా ప్రత్యేకత",

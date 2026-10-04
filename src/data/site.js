@@ -48,10 +48,13 @@ export const OCCASIONS = (occasionsFile.occasions || [])
     category: o.category || "All",
   }));
 
-// Catalogue PDF (Homepage → Catalogue (PDF) in the admin page).
-export const CATALOGUE = {
-  pdf: catalogueFile.pdf || "",
-  cover: catalogueFile.cover || "",
-  pages: Number(catalogueFile.pages) || 0,
-  updated: catalogueFile.updated ? new Date(`${String(catalogueFile.updated).slice(0, 10)}T00:00:00`) : null,
-};
+// Catalogue PDFs (Homepage → Catalogues (PDF) in the admin page).
+export const CATALOGUES = (catalogueFile.catalogues || [])
+  .filter((c) => c && c.pdf)
+  .map((c) => ({
+    title: bi(c.title_en, c.title_te),
+    pdf: c.pdf,
+    cover: c.cover || "",
+    pages: Number(c.pages) || 0,
+    updated: c.updated ? new Date(`${String(c.updated).slice(0, 10)}T00:00:00`) : null,
+  }));

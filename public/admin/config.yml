@@ -138,35 +138,43 @@ collections:
           - { name: platinum, label: "Platinum (₹ per gram)", widget: number, value_type: int, min: 0, required: false, hint: "Leave empty or 0 to hide." }
 
       - name: catalogue
-        label: "Catalogue (PDF)"
+        label: "Catalogues (PDF)"
         file: src/content/catalogue.json
         fields:
-          - name: pdf
-            label: Catalogue PDF
-            widget: file
-            required: false
-            choose_url: false
-            hint: "Upload the catalogue as a PDF (best under ~10 MB). Visitors can view or download it from the 'Catalogue' section. Remove it to show 'coming soon' instead."
-          - name: cover
-            label: Cover picture
-            widget: image
-            required: false
-            choose_url: false
-            hint: "Picture of the catalogue's front page, shown as the book cover on the website. Portrait, about 700 × 1000 px, JPG or WebP."
-          - name: updated
-            label: Catalogue date
-            widget: datetime
-            format: "YYYY-MM-DD"
-            date_format: "DD MMM YYYY"
-            time_format: false
-            required: false
-          - name: pages
-            label: Number of pages
-            widget: number
-            value_type: int
-            min: 0
-            required: false
-            hint: "Optional. Shown next to the buttons, e.g. '6 pages'."
+          - name: catalogues
+            label: Catalogues
+            label_singular: Catalogue
+            widget: list
+            collapsed: true
+            summary: "{{fields.title_en}}"
+            hint: "Add one or more catalogues. Each one shows as a book in the 'Catalogue' section; visitors tap it to view the PDF. Drag to change the order. Remove all of them to show 'coming soon'."
+            fields:
+              - { name: title_en, label: Name (English), widget: string, hint: "e.g. Bridal Collection 2026" }
+              - { name: title_te, label: Name (Telugu), widget: string, required: false }
+              - name: pdf
+                label: PDF file
+                widget: file
+                choose_url: false
+                hint: "Upload the catalogue PDF (best under ~10 MB)."
+              - name: cover
+                label: Cover picture
+                widget: image
+                required: false
+                choose_url: false
+                hint: "Picture of the front page, shown as the book cover. Portrait, about 700 × 1000 px, JPG or WebP. Without one, a maroon cover with the name is shown."
+              - name: updated
+                label: Date
+                widget: datetime
+                format: "YYYY-MM-DD"
+                date_format: "DD MMM YYYY"
+                time_format: false
+                required: false
+              - name: pages
+                label: Number of pages
+                widget: number
+                value_type: int
+                min: 0
+                required: false
       - name: hero
         label: Hero slides (top banner)
         file: src/content/hero.json
