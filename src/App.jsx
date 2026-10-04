@@ -16,7 +16,7 @@ import Hero from "./components/Hero";
 import CategoryShowcase from "./components/CategoryShowcase";
 import Catalog from "./components/Catalog";
 import GoldRateSection from "./components/GoldRateSection";
-import HeritageStats from "./components/HeritageStats";
+import WhyUs from "./components/WhyUs";
 import Testimonials from "./components/Testimonials";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
@@ -263,7 +263,7 @@ export default function App() {
       </div>
 
       <div className="vj-reveal">
-        <HeritageStats />
+        <WhyUs onExplore={goCategories} />
       </div>
 
       <div className="vj-reveal">
