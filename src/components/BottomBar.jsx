@@ -1,5 +1,6 @@
 import { Home, LayoutGrid, Coins, ShoppingBag, MapPin } from "lucide-react";
 import { WHATSAPP_URL } from "../data/site";
+import { SocialDock } from "./SocialIcons";
 import { useLang } from "../i18n/LanguageContext";
 import WhatsAppIcon from "./WhatsAppIcon";
 
@@ -62,19 +63,7 @@ export default function BottomBar({ cartCount, onHome, onCategories, onRates, on
         )}
       </nav>
 
-      {WHATSAPP_URL && (
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t("aria.whatsapp")}
-          title={t("aria.whatsapp")}
-          className="vj-focus hidden md:flex fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full items-center justify-center transition-transform hover:scale-110"
-          style={{ background: "#25D366", color: "#fff", boxShadow: "0 12px 28px -8px rgba(0,0,0,0.45)", border: "2px solid #fff" }}
-        >
-          <WhatsAppIcon size={28} />
-        </a>
-      )}
+      <SocialDock />
     </>
   );
 }

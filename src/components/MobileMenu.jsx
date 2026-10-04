@@ -1,4 +1,5 @@
 import { X, Search } from "lucide-react";
+import { SocialRow } from "./SocialIcons";
 import { useLang } from "../i18n/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
 
@@ -63,7 +64,8 @@ export default function MobileMenu({
             </button>
           ))}
         </div>
-        <div className="mt-auto">
+        <div className="mt-auto flex flex-col gap-4">
+          <SocialRow size={42} />
           <LanguageToggle />
         </div>
       </div>

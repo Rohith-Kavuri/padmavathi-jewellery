@@ -16,12 +16,27 @@ export const STORE = {
   email: store.email || "",
   instagram: store.instagram || "",
   facebook: store.facebook || "",
+  youtube: store.youtube || "",
   mapQuery: store.map_query || store.address_en || "",
 };
 
 // WhatsApp needs the number with country code, digits only (e.g. 919876543210).
 const wa = digits(store.whatsapp);
-export const WHATSAPP_URL = wa ? `https://wa.me/${wa.length === 10 ? "91" + wa : wa}` : "";
+// The chat opens with a short greeting already typed in.
+const WA_GREETING = "Hello Padmavathi Jewellers, I'd like to know more about your jewellery.";
+export const WHATSAPP_URL = wa
+  ? `https://wa.me/${wa.length === 10 ? "91" + wa : wa}?text=${encodeURIComponent(WA_GREETING)}`
+  : "";
+
+// Social links shown as icons (floating stack, footer, Visit Us, phone menu).
+// Instagram and YouTube always show; until their links are filled in the
+// admin page they open WhatsApp instead. Facebook shows only when filled in.
+export const SOCIALS = [
+  WHATSAPP_URL && { key: "whatsapp", href: WHATSAPP_URL },
+  (STORE.instagram || WHATSAPP_URL) && { key: "instagram", href: STORE.instagram || WHATSAPP_URL },
+  (STORE.youtube || WHATSAPP_URL) && { key: "youtube", href: STORE.youtube || WHATSAPP_URL },
+  STORE.facebook && { key: "facebook", href: STORE.facebook },
+].filter(Boolean);
 export const PHONE_URL = STORE.phone ? `tel:${STORE.phone.replace(/[^\d+]/g, "")}` : "";
 export const MAP_EMBED_URL = STORE.mapQuery
   ? `https://www.google.com/maps?q=${encodeURIComponent(STORE.mapQuery)}&output=embed`

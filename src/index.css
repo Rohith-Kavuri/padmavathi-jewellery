@@ -219,6 +219,25 @@
 .vj-fan:hover .vj-fan-card[data-pos="2"],
 .vj-fan:focus-visible .vj-fan-card[data-pos="2"] { transform: translateX(-52px) rotate(-17deg); }
 
+/* floating social buttons: label slides out on hover, WhatsApp pulses softly */
+.vj-dock-label {
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.group:hover > .vj-dock-label,
+.group:focus-within > .vj-dock-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+.vj-ping {
+  animation: vj-ping 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes vj-ping {
+  0% { transform: scale(1); opacity: 0.7; }
+  70%, 100% { transform: scale(1.55); opacity: 0; }
+}
+
 .vj-slide {
   transition: opacity 1s ease;
 }
@@ -344,6 +363,10 @@
   }
   .vj-fan-card {
     transition: none;
+  }
+  .vj-ping {
+    animation: none;
+    opacity: 0;
   }
   .vj-feather {
     animation: none;
