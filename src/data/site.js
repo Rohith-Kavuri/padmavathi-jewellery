@@ -53,6 +53,7 @@ export const CATALOGUES = (catalogueFile.catalogues || [])
   .filter((c) => c && c.pdf)
   .map((c) => ({
     title: bi(c.title_en, c.title_te),
+    category: c.category || "",
     pdf: c.pdf,
     cover: c.cover || "",
     pages: Number(c.pages) || 0,

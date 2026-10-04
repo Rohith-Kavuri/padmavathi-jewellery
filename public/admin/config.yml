@@ -146,11 +146,21 @@ collections:
             label_singular: Catalogue
             widget: list
             collapsed: true
-            summary: "{{fields.title_en}}"
-            hint: "Add one or more catalogues. Each one shows as a book in the 'Catalogue' section; visitors tap it to view the PDF. Drag to change the order. Remove all of them to show 'coming soon'."
+            summary: "{{fields.title_en}} · {{fields.category}}"
+            hint: "Add one or more catalogues. Visitors open them from the 'Browse catalogues' button, which shows a popup with a tab for each category. Drag to change the order. Remove all of them to show 'coming soon'."
             fields:
               - { name: title_en, label: Name (English), widget: string, hint: "e.g. Bridal Collection 2026" }
               - { name: title_te, label: Name (Telugu), widget: string, required: false }
+              - name: category
+                label: Category
+                widget: relation
+                collection: catalog
+                file: categories
+                search_fields: ["categories.*.label_en"]
+                display_fields: ["categories.*.label_en"]
+                value_field: "categories.*.key"
+                required: false
+                hint: "Which category tab it appears under in the catalogue popup. Leave empty for a general catalogue (shown under 'All')."
               - name: pdf
                 label: PDF file
                 widget: file

@@ -99,8 +99,7 @@ export default function ProductCard({ product, onQuickView, onAddToCart, onViewI
       </div>
       <button
         onClick={() => onQuickView(product)}
-        className="vj-focus mt-3 text-xs px-5 py-1.5 rounded-full border transition-colors hover:bg-[#4a0b18] hover:text-[#fbecc8]"
-        style={{ borderColor: "rgba(142,29,51,0.5)", color: "var(--plum-900)" }}
+        className="vj-focus mt-3 text-xs px-5 py-1.5 rounded-full border border-[rgba(142,29,51,0.5)] text-[#4a0b18] transition-colors hover:bg-[#4a0b18] hover:text-[#fbecc8]"
       >
         {t("card.quickView")}
       </button>
