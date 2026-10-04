@@ -61,9 +61,9 @@ export default function Header({
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="vj-focus justify-self-center"
-          aria-label={t("brand.name")}
+          aria-label={t("meta.title")}
         >
-          <img src={wordmark} alt={t("brand.name")} className="block h-9 md:h-12 lg:h-14 w-auto" />
+          <img src={wordmark} alt={t("meta.title")} className="block h-9 md:h-12 lg:h-14 w-auto" />
         </button>
 
         {/* right: language + bag */}

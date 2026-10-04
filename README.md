@@ -1,4 +1,4 @@
-# Padmavathi Jewellery
+# Padmavathi Jewellers
 
 A dynamic jewellery e-commerce front end built with React + Vite + Tailwind CSS.
 
