@@ -161,14 +161,15 @@ function BrandSlide({ t }) {
             ))}
           </div>
           <div
-            className="vj-brand-tag vj-display leading-snug"
+            className="vj-brand-tag leading-snug"
             style={{
-              color: "var(--gold-100)",
-              fontSize: "clamp(0.8rem, min(calc(var(--hero-h) * 0.045), 3.6vw), 1.75rem)",
-              marginTop: "calc(var(--hero-h) * 0.03)",
+              fontSize: "clamp(0.72rem, min(calc(var(--hero-h) * 0.04), 3.1vw), 1.55rem)",
+              marginTop: "calc(var(--hero-h) * 0.035)",
             }}
           >
-            {t("hero.tagline")}
+            <span className="vj-gold-text" style={{ letterSpacing: "0.06em", fontWeight: 600 }}>
+              {t("hero.tagline")}
+            </span>
           </div>
         </div>
 
@@ -176,10 +177,12 @@ function BrandSlide({ t }) {
         <div className="flex flex-col items-center justify-center min-w-0">
           <LotusReveal alt={t("hero.alt.goddess")} />
           <div
-            className="vj-brand-tag vj-mono tracking-widest text-center relative"
-            style={{ color: "var(--gold-300)", fontSize: "clamp(9px, min(calc(var(--hero-h) * 0.022), 2.4vw), 13px)", marginTop: "calc(var(--hero-h) * 0.07)" }}
+            className="vj-brand-tag text-center relative"
+            style={{ fontSize: "clamp(9px, min(calc(var(--hero-h) * 0.026), 2.5vw), 15px)", marginTop: "calc(var(--hero-h) * 0.07)" }}
           >
-            {t("hero.goddessCaption")}
+            <span className="vj-gold-text" style={{ letterSpacing: "0.16em", fontWeight: 600 }}>
+              {t("hero.goddessCaption")}
+            </span>
           </div>
         </div>
       </div>

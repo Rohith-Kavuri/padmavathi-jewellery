@@ -409,6 +409,40 @@
   100% { opacity: 0; transform: translateY(-560px) translateX(-10px); }
 }
 
+/* Polished-gold engraved lettering (hero tagline and caption), matching the
+   logo's "PADMAVATHI": Cinzel capitals with a metallic gradient, a soft
+   shadow and a slow shine running through. Telugu uses Noto Serif Telugu. */
+.vj-gold-text {
+  font-family: "Cinzel", "Noto Serif Telugu", serif;
+  background-image: linear-gradient(
+    100deg,
+    #b8862b 0%,
+    #f6d77c 18%,
+    #fff4cc 26%,
+    #e8b84e 34%,
+    #a9741c 50%,
+    #f2c45a 66%,
+    #fff1c1 74%,
+    #d9a03b 84%,
+    #b8862b 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #f2c45a;
+  filter: drop-shadow(0 2px 2px rgba(20, 3, 8, 0.55));
+  animation: vj-gold-shine 7s linear infinite;
+}
+@keyframes vj-gold-shine {
+  from { background-position: 0% 0; }
+  to { background-position: -220% 0; }
+}
+.vj-root[data-lang="te"] .vj-gold-text {
+  font-weight: 700 !important;
+}
+
 /* ---------- lotus opening to reveal Sri Padmavathi (first hero slide) ---------- */
 .vj-lotus-rays {
   top: 40%;
@@ -583,6 +617,7 @@
   .vj-slide .vj-brand-arch,
   .vj-slide .vj-brand-shine,
   .vj-slide .vj-arch-sweep,
+  .vj-gold-text,
   .vj-slide .vj-spark,
   .vj-lotus-rays,
   .vj-slide .vj-lotus-front,
