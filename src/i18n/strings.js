@@ -6,11 +6,11 @@
 
 export const STRINGS = {
   en: {
-    "meta.title": "Padmavathi Jewellery",
+    "meta.title": "Padmavathi Jewellers",
 
     // brand
     "brand.name": "PADMAVATHI",
-    "brand.sub": "JEWELLERY · EST. 1971",
+    "brand.sub": "JEWELLERS · EST. 1971",
 
     // navigation
     "nav.collections": "Collections",
@@ -33,7 +33,7 @@ export const STRINGS = {
     // hero
     "hero.tagline": "Timeless Beauty · Trusted Forever",
     "hero.necklaceCaption": "TEMPLE GOLD COLLECTION",
-    "hero.alt.logo": "Padmavathi Jewellery logo",
+    "hero.alt.logo": "Padmavathi Jewellers logo",
     "hero.alt.necklace": "Temple gold necklace with Lakshmi motif and gold pearls",
     "hero.caption.poster": "Our Collections",
     "hero.alt.poster": "Padmavathi collections poster — temple gold, sterling silver, diamond and gemstone collections",
@@ -189,11 +189,11 @@ export const STRINGS = {
   },
 
   te: {
-    "meta.title": "పద్మావతి జ్యువెలరీ",
+    "meta.title": "పద్మావతి జ్యువెలర్స్",
 
     // brand
     "brand.name": "పద్మావతి",
-    "brand.sub": "జ్యువెలరీ · స్థాపన 1971",
+    "brand.sub": "జ్యువెలర్స్ · స్థాపన 1971",
 
     // navigation
     "nav.collections": "కలెక్షన్లు",
@@ -216,7 +216,7 @@ export const STRINGS = {
     // hero
     "hero.tagline": "శాశ్వత సౌందర్యం · ఎప్పటికీ నమ్మకం",
     "hero.necklaceCaption": "టెంపుల్ గోల్డ్ కలెక్షన్",
-    "hero.alt.logo": "పద్మావతి జ్యువెలరీ లోగో",
+    "hero.alt.logo": "పద్మావతి జ్యువెలర్స్ లోగో",
     "hero.alt.necklace": "లక్ష్మీదేవి రూపం, బంగారు ముత్యాలతో టెంపుల్ గోల్డ్ నెక్లెస్",
     "hero.caption.poster": "మా కలెక్షన్లు",
     "hero.alt.poster": "పద్మావతి కలెక్షన్ల పోస్టర్ — టెంపుల్ గోల్డ్, స్టెర్లింగ్ వెండి, వజ్రాలు, రత్నాల కలెక్షన్లు",

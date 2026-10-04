@@ -1,4 +1,4 @@
-# Decap CMS — admin page for Padmavathi Jewellery (open /admin/ on the site)
+# Decap CMS — admin page for Padmavathi Jewellers (open /admin/ on the site)
 #
 # Live site: staff sign in with GitHub; every "Publish" becomes a commit on
 # the main branch, and Netlify rebuilds the site automatically (~1 minute).
