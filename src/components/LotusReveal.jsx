@@ -1,4 +1,5 @@
 import goddessImg from "../assets/hero-padmavathi.webp";
+import petalTex from "../assets/petal-gold.webp";
 
 // A golden lotus that opens to reveal Sri Padmavathi Ammavaru (first hero
 // slide, right half). Built from layers so it stays sharp at any size:
@@ -10,7 +11,6 @@ import goddessImg from "../assets/hero-padmavathi.webp";
 // Petal pointing straight up from (0,0): w = width, h = height.
 const petal = (w, h) =>
   `M0,0 C${-w * 0.56},${-h * 0.16} ${-w * 0.62},${-h * 0.6} 0,${-h} C${w * 0.62},${-h * 0.6} ${w * 0.56},${-h * 0.16} 0,0 Z`;
-const vein = (h) => `M0,-4 C-2,${-h * 0.35} -2,${-h * 0.65} 0,${-h * 0.9}`;
 
 // [open angle, closed angle, delay s, height, width]
 const BACK = [
@@ -33,68 +33,72 @@ const FRONT = [
   [27, 4, 0, 118, 94],
   [0, 0, 0.1, 84, 88],
 ];
-function Petals({ list, fill, className }) {
+// Each petal is the real engraved gold petal from the shop's artwork
+// (petal-gold.webp), clipped to a lotus-petal outline. Petals on the right
+// are mirrored so the light falls symmetrically; the back row is tinted pink
+// at the tips like the lotus in the artwork. A soft cupped shadow and a
+// bright rim finish each one.
+function Petals({ list, pink = false, id, className }) {
   return (
     <svg viewBox="-230 -250 460 270" className={className} aria-hidden="true">
       <defs>
-        <linearGradient id="vjPetalGold" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#FFF6D6" />
-          <stop offset="0.3" stopColor="#F6CC63" />
-          <stop offset="0.68" stopColor="#D59A32" />
-          <stop offset="1" stopColor="#7A4A0C" />
+        <linearGradient id={`${id}Pink`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#FFD6E5" />
+          <stop offset="0.16" stopColor="#FF5C93" />
+          <stop offset="0.42" stopColor="#D81B60" />
+          <stop offset="0.66" stopColor="#E9A93A" />
+          <stop offset="1" stopColor="#8A5A0E" />
         </linearGradient>
-        <linearGradient id="vjPetalPink" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#FFD3E2" />
-          <stop offset="0.18" stopColor="#F0508A" />
-          <stop offset="0.45" stopColor="#C2185B" />
-          <stop offset="0.72" stopColor="#E3AA2C" />
-          <stop offset="1" stopColor="#7A4A0C" />
+        <linearGradient id={`${id}CupL`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#2A1503" stopOpacity="0.5" />
+          <stop offset="0.35" stopColor="#2A1503" stopOpacity="0" />
+          <stop offset="1" stopColor="#2A1503" stopOpacity="0.18" />
         </linearGradient>
-        <linearGradient id="vjPetalCupL" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#3A1F04" stopOpacity="0.55" />
-          <stop offset="0.45" stopColor="#3A1F04" stopOpacity="0" />
-          <stop offset="0.8" stopColor="#FFFFFF" stopOpacity="0.12" />
-          <stop offset="1" stopColor="#3A1F04" stopOpacity="0.25" />
+        <linearGradient id={`${id}CupR`} x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0" stopColor="#2A1503" stopOpacity="0.5" />
+          <stop offset="0.35" stopColor="#2A1503" stopOpacity="0" />
+          <stop offset="1" stopColor="#2A1503" stopOpacity="0.18" />
         </linearGradient>
-        <linearGradient id="vjPetalCupR" x1="1" y1="0" x2="0" y2="0">
-          <stop offset="0" stopColor="#3A1F04" stopOpacity="0.55" />
-          <stop offset="0.45" stopColor="#3A1F04" stopOpacity="0" />
-          <stop offset="0.8" stopColor="#FFFFFF" stopOpacity="0.12" />
-          <stop offset="1" stopColor="#3A1F04" stopOpacity="0.25" />
+        <linearGradient id={`${id}Base`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0.7" stopColor="#2A1503" stopOpacity="0" />
+          <stop offset="1" stopColor="#2A1503" stopOpacity="0.55" />
         </linearGradient>
-        <linearGradient id="vjPetalSheen" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#fff" stopOpacity="0" />
-          <stop offset="0.42" stopColor="#fff" stopOpacity="0.55" />
-          <stop offset="0.6" stopColor="#fff" stopOpacity="0" />
-        </linearGradient>
+        {list.map(([, , , h, w], i) => (
+          <clipPath key={i} id={`${id}C${i}`}>
+            <path d={petal(w, h)} />
+          </clipPath>
+        ))}
       </defs>
-      {list.map(([open, closed, delay, h, w], i) => (
-        <g
-          key={i}
-          className="vj-petal"
-          style={{ "--open": `${open}deg`, "--closed": `${closed}deg`, "--pd": `${delay}s` }}
-        >
-          <path d={petal(w, h)} fill={`url(#${fill})`} />
-          {/* cupped shading: darker on the side turned away from the light */}
-          <path d={petal(w, h)} fill={open >= 0 ? "url(#vjPetalCupR)" : "url(#vjPetalCupL)"} />
-          <path d={petal(w * 0.5, h * 0.95)} fill="url(#vjPetalSheen)" opacity="0.65" />
-          {/* fine veins */}
-          {[-0.28, -0.14, 0.14, 0.28].map((k) => (
-            <path
-              key={k}
-              d={`M0,-6 C${w * k * 0.8},${-h * 0.35} ${w * k},${-h * 0.62} ${w * k * 0.35},${-h * 0.88}`}
-              fill="none"
-              stroke="#7A4A0C"
-              strokeOpacity="0.22"
-              strokeWidth="0.9"
-            />
-          ))}
-          <path d={vein(h)} fill="none" stroke="#FFF3C4" strokeOpacity="0.6" strokeWidth="1.5" />
-          {/* rim: bright edge with a thin dark outline */}
-          <path d={petal(w, h)} fill="none" stroke="#5C3608" strokeWidth="1.6" strokeOpacity="0.45" />
-          <path d={petal(w * 0.94, h * 0.985)} fill="none" stroke="#FFF1C4" strokeWidth="1" strokeOpacity="0.55" />
-        </g>
-      ))}
+      {list.map(([open, closed, delay, h, w], i) => {
+        const right = open > 0 || (open === 0 && i % 2 === 1);
+        return (
+          <g
+            key={i}
+            className="vj-petal"
+            style={{ "--open": `${open}deg`, "--closed": `${closed}deg`, "--pd": `${delay}s` }}
+          >
+            <g clipPath={`url(#${id}C${i})`}>
+              {/* pink back petals: glossy pink-to-gold colour with the engraving laid over it */}
+              {pink && <path d={petal(w, h)} fill={`url(#${id}Pink)`} />}
+              <image
+                href={petalTex}
+                x={-w / 2}
+                y={-h * 1.017}
+                width={w}
+                height={h * 1.069}
+                preserveAspectRatio="none"
+                transform={right ? "scale(-1 1)" : undefined}
+                style={pink ? { mixBlendMode: "soft-light" } : undefined}
+              />
+              <path d={petal(w, h)} fill={`url(#${id}${right ? "CupR" : "CupL"})`} />
+              <path d={petal(w, h)} fill={`url(#${id}Base)`} />
+            </g>
+            {/* rim: thin dark outline with a bright inner edge */}
+            <path d={petal(w, h)} fill="none" stroke="#3E2205" strokeWidth="1.6" strokeOpacity="0.55" />
+            <path d={petal(w * 0.95, h * 0.988)} fill="none" stroke="#FFF1C4" strokeWidth="1.1" strokeOpacity="0.5" />
+          </g>
+        );
+      })}
     </svg>
   );
 }
@@ -107,13 +111,13 @@ export default function LotusReveal({ alt }) {
       <span className="vj-lotus-glow absolute left-1/2 rounded-full pointer-events-none" aria-hidden="true" />
 
       {/* petals that fan out behind her */}
-      <Petals list={BACK} fill="vjPetalPink" className="vj-lotus-back absolute left-1/2 pointer-events-none" />
+      <Petals list={BACK} pink id="vjLb" className="vj-lotus-back absolute left-1/2 pointer-events-none" />
 
       {/* Sri Padmavathi */}
       <img src={goddessImg} alt={alt} className="vj-lotus-goddess absolute left-1/2 top-0" />
 
       {/* petals in front */}
-      <Petals list={FRONT} fill="vjPetalGold" className="vj-lotus-front absolute left-1/2 pointer-events-none" />
+      <Petals list={FRONT} id="vjLf" className="vj-lotus-front absolute left-1/2 pointer-events-none" />
     </div>
   );
 }
