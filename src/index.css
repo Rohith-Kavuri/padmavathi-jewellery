@@ -303,6 +303,112 @@
 }
 
 /* Slow zoom on the photo of the hero slide that is showing */
+/* ---------- animated logo slide (first hero panel) ----------
+   Each part rests in its finished state; the intro only runs while the
+   slide is showing, so it replays every time the slide comes round. */
+.vj-slide[aria-hidden="false"] .vj-brand-halo {
+  animation: vj-halo-in 1.6s ease-out both, vj-halo-pulse 4.5s ease-in-out 1.6s infinite;
+}
+.vj-slide[aria-hidden="false"] .vj-brand-mark {
+  animation: vj-mark-in 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.vj-slide[aria-hidden="false"] .vj-brand-name {
+  -webkit-mask-image: linear-gradient(90deg, #000 42%, transparent 58%);
+  mask-image: linear-gradient(90deg, #000 42%, transparent 58%);
+  -webkit-mask-size: 260% 100%;
+  mask-size: 260% 100%;
+  animation: vj-write 1.4s ease-in-out 0.8s both;
+}
+.vj-slide[aria-hidden="false"] .vj-brand-sub {
+  animation: vj-open 1s cubic-bezier(0.2, 0.8, 0.2, 1) 1.9s both;
+}
+.vj-brand-shine {
+  background: linear-gradient(105deg, rgba(255, 250, 225, 0) 38%, rgba(255, 250, 225, 0.85) 50%, rgba(255, 250, 225, 0) 62%);
+  background-size: 300% 100%;
+  background-position: 120% 0;
+  opacity: 0;
+}
+.vj-slide[aria-hidden="false"] .vj-brand-shine {
+  animation: vj-shine 4.5s ease-in-out 2.7s infinite;
+}
+.vj-spark {
+  opacity: 0;
+}
+.vj-slide[aria-hidden="false"] .vj-spark {
+  animation: vj-twinkle var(--spark-d) ease-in-out var(--spark-delay) infinite;
+}
+.vj-slide[aria-hidden="false"] .vj-brand-tag {
+  animation: vj-fade-up 0.9s ease 2.5s both;
+}
+.vj-slide[aria-hidden="false"] .vj-brand-arch {
+  animation: vj-arch-in 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s both;
+}
+.vj-arch-sweep {
+  background: linear-gradient(110deg, rgba(255, 245, 210, 0) 40%, rgba(255, 245, 210, 0.28) 50%, rgba(255, 245, 210, 0) 60%);
+  background-size: 300% 100%;
+  background-position: 120% 0;
+}
+.vj-slide[aria-hidden="false"] .vj-arch-sweep {
+  animation: vj-sweep 5.5s ease-in-out 1.8s infinite;
+}
+.vj-dust {
+  opacity: 0;
+  animation-name: vj-dust;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes vj-halo-in {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes vj-halo-pulse {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.08); }
+}
+@keyframes vj-mark-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.86); filter: blur(8px) brightness(1.6); }
+  60% { filter: blur(0) brightness(1.25); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes vj-write {
+  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  to { -webkit-mask-position: 0 0; mask-position: 0 0; }
+}
+@keyframes vj-open {
+  from { opacity: 0; clip-path: inset(0 50% 0 50%); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes vj-shine {
+  0% { opacity: 1; background-position: 120% 0; }
+  35% { opacity: 1; background-position: -20% 0; }
+  36%, 100% { opacity: 0; background-position: -20% 0; }
+}
+@keyframes vj-twinkle {
+  0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
+  45% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(45deg); }
+  70% { opacity: 0; transform: translate(-50%, -50%) scale(0.4) rotate(90deg); }
+}
+@keyframes vj-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes vj-arch-in {
+  from { opacity: 0; transform: translateX(40px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes vj-sweep {
+  0% { background-position: 120% 0; }
+  40%, 100% { background-position: -20% 0; }
+}
+@keyframes vj-dust {
+  0% { opacity: 0; transform: translateY(0) translateX(0); }
+  15% { opacity: 0.9; }
+  50% { transform: translateY(-260px) translateX(14px); }
+  85% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-560px) translateX(-10px); }
+}
+
 .vj-slide[aria-hidden="false"] .vj-kb {
   animation: vj-kenburns 9s ease-out both;
 }
@@ -379,6 +485,20 @@
   }
   .vj-slide .vj-kb {
     animation: none !important;
+  }
+  .vj-slide .vj-brand-halo,
+  .vj-slide .vj-brand-mark,
+  .vj-slide .vj-brand-name,
+  .vj-slide .vj-brand-sub,
+  .vj-slide .vj-brand-tag,
+  .vj-slide .vj-brand-arch,
+  .vj-slide .vj-brand-shine,
+  .vj-slide .vj-arch-sweep,
+  .vj-slide .vj-spark,
+  .vj-dust {
+    animation: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
   }
   .vj-root.reveal-ready .vj-reveal {
     opacity: 1;
