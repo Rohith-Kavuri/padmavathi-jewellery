@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import logoImg from "../assets/padmavathi-logo-transparent.webp";
+import markImg from "../assets/hero-logo-mark.webp";
+import nameImg from "../assets/hero-logo-name.webp";
+import subImg from "../assets/hero-logo-sub.webp";
 import necklaceImg from "../assets/hero-temple-necklace-hd.webp";
 import { useLang } from "../i18n/LanguageContext";
 import heroFile from "../content/hero.json";
@@ -40,12 +43,61 @@ const SLIDES = [
   ...imageSlides,
 ];
 
+// Twinkling 4-point stars placed over the logo (percent of the logo box).
+const SPARKS = [
+  { x: 54, y: 4, s: 22, d: 2.6, delay: 2.2 },
+  { x: 77, y: 30, s: 14, d: 3.1, delay: 3.0 },
+  { x: 24, y: 56, s: 16, d: 2.8, delay: 3.6 },
+  { x: 96, y: 80, s: 18, d: 3.4, delay: 2.6 },
+  { x: 2, y: 84, s: 12, d: 2.9, delay: 4.1 },
+  { x: 60, y: 66, s: 11, d: 3.3, delay: 4.6 },
+];
+
+// Gold dust drifting up through the background (left %, size px, seconds).
+const DUST = [
+  [6, 4, 13], [14, 3, 17], [23, 5, 11], [31, 2, 15], [42, 3, 19], [48, 4, 12],
+  [57, 2, 16], [66, 5, 14], [74, 3, 18], [83, 4, 12], [91, 2, 15], [97, 3, 20],
+];
+
+function Spark({ size }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 0c.7 6.4 5 11 12 12-7 1-11.3 5.6-12 12-.7-6.4-5-11-12-12 7-1 11.3-5.6 12-12z" fill="#FFF3C4" />
+    </svg>
+  );
+}
+
+// The first hero panel. When it comes into view the logo plays a short
+// intro: the monogram glows in, "PADMAVATHI" is written in left to right,
+// "JEWELLERS" opens out from the centre, a shine sweeps across the gold and
+// stars twinkle; the necklace arch slides in beside it. The animations live
+// in index.css under ".vj-slide[aria-hidden=false]" so they replay each time
+// the slide comes back round.
 function BrandSlide({ t }) {
   return (
     <div
-      className="absolute inset-0"
+      className="vj-brand absolute inset-0 overflow-hidden"
       style={{ background: "radial-gradient(ellipse at 28% 45%, #8E1D33 0%, #5C0F20 45%, #2C0610 100%)" }}
     >
+      {/* gold dust */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {DUST.map(([x, size, dur], i) => (
+          <span
+            key={i}
+            className="vj-dust absolute rounded-full"
+            style={{
+              left: `${x}%`,
+              bottom: "-10px",
+              width: size,
+              height: size,
+              background: "radial-gradient(circle, #FFE9A8 0%, rgba(242,196,90,0.6) 45%, rgba(242,196,90,0) 70%)",
+              animationDuration: `${dur}s`,
+              animationDelay: `${-(i * 1.7) % dur}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* thin gold frame, echoing the poster's border */}
       <div
         className="absolute inset-3 md:inset-5 pointer-events-none"
@@ -56,19 +108,60 @@ function BrandSlide({ t }) {
           percentages, so nothing can outgrow the frame on short or wide
           screens; min(100%, …) keeps them inside their half on phones. */}
       <div className="relative h-full max-w-6xl mx-auto grid grid-cols-2 gap-4 md:gap-12 px-10 md:px-20">
-        {/* left half — logo */}
+        {/* left half — animated logo */}
         <div className="flex flex-col items-center justify-center text-center min-w-0">
-          <img
-            src={logoImg}
-            alt={t("hero.alt.logo")}
-            className="block h-auto"
-            style={{
-              width: "min(100%, calc(var(--hero-h) * 0.58))",
-              filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.35))",
-            }}
-          />
           <div
-            className="vj-display leading-snug"
+            className="relative"
+            role="img"
+            aria-label={t("hero.alt.logo")}
+            style={{ width: "min(100%, calc(var(--hero-h) * 0.58))", filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.35))" }}
+          >
+            {/* soft glow behind the monogram */}
+            <span
+              className="vj-brand-halo absolute left-1/2 rounded-full pointer-events-none"
+              style={{
+                top: "34%",
+                width: "78%",
+                aspectRatio: "1",
+                transform: "translate(-50%, -50%)",
+                background: "radial-gradient(circle, rgba(255,214,120,0.38) 0%, rgba(255,214,120,0.12) 40%, rgba(255,214,120,0) 68%)",
+              }}
+              aria-hidden="true"
+            />
+            <img src={markImg} alt="" className="vj-brand-mark relative block w-full h-auto" />
+            <img src={nameImg} alt="" className="vj-brand-name relative block w-full h-auto" />
+            <img src={subImg} alt="" className="vj-brand-sub relative block w-full h-auto" />
+            {/* shine sweeping across the gold (masked to the logo's shape) */}
+            <span
+              className="vj-brand-shine absolute inset-0 pointer-events-none"
+              style={{
+                WebkitMaskImage: `url(${logoImg})`,
+                maskImage: `url(${logoImg})`,
+                WebkitMaskSize: "100% 100%",
+                maskSize: "100% 100%",
+              }}
+              aria-hidden="true"
+            />
+            {SPARKS.map((sp, i) => (
+              <span
+                key={i}
+                className="vj-spark absolute pointer-events-none"
+                style={{
+                  left: `${sp.x}%`,
+                  top: `${sp.y}%`,
+                  transform: "translate(-50%, -50%)",
+                  "--spark-d": `${sp.d}s`,
+                  "--spark-delay": `${sp.delay}s`,
+                  width: `calc(${sp.s}px + 0.6vw)`,
+                }}
+                aria-hidden="true"
+              >
+                <Spark size="100%" />
+              </span>
+            ))}
+          </div>
+          <div
+            className="vj-brand-tag vj-display leading-snug"
             style={{
               color: "var(--gold-100)",
               fontSize: "clamp(0.8rem, min(calc(var(--hero-h) * 0.045), 3.6vw), 1.75rem)",
@@ -80,9 +173,9 @@ function BrandSlide({ t }) {
         </div>
 
         {/* right half — jewellery */}
-        <div className="flex flex-col items-center justify-center min-w-0">
+        <div className="vj-brand-arch flex flex-col items-center justify-center min-w-0">
           <div
-            className="vj-archlg overflow-hidden"
+            className="vj-archlg overflow-hidden relative"
             style={{
               width: "min(100%, calc(var(--hero-h) * 0.66 * 0.913))",
               aspectRatio: "1008 / 1104",
@@ -91,6 +184,7 @@ function BrandSlide({ t }) {
             }}
           >
             <img src={necklaceImg} alt={t("hero.alt.necklace")} className="vj-kb block w-full h-full" style={{ objectFit: "cover" }} />
+            <span className="vj-arch-sweep absolute inset-0 pointer-events-none" aria-hidden="true" />
           </div>
           <div
             className="vj-mono tracking-widest text-center"
@@ -168,11 +262,13 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
 
   useEffect(() => {
     if (paused) return;
-    intervalRef.current = setInterval(() => {
+    // the animated logo slide stays up longer so its intro can play out
+    const ms = slides[index]?.type === "brand" ? 7500 : 4500;
+    intervalRef.current = setTimeout(() => {
       setIndex((i) => (i + 1) % slides.length);
-    }, 4500);
-    return () => clearInterval(intervalRef.current);
-  }, [paused, slides.length]);
+    }, ms);
+    return () => clearTimeout(intervalRef.current);
+  }, [paused, slides, index]);
 
   function goTo(i) {
     setIndex(((i % slides.length) + slides.length) % slides.length);
