@@ -1,5 +1,6 @@
 import { MapPin, Clock, Phone, Navigation, CalendarHeart } from "lucide-react";
-import { STORE, WHATSAPP_URL, PHONE_URL, MAP_EMBED_URL, DIRECTIONS_URL } from "../data/site";
+import { STORE, WHATSAPP_URL, PHONE_URL, MAP_EMBED_URL, DIRECTIONS_URL, SOCIALS } from "../data/site";
+import { SocialRow } from "./SocialIcons";
 import { useLang } from "../i18n/LanguageContext";
 import WhatsAppIcon from "./WhatsAppIcon";
 
@@ -67,6 +68,16 @@ export default function VisitUs({ onBookVisit }) {
               <CalendarHeart size={16} /> {t("nav.book")}
             </button>
           </div>
+
+          {SOCIALS.some((x) => x.key !== "whatsapp") && (
+            <div className="flex items-center gap-4 mt-7">
+              <span className="vj-mono text-[11px] tracking-widest" style={{ color: "var(--gold-700)" }}>
+                {t("footer.follow").toUpperCase()}
+              </span>
+              <span className="h-px w-8" style={{ background: "var(--gold-500)" }} />
+              <SocialRow size={44} exclude={["whatsapp"]} />
+            </div>
+          )}
         </div>
 
         {/* map in a gold arch; the maroon backdrop shows while it loads */}

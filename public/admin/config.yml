@@ -316,5 +316,6 @@ collections:
           - { name: email, label: Email, widget: string, required: false }
           - { name: hours_en, label: Opening hours (English), widget: text, required: false, hint: "e.g. Mon–Sat 10:00 am – 8:30 pm" }
           - { name: hours_te, label: Opening hours (Telugu), widget: text, required: false }
-          - { name: instagram, label: Instagram link, widget: string, required: false, hint: "Full link, e.g. https://instagram.com/yourshop" }
-          - { name: facebook, label: Facebook link, widget: string, required: false }
+          - { name: instagram, label: Instagram link, widget: string, required: false, hint: "Full link, e.g. https://instagram.com/yourshop — shows the Instagram icon. Leave empty to hide it." }
+          - { name: youtube, label: YouTube link, widget: string, required: false, hint: "Full link to the channel, e.g. https://youtube.com/@yourshop" }
+          - { name: facebook, label: Facebook link, widget: string, required: false, hint: "Optional. Full link to the Facebook page." }

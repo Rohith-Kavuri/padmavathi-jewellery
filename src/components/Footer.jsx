@@ -1,8 +1,8 @@
-import { Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { CATEGORIES } from "../data/products";
-import { STORE, WHATSAPP_URL, PHONE_URL } from "../data/site";
+import { STORE, PHONE_URL, SOCIALS } from "../data/site";
+import { SocialRow } from "./SocialIcons";
 import { useLang } from "../i18n/LanguageContext";
-import WhatsAppIcon from "./WhatsAppIcon";
 import goldWordmark from "../assets/padmavathi-wordmark-gold.webp";
 
 // Gold flourish for the footer corners (mirrored for the right side).
@@ -29,12 +29,6 @@ function Corner({ className, flip }) {
 export default function Footer({ onSelectCategory, onBookVisit, onGoVisit, onGoRates }) {
   const { t, tx } = useLang();
 
-  const social = [
-    WHATSAPP_URL && { href: WHATSAPP_URL, label: "WhatsApp", icon: <WhatsAppIcon size={16} /> },
-    STORE.instagram && { href: STORE.instagram, label: "Instagram", icon: <Instagram size={16} /> },
-    STORE.facebook && { href: STORE.facebook, label: "Facebook", icon: <Facebook size={16} /> },
-  ].filter(Boolean);
-
   const linkStyle = { color: "rgba(251,236,200,0.75)" };
   const head = "vj-mono text-[11px] tracking-widest mb-4";
 
@@ -54,6 +48,14 @@ export default function Footer({ onSelectCategory, onBookVisit, onGoVisit, onGoR
             {t("footer.tagline")}
           </p>
           <p className="text-xs md:text-sm max-w-md mx-auto mt-2">{t("footer.about")}</p>
+          {SOCIALS.length > 0 && (
+            <div className="mt-6">
+              <div className="vj-mono text-[10px] tracking-widest mb-3" style={{ color: "var(--gold-500)" }}>
+                ✦ {t("footer.follow").toUpperCase()} ✦
+              </div>
+              <SocialRow size={46} className="justify-center gap-4" />
+            </div>
+          )}
         </div>
 
         <div className="h-px mb-10" style={{ background: "linear-gradient(90deg, transparent, rgba(227,170,44,0.55), transparent)" }} />
@@ -77,24 +79,6 @@ export default function Footer({ onSelectCategory, onBookVisit, onGoVisit, onGoR
               <a href={`mailto:${STORE.email}`} className="flex items-center gap-2.5 mt-2 vj-focus">
                 <Mail size={15} style={{ color: "var(--gold-300)" }} /> {STORE.email}
               </a>
-            )}
-            {social.length > 0 && (
-              <div className="flex items-center gap-3 mt-5">
-                <span className="text-xs mr-1">{t("footer.follow")}</span>
-                {social.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="vj-focus flex items-center justify-center w-9 h-9 rounded-full transition-colors hover:bg-[#e3aa2c] hover:text-[#24050d]"
-                    style={{ border: "1px solid rgba(227,170,44,0.55)", color: "var(--gold-100)" }}
-                  >
-                    {s.icon}
-                  </a>
-                ))}
-              </div>
             )}
           </div>
 
