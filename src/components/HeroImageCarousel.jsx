@@ -4,7 +4,7 @@ import logoImg from "../assets/padmavathi-logo-transparent.webp";
 import markImg from "../assets/hero-logo-mark.webp";
 import nameImg from "../assets/hero-logo-name.webp";
 import subImg from "../assets/hero-logo-sub.webp";
-import necklaceImg from "../assets/hero-temple-necklace-hd.webp";
+import LotusReveal from "./LotusReveal";
 import { useLang } from "../i18n/LanguageContext";
 import heroFile from "../content/hero.json";
 
@@ -172,25 +172,14 @@ function BrandSlide({ t }) {
           </div>
         </div>
 
-        {/* right half — jewellery */}
-        <div className="vj-brand-arch flex flex-col items-center justify-center min-w-0">
+        {/* right half — a lotus opens to reveal Sri Padmavathi */}
+        <div className="flex flex-col items-center justify-center min-w-0">
+          <LotusReveal alt={t("hero.alt.goddess")} />
           <div
-            className="vj-archlg overflow-hidden relative"
-            style={{
-              width: "min(100%, calc(var(--hero-h) * 0.66 * 0.913))",
-              aspectRatio: "1008 / 1104",
-              border: "2px solid rgba(255,201,60,0.75)",
-              boxShadow: "0 0 0 6px rgba(255,201,60,0.12), 0 30px 60px -20px rgba(0,0,0,0.65)",
-            }}
+            className="vj-brand-tag vj-mono tracking-widest text-center relative"
+            style={{ color: "var(--gold-300)", fontSize: "clamp(9px, min(calc(var(--hero-h) * 0.022), 2.4vw), 13px)", marginTop: "calc(var(--hero-h) * 0.07)" }}
           >
-            <img src={necklaceImg} alt={t("hero.alt.necklace")} className="vj-kb block w-full h-full" style={{ objectFit: "cover" }} />
-            <span className="vj-arch-sweep absolute inset-0 pointer-events-none" aria-hidden="true" />
-          </div>
-          <div
-            className="vj-mono tracking-widest text-center"
-            style={{ color: "var(--gold-300)", fontSize: "clamp(9px, min(calc(var(--hero-h) * 0.022), 2.4vw), 13px)", marginTop: "calc(var(--hero-h) * 0.03)" }}
-          >
-            {t("hero.necklaceCaption")}
+            {t("hero.goddessCaption")}
           </div>
         </div>
       </div>
