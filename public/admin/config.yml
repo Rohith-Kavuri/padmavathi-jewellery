@@ -137,6 +137,36 @@ collections:
           - { name: silver, label: "Silver (₹ per gram)", widget: number, value_type: int, min: 0, required: false, hint: "Leave empty or 0 to hide." }
           - { name: platinum, label: "Platinum (₹ per gram)", widget: number, value_type: int, min: 0, required: false, hint: "Leave empty or 0 to hide." }
 
+      - name: catalogue
+        label: "Catalogue (PDF)"
+        file: src/content/catalogue.json
+        fields:
+          - name: pdf
+            label: Catalogue PDF
+            widget: file
+            required: false
+            choose_url: false
+            hint: "Upload the catalogue as a PDF (best under ~10 MB). Visitors can view or download it from the 'Catalogue' section. Remove it to show 'coming soon' instead."
+          - name: cover
+            label: Cover picture
+            widget: image
+            required: false
+            choose_url: false
+            hint: "Picture of the catalogue's front page, shown as the book cover on the website. Portrait, about 700 × 1000 px, JPG or WebP."
+          - name: updated
+            label: Catalogue date
+            widget: datetime
+            format: "YYYY-MM-DD"
+            date_format: "DD MMM YYYY"
+            time_format: false
+            required: false
+          - name: pages
+            label: Number of pages
+            widget: number
+            value_type: int
+            min: 0
+            required: false
+            hint: "Optional. Shown next to the buttons, e.g. '6 pages'."
       - name: hero
         label: Hero slides (top banner)
         file: src/content/hero.json

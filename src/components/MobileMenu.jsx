@@ -12,6 +12,7 @@ export default function MobileMenu({
   onGoRates,
   onGoHeritage,
   onGoVisit,
+  onGoCatalogue,
   onBookVisit,
 }) {
   const { t } = useLang();
@@ -23,6 +24,7 @@ export default function MobileMenu({
     ["nav.rates", onGoRates],
     ["nav.heritage", onGoHeritage],
     ["nav.visit", onGoVisit],
+    ["nav.catalogue", onGoCatalogue],
     ["nav.book", onBookVisit],
   ];
 

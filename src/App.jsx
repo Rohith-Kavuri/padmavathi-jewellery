@@ -18,6 +18,7 @@ import Catalog from "./components/Catalog";
 import GoldRateSection from "./components/GoldRateSection";
 import WhyUs from "./components/WhyUs";
 import Testimonials from "./components/Testimonials";
+import CatalogueSection from "./components/CatalogueSection";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
@@ -161,6 +162,10 @@ export default function App() {
     document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  function goCatalogue() {
+    document.getElementById("catalogue-section")?.scrollIntoView({ behavior: "smooth" });
+  }
+
   function goHeritage() {
     document.getElementById("heritage-section")?.scrollIntoView({ behavior: "smooth" });
   }
@@ -204,6 +209,7 @@ export default function App() {
         onGoRates={goRates}
         onGoHeritage={goHeritage}
         onGoVisit={goVisit}
+        onGoCatalogue={goCatalogue}
         onBookVisit={() => setApptOpen(true)}
       />
 
@@ -217,6 +223,7 @@ export default function App() {
         onGoRates={goRates}
         onGoHeritage={goHeritage}
         onGoVisit={goVisit}
+        onGoCatalogue={goCatalogue}
         onBookVisit={() => setApptOpen(true)}
       />
 
@@ -268,6 +275,10 @@ export default function App() {
 
       <div className="vj-reveal">
         <Testimonials />
+      </div>
+
+      <div className="vj-reveal">
+        <CatalogueSection onBookVisit={() => setApptOpen(true)} />
       </div>
 
       <div className="vj-reveal">

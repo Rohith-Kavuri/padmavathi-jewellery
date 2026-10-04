@@ -152,6 +152,18 @@ export const STRINGS = {
     "lightbox.hintDesktop": "Click or scroll to zoom · move the mouse to look around · Esc to close",
     "lightbox.hintPhone": "Pinch or double-tap to zoom · swipe down to close",
 
+    // catalogue
+    "nav.catalogue": "Catalogue",
+    "catalogue.eyebrow": "OUR CATALOGUE",
+    "catalogue.title": "Take the collection home",
+    "catalogue.body": "Browse every design at your own pace — on your phone, or save it and share it with family before you visit.",
+    "catalogue.soon": "Our new catalogue is on its way. Visit us to see the full collection.",
+    "catalogue.view": "View catalogue",
+    "catalogue.download": "Download PDF",
+    "catalogue.pages": "{count} pages",
+    "catalogue.updated": "Updated {date}",
+    "catalogue.coverAlt": "Padmavathi Jewellers catalogue cover",
+
     // why us (lightweight, affordable jewellery)
     "why.eyebrow": "OUR SPECIALITY",
     "why.title1": "Weighs less.",
@@ -343,6 +355,18 @@ export const STRINGS = {
     "lightbox.zoomOut": "జూమ్ అవుట్",
     "lightbox.hintDesktop": "జూమ్ చేయడానికి క్లిక్ లేదా స్క్రోల్ చేయండి · చుట్టూ చూడటానికి మౌస్ కదపండి · మూసివేయడానికి Esc",
     "lightbox.hintPhone": "జూమ్ చేయడానికి రెండు వేళ్లతో సాగదీయండి లేదా రెండుసార్లు నొక్కండి · మూసివేయడానికి కిందికి లాగండి",
+
+    // catalogue
+    "nav.catalogue": "కేటలాగ్",
+    "catalogue.eyebrow": "మా కేటలాగ్",
+    "catalogue.title": "కలెక్షన్‌ను ఇంటికి తీసుకెళ్లండి",
+    "catalogue.body": "మీకు నచ్చిన సమయంలో ప్రతి డిజైన్‌ను చూడండి — ఫోన్‌లోనే, లేదా సేవ్ చేసి మా షాప్‌కి రాకముందే కుటుంబంతో పంచుకోండి.",
+    "catalogue.soon": "మా కొత్త కేటలాగ్ త్వరలో వస్తుంది. పూర్తి కలెక్షన్ చూడటానికి మా షాప్‌కి రండి.",
+    "catalogue.view": "కేటలాగ్ చూడండి",
+    "catalogue.download": "PDF డౌన్‌లోడ్",
+    "catalogue.pages": "{count} పేజీలు",
+    "catalogue.updated": "{date}న అప్‌డేట్ చేశాం",
+    "catalogue.coverAlt": "పద్మావతి జ్యువెలర్స్ కేటలాగ్ కవర్",
 
     // why us (lightweight, affordable jewellery)
     "why.eyebrow": "మా ప్రత్యేకత",

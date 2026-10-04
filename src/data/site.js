@@ -3,6 +3,7 @@
 import store from "../content/store.json";
 import featured from "../content/featured.json";
 import occasionsFile from "../content/occasions.json";
+import catalogueFile from "../content/catalogue.json";
 
 const bi = (en, te) => ({ en: en || "", te: te || en || "" });
 const digits = (v) => String(v || "").replace(/[^\d]/g, "");
@@ -46,3 +47,11 @@ export const OCCASIONS = (occasionsFile.occasions || [])
     text: bi(o.text_en, o.text_te),
     category: o.category || "All",
   }));
+
+// Catalogue PDF (Homepage → Catalogue (PDF) in the admin page).
+export const CATALOGUE = {
+  pdf: catalogueFile.pdf || "",
+  cover: catalogueFile.cover || "",
+  pages: Number(catalogueFile.pages) || 0,
+  updated: catalogueFile.updated ? new Date(`${String(catalogueFile.updated).slice(0, 10)}T00:00:00`) : null,
+};
