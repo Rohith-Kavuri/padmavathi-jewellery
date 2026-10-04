@@ -1,0 +1,94 @@
+{
+  "catalogues": [
+    {
+      "title_en": "Full Collection",
+      "title_te": "పూర్తి కలెక్షన్",
+      "category": "",
+      "pdf": "/images/uploads/catalogue-full.pdf",
+      "cover": "/images/uploads/catalogue-full-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 6
+    },
+    {
+      "title_en": "Necklaces",
+      "title_te": "నెక్లెస్‌లు",
+      "category": "Necklace",
+      "pdf": "/images/uploads/catalogue-necklace.pdf",
+      "cover": "/images/uploads/catalogue-necklace-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 2
+    },
+    {
+      "title_en": "Earrings",
+      "title_te": "చెవిపోగులు",
+      "category": "Earrings",
+      "pdf": "/images/uploads/catalogue-earrings.pdf",
+      "cover": "/images/uploads/catalogue-earrings-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 2
+    },
+    {
+      "title_en": "Bangles",
+      "title_te": "గాజులు",
+      "category": "Bangles",
+      "pdf": "/images/uploads/catalogue-bangles.pdf",
+      "cover": "/images/uploads/catalogue-bangles-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 2
+    },
+    {
+      "title_en": "Bracelets",
+      "title_te": "బ్రేస్‌లెట్లు",
+      "category": "Bracelets",
+      "pdf": "/images/uploads/catalogue-bracelets.pdf",
+      "cover": "/images/uploads/catalogue-bracelets-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 2
+    },
+    {
+      "title_en": "Rings",
+      "title_te": "ఉంగరాలు",
+      "category": "Rings",
+      "pdf": "/images/uploads/catalogue-rings.pdf",
+      "cover": "/images/uploads/catalogue-rings-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 2
+    },
+    {
+      "title_en": "Mangalsutra",
+      "title_te": "మంగళసూత్రం",
+      "category": "Mangalsutra",
+      "pdf": "/images/uploads/catalogue-mangalsutra.pdf",
+      "cover": "/images/uploads/catalogue-mangalsutra-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 2
+    },
+    {
+      "title_en": "Bridal Sets",
+      "title_te": "పెళ్లి సెట్లు",
+      "category": "Bridal Set",
+      "pdf": "/images/uploads/catalogue-bridal-set.pdf",
+      "cover": "/images/uploads/catalogue-bridal-set-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 2
+    },
+    {
+      "title_en": "Chains",
+      "title_te": "గొలుసులు",
+      "category": "Chains",
+      "pdf": "/images/uploads/catalogue-chains.pdf",
+      "cover": "/images/uploads/catalogue-chains-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 2
+    },
+    {
+      "title_en": "Pendants",
+      "title_te": "లాకెట్లు",
+      "category": "Pendant",
+      "pdf": "/images/uploads/catalogue-pendant.pdf",
+      "cover": "/images/uploads/catalogue-pendant-cover.webp",
+      "updated": "2026-10-03",
+      "pages": 2
+    }
+  ]
+}

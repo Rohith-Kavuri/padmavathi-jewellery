@@ -17,6 +17,7 @@ export default function Header({
   onGoRates,
   onGoHeritage,
   onGoVisit,
+  onGoCatalogue,
   onBookVisit,
 }) {
   const { t } = useLang();
@@ -27,6 +28,7 @@ export default function Header({
     ["nav.rates", onGoRates],
     ["nav.heritage", onGoHeritage],
     ["nav.visit", onGoVisit],
+    ["nav.catalogue", onGoCatalogue],
     ["nav.book", onBookVisit],
   ];
 

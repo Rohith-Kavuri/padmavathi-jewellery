@@ -3,6 +3,7 @@
 import store from "../content/store.json";
 import featured from "../content/featured.json";
 import occasionsFile from "../content/occasions.json";
+import catalogueFile from "../content/catalogue.json";
 
 const bi = (en, te) => ({ en: en || "", te: te || en || "" });
 const digits = (v) => String(v || "").replace(/[^\d]/g, "");
@@ -45,4 +46,16 @@ export const OCCASIONS = (occasionsFile.occasions || [])
     title: bi(o.title_en, o.title_te),
     text: bi(o.text_en, o.text_te),
     category: o.category || "All",
+  }));
+
+// Catalogue PDFs (Homepage → Catalogues (PDF) in the admin page).
+export const CATALOGUES = (catalogueFile.catalogues || [])
+  .filter((c) => c && c.pdf)
+  .map((c) => ({
+    title: bi(c.title_en, c.title_te),
+    category: c.category || "",
+    pdf: c.pdf,
+    cover: c.cover || "",
+    pages: Number(c.pages) || 0,
+    updated: c.updated ? new Date(`${String(c.updated).slice(0, 10)}T00:00:00`) : null,
   }));
