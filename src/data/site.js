@@ -28,12 +28,13 @@ export const WHATSAPP_URL = wa
   ? `https://wa.me/${wa.length === 10 ? "91" + wa : wa}?text=${encodeURIComponent(WA_GREETING)}`
   : "";
 
-// Social links shown as icons (floating rail, footer, Visit Us, phone menu).
-// Each one appears only when its link is filled in the admin page.
+// Social links shown as icons (floating stack, footer, Visit Us, phone menu).
+// Instagram and YouTube always show; until their links are filled in the
+// admin page they open WhatsApp instead. Facebook shows only when filled in.
 export const SOCIALS = [
   WHATSAPP_URL && { key: "whatsapp", href: WHATSAPP_URL },
-  STORE.instagram && { key: "instagram", href: STORE.instagram },
-  STORE.youtube && { key: "youtube", href: STORE.youtube },
+  (STORE.instagram || WHATSAPP_URL) && { key: "instagram", href: STORE.instagram || WHATSAPP_URL },
+  (STORE.youtube || WHATSAPP_URL) && { key: "youtube", href: STORE.youtube || WHATSAPP_URL },
   STORE.facebook && { key: "facebook", href: STORE.facebook },
 ].filter(Boolean);
 export const PHONE_URL = STORE.phone ? `tel:${STORE.phone.replace(/[^\d+]/g, "")}` : "";
