@@ -2,7 +2,7 @@ import goddessImg from "../assets/hero-padmavathi.webp";
 
 // A golden lotus that opens to reveal Sri Padmavathi Ammavaru (first hero
 // slide, right half). Built from layers so it stays sharp at any size:
-//   rays + glow  →  back petals (fan out behind her)  →  the goddess  →
+//   glow + gold arch  →  back petals (fan out behind her)  →  the goddess  →
 //   front petals (open outwards in front).
 // The bud → bloom animation is in index.css (.vj-lotus-*); it plays each
 // time the slide comes into view and rests fully open.
@@ -101,10 +101,34 @@ function Petals({ list, fill, className }) {
 
 export default function LotusReveal({ alt }) {
   return (
-    <div className="vj-lotus relative" style={{ width: "min(100%, calc(var(--hero-h) * 0.62))", aspectRatio: "0.82" }}>
-      {/* light rays and glow behind */}
-      <span className="vj-lotus-rays absolute left-1/2 rounded-full pointer-events-none" aria-hidden="true" />
+    <div className="vj-lotus relative" style={{ width: "min(100%, calc(var(--hero-h) * 0.57))", aspectRatio: "0.82" }}>
+      {/* soft glow, and a gold temple arch drawn behind her like a shrine niche */}
       <span className="vj-lotus-glow absolute left-1/2 rounded-full pointer-events-none" aria-hidden="true" />
+      <svg viewBox="0 0 100 122" className="vj-lotus-arch absolute inset-0 w-full h-full pointer-events-none" style={{ overflow: "visible" }} aria-hidden="true">
+        <defs>
+          <linearGradient id="vjArchGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#fff3c4" />
+            <stop offset="0.35" stopColor="#e3aa2c" />
+            <stop offset="0.6" stopColor="#8a5a0e" />
+            <stop offset="0.85" stopColor="#f6d77c" />
+            <stop offset="1" stopColor="#b8862b" />
+          </linearGradient>
+          <radialGradient id="vjArchNiche" cx="50%" cy="42%" r="60%">
+            <stop offset="0" stopColor="#ffd98a" stopOpacity="0.22" />
+            <stop offset="0.6" stopColor="#8e1d33" stopOpacity="0.18" />
+            <stop offset="1" stopColor="#24050d" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <path className="vj-arch-fill" d="M8 98 V43 C8 19 28 6 50 0.5 C72 6 92 19 92 43 V98 Z" fill="url(#vjArchNiche)" />
+        <path className="vj-arch-line" pathLength="1" d="M3.5 98 V44 C3.5 18 25.5 4.5 50 -1 C74.5 4.5 96.5 18 96.5 44 V98" fill="none" stroke="url(#vjArchGold)" strokeWidth="0.9" />
+        <path className="vj-arch-line" pathLength="1" d="M8 98 V43 C8 19 28 6 50 0.5 C72 6 92 19 92 43 V98" fill="none" stroke="url(#vjArchGold)" strokeWidth="0.4" style={{ animationDelay: "1.05s" }} />
+        <g className="vj-arch-crown">
+          <path d="M50 -8 C52.2 -5.5 52.2 -3.3 50 -1.7 C47.8 -3.3 47.8 -5.5 50 -8 Z" fill="url(#vjArchGold)" />
+          <circle cx="50" cy="-9.5" r="0.9" fill="#fff3c4" />
+          <circle cx="43" cy="1" r="0.8" fill="#f2c45a" />
+          <circle cx="57" cy="1" r="0.8" fill="#f2c45a" />
+        </g>
+      </svg>
 
       {/* petals that fan out behind her */}
       <Petals list={BACK} fill="vjPetalPink" className="vj-lotus-back absolute left-1/2 pointer-events-none" />

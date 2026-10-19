@@ -443,6 +443,68 @@
   font-weight: 700 !important;
 }
 
+/* ---------- first slide: film-style backdrop, arch, sweep ---------- */
+.vj-brand-bg {
+  filter: blur(14px) saturate(1.15);
+  opacity: 0.5;
+  transform: scale(1.18);
+  animation: vj-bg-drift 24s ease-in-out infinite alternate;
+}
+@keyframes vj-bg-drift {
+  from { transform: scale(1.18) translate(0, 0); }
+  to { transform: scale(1.26) translate(-2%, 1%); }
+}
+.vj-bokeh {
+  animation: vj-bokeh var(--d) ease-in-out infinite alternate;
+}
+@keyframes vj-bokeh {
+  from { transform: translate(-50%, -50%); opacity: 0.55; }
+  to { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))); opacity: 1; }
+}
+.vj-brand-sweep {
+  background: linear-gradient(105deg, rgba(255, 240, 200, 0) 38%, rgba(255, 240, 200, 0.12) 47%, rgba(255, 250, 230, 0.28) 50%, rgba(255, 240, 200, 0.12) 53%, rgba(255, 240, 200, 0) 62%);
+  mix-blend-mode: screen;
+  transform: translateX(-100%);
+}
+.vj-slide[aria-hidden="false"] .vj-brand-sweep {
+  animation: vj-brand-sweep 9s ease-in-out 3.4s infinite;
+}
+@keyframes vj-brand-sweep {
+  0% { transform: translateX(-100%); }
+  22%, 100% { transform: translateX(100%); }
+}
+.vj-slide[aria-hidden="false"] .vj-brand-eyebrow {
+  animation: vj-fade-up 0.9s ease 0.2s both;
+}
+.vj-brand-rule {
+  transform-origin: center;
+}
+.vj-slide[aria-hidden="false"] .vj-brand-rule {
+  animation: vj-rule-grow 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 2.3s both;
+}
+@keyframes vj-rule-grow {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+.vj-arch-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  filter: drop-shadow(0 0 1.5px rgba(242, 196, 90, 0.6));
+}
+.vj-slide[aria-hidden="false"] .vj-arch-line {
+  animation: vj-draw 1.9s cubic-bezier(0.45, 0, 0.2, 1) 0.8s both;
+}
+@keyframes vj-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+.vj-slide[aria-hidden="false"] .vj-arch-fill {
+  animation: vj-fade-in 1.4s ease 1.4s both;
+}
+.vj-slide[aria-hidden="false"] .vj-arch-crown {
+  animation: vj-fade-in 0.8s ease 2.4s both;
+}
+
 /* ---------- lotus opening to reveal Sri Padmavathi (first hero slide) ---------- */
 .vj-lotus-rays {
   top: 40%;
@@ -618,6 +680,14 @@
   .vj-slide .vj-brand-shine,
   .vj-slide .vj-arch-sweep,
   .vj-gold-text,
+  .vj-brand-bg,
+  .vj-bokeh,
+  .vj-slide .vj-brand-sweep,
+  .vj-slide .vj-brand-eyebrow,
+  .vj-slide .vj-brand-rule,
+  .vj-slide .vj-arch-line,
+  .vj-slide .vj-arch-fill,
+  .vj-slide .vj-arch-crown,
   .vj-slide .vj-spark,
   .vj-lotus-rays,
   .vj-slide .vj-lotus-front,

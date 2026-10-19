@@ -5,6 +5,7 @@ import markImg from "../assets/hero-logo-mark.webp";
 import nameImg from "../assets/hero-logo-name.webp";
 import subImg from "../assets/hero-logo-sub.webp";
 import LotusReveal from "./LotusReveal";
+import backdropImg from "../assets/hero-temple-necklace-hd.webp";
 import { useLang } from "../i18n/LanguageContext";
 import heroFile from "../content/hero.json";
 
@@ -55,6 +56,13 @@ const SPARKS = [
   { x: 60, y: 66, s: 11, d: 3.3, delay: 4.6 },
 ];
 
+// Soft out-of-focus lights drifting behind everything (left %, top %, size as
+// a share of the slide height, seconds per drift).
+const BOKEH = [
+  [8, 22, 0.16, 11], [19, 74, 0.1, 14], [33, 12, 0.08, 12], [44, 82, 0.13, 16], [58, 18, 0.07, 13],
+  [67, 70, 0.11, 15], [79, 30, 0.14, 12], [90, 78, 0.09, 17], [96, 12, 0.12, 14], [3, 90, 0.08, 13],
+];
+
 // Gold dust drifting up through the background (left %, size px, seconds).
 const DUST = [
   [6, 4, 13], [14, 3, 17], [23, 5, 11], [31, 2, 15], [42, 3, 19], [48, 4, 12],
@@ -77,10 +85,36 @@ function Spark({ size }) {
 // the slide comes back round.
 function BrandSlide({ t }) {
   return (
-    <div
-      className="vj-brand absolute inset-0 overflow-hidden"
-      style={{ background: "radial-gradient(ellipse at 28% 45%, #8E1D33 0%, #5C0F20 45%, #2C0610 100%)" }}
-    >
+    <div className="vj-brand absolute inset-0 overflow-hidden" style={{ background: "#2C0610" }}>
+      {/* soft-focus temple necklace behind a maroon wash, like the film */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <img src={backdropImg} alt="" className="vj-brand-bg absolute inset-0 w-full h-full" style={{ objectFit: "cover" }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 30% 48%, rgba(142,29,51,0.62) 0%, rgba(92,15,32,0.8) 45%, rgba(36,5,13,0.94) 100%)",
+          }}
+        />
+        {BOKEH.map(([x, y, size, dur], i) => (
+          <span
+            key={i}
+            className="vj-bokeh absolute rounded-full"
+            style={{
+              left: `${x}%`,
+              top: `${y}%`,
+              width: `calc(var(--hero-h) * ${size})`,
+              aspectRatio: "1",
+              transform: "translate(-50%, -50%)",
+              background: "radial-gradient(circle, rgba(255,214,130,0.17) 0%, rgba(242,180,80,0.06) 55%, rgba(242,180,80,0) 72%)",
+              "--d": `${dur}s`,
+              "--dx": `${i % 2 ? 18 : -14}px`,
+              "--dy": `${i % 3 ? -22 : 16}px`,
+              animationDelay: `${-i * 1.3}s`,
+            }}
+          />
+        ))}
+      </div>
       {/* gold dust */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {DUST.map(([x, size, dur], i) => (
@@ -100,11 +134,13 @@ function BrandSlide({ t }) {
         ))}
       </div>
 
-      {/* thin gold frame, echoing the poster's border */}
+      {/* cinematic vignette and a light sweep that crosses the slide */}
       <div
-        className="absolute inset-3 md:inset-5 pointer-events-none"
-        style={{ border: "1px solid rgba(242,183,5,0.35)", borderRadius: 6 }}
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 50%, rgba(12,1,5,0.55) 100%)" }}
+        aria-hidden="true"
       />
+      <span className="vj-brand-sweep absolute inset-0 pointer-events-none" aria-hidden="true" />
       {/* Two equal halves, each centred on both axes. Sizes are derived from
           the slide height (--hero-h, set on the carousel) rather than from
           percentages, so nothing can outgrow the frame on short or wide
@@ -113,10 +149,21 @@ function BrandSlide({ t }) {
         {/* left half — animated logo */}
         <div className="flex flex-col items-center justify-center text-center min-w-0">
           <div
+            className="vj-brand-eyebrow vj-mono"
+            style={{
+              color: "var(--gold-300)",
+              fontSize: "clamp(7px, min(calc(var(--hero-h) * 0.019), 1.9vw), 12px)",
+              letterSpacing: "0.42em",
+              marginBottom: "calc(var(--hero-h) * 0.035)",
+            }}
+          >
+            ✦ {t("hero.eyebrow")} ✦
+          </div>
+          <div
             className="relative"
             role="img"
             aria-label={t("hero.alt.logo")}
-            style={{ width: "min(100%, calc(var(--hero-h) * 0.58))", filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.35))" }}
+            style={{ width: "min(100%, calc(var(--hero-h) * 0.5))", filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.35))" }}
           >
             {/* soft glow behind the monogram */}
             <span
@@ -162,14 +209,26 @@ function BrandSlide({ t }) {
               </span>
             ))}
           </div>
-          <div
-            className="vj-brand-tag leading-snug"
+          {/* gold rule, then the tagline on one line (two balanced lines on phones) */}
+          <span
+            className="vj-brand-rule block"
             style={{
-              fontSize: "clamp(0.72rem, min(calc(var(--hero-h) * 0.04), 3.1vw), 1.55rem)",
+              width: "min(80%, calc(var(--hero-h) * 0.42))",
+              height: 1.5,
               marginTop: "calc(var(--hero-h) * 0.035)",
+              background: "linear-gradient(90deg, rgba(242,196,90,0), #f2c45a 20%, #fff3c4 50%, #f2c45a 80%, rgba(242,196,90,0))",
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="vj-brand-tag leading-snug md:whitespace-nowrap"
+            style={{
+              fontSize: "clamp(0.62rem, min(calc(var(--hero-h) * 0.028), 3vw), 1.35rem)",
+              marginTop: "calc(var(--hero-h) * 0.03)",
+              textWrap: "balance",
             }}
           >
-            <span className="vj-gold-text" style={{ letterSpacing: "0.06em", fontWeight: 600 }}>
+            <span className="vj-gold-text" style={{ letterSpacing: "0.05em", fontWeight: 600 }}>
               {t("hero.tagline")}
             </span>
           </div>
