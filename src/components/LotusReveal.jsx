@@ -1,102 +1,119 @@
 import goddessImg from "../assets/hero-padmavathi.webp";
 
-// A golden lotus that opens to reveal Sri Padmavathi Ammavaru (first hero
-// slide, right half). Built from layers so it stays sharp at any size:
-//   glow + gold arch  →  back petals (fan out behind her)  →  the goddess  →
-//   front petals (open outwards in front).
-// The bud → bloom animation is in index.css (.vj-lotus-*); it plays each
-// time the slide comes into view and rests fully open.
+// A lotus that opens to reveal Sri Padmavathi Ammavaru (first hero slide,
+// right half). Drawn to look like a real lotus rather than a flat icon:
+// fuller petals with pointed tips, ivory bases fading to blush and deeper
+// pink tips, fine veins, soft side shading and a light rim instead of hard
+// outlines, in three rows (outer, middle, front).
+// Layers: glow + gold arch → outer & middle petals → the goddess → front
+// petals. The bloom (slow, slightly uneven, like a real flower) and the
+// gentle sway afterwards are in index.css (.vj-petal / .vj-lotus-*).
 
-// Petal pointing straight up from (0,0): w = width, h = height.
-const petal = (w, h) =>
-  `M0,0 C${-w * 0.56},${-h * 0.16} ${-w * 0.62},${-h * 0.6} 0,${-h} C${w * 0.62},${-h * 0.6} ${w * 0.56},${-h * 0.16} 0,0 Z`;
-const vein = (h) => `M0,-4 C-2,${-h * 0.35} -2,${-h * 0.65} 0,${-h * 0.9}`;
+// A natural lotus petal standing on (0,0): broad, boat-shaped body and a
+// pointed, very slightly off-centre tip. w = width, h = height.
+const petal = (w, h, k = 0) =>
+  `M0,0 C${-0.5 * w},${-0.05 * h} ${-0.62 * w},${-0.48 * h} ${-0.22 * w},${-0.83 * h} ` +
+  `Q${-0.07 * w},${-0.96 * h} ${(0.02 + k) * w},${-h} ` +
+  `Q${(0.09 + k) * w},${-0.95 * h} ${0.22 * w},${-0.83 * h} ` +
+  `C${0.62 * w},${-0.48 * h} ${0.5 * w},${-0.05 * h} 0,0 Z`;
 
-// [open angle, closed angle, delay s, height, width]
-const BACK = [
-  [-84, -6, 0.55, 205, 84],
-  [-63, -5, 0.5, 220, 88],
-  [-42, -3, 0.45, 232, 90],
-  [-21, -2, 0.4, 240, 92],
-  [0, 0, 0.35, 244, 92],
-  [21, 2, 0.4, 240, 92],
-  [42, 3, 0.45, 232, 90],
-  [63, 5, 0.5, 220, 88],
-  [84, 6, 0.55, 205, 84],
+// Fine veins fanning from the base to the tip.
+const VEINS = [-0.34, -0.22, -0.11, 0, 0.11, 0.22, 0.34];
+const vein = (w, h, f) =>
+  `M${f * 0.08 * w},${-0.04 * h} C${f * 0.7 * w},${-0.35 * h} ${f * 0.75 * w},${-0.6 * h} ${f * 0.3 * w},${-0.9 * h}`;
+
+// [open angle, closed angle, delay s, height, width, tip lean]
+// Outer row: widest open, deepest pink. Middle row: in between. Front row:
+// smaller and paler, covering the base of the image.
+const OUTER = [
+  [-80, -14, 0.5, 200, 104, 0.03], [-58, -10, 0.42, 222, 108, -0.02], [-35, -6, 0.36, 236, 110, 0.02],
+  [-12, -3, 0.3, 244, 110, -0.01], [12, 3, 0.33, 244, 110, 0.01], [35, 6, 0.38, 236, 110, -0.02],
+  [58, 10, 0.44, 222, 108, 0.02], [80, 14, 0.52, 200, 104, -0.03],
+];
+const MIDDLE = [
+  [-68, -10, 0.25, 176, 100, -0.02], [-45, -7, 0.2, 196, 104, 0.02], [-22, -3, 0.15, 206, 104, -0.01],
+  [22, 3, 0.17, 206, 104, 0.01], [45, 7, 0.22, 196, 104, -0.02], [68, 10, 0.27, 176, 100, 0.02],
 ];
 const FRONT = [
-  [-76, -12, 0.15, 150, 100],
-  [76, 12, 0.15, 150, 100],
-  [-52, -8, 0.05, 160, 106],
-  [52, 8, 0.05, 160, 106],
-  [-27, -4, 0, 118, 94],
-  [27, 4, 0, 118, 94],
-  [0, 0, 0.1, 84, 88],
+  [-76, -16, 0.12, 122, 96, 0.03], [76, 16, 0.14, 122, 96, -0.03],
+  [-52, -10, 0.06, 136, 100, -0.02], [52, 10, 0.08, 136, 100, 0.02],
+  [-26, -5, 0, 114, 94, 0.01], [26, 5, 0.02, 114, 94, -0.01], [0, 0, 0.04, 92, 88, 0],
 ];
-function Petals({ list, fill, className }) {
+
+// colours from base (offset 1) to tip (offset 0) for each row
+const ROWS = {
+  outer: [["0", "#b91d58"], ["0.16", "#dd4f80"], ["0.42", "#f2a1ba"], ["0.72", "#fbdde5"], ["1", "#f3dfb6"]],
+  middle: [["0", "#cf3f73"], ["0.18", "#ec86a6"], ["0.48", "#f9cbd8"], ["0.8", "#fdeff0"], ["1", "#f2dcae"]],
+  front: [["0", "#e0698f"], ["0.14", "#f3adc2"], ["0.42", "#fde4ea"], ["0.78", "#fff7f2"], ["1", "#ecd39c"]],
+};
+
+function Defs({ id }) {
   return (
-    <svg viewBox="-230 -250 460 270" className={className} aria-hidden="true">
-      <defs>
-        <linearGradient id="vjPetalGold" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#FFF6D6" />
-          <stop offset="0.3" stopColor="#F6CC63" />
-          <stop offset="0.68" stopColor="#D59A32" />
-          <stop offset="1" stopColor="#7A4A0C" />
-        </linearGradient>
-        <linearGradient id="vjPetalPink" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#FFD3E2" />
-          <stop offset="0.18" stopColor="#F0508A" />
-          <stop offset="0.45" stopColor="#C2185B" />
-          <stop offset="0.72" stopColor="#E3AA2C" />
-          <stop offset="1" stopColor="#7A4A0C" />
-        </linearGradient>
-        <linearGradient id="vjPetalCupL" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#3A1F04" stopOpacity="0.55" />
-          <stop offset="0.45" stopColor="#3A1F04" stopOpacity="0" />
-          <stop offset="0.8" stopColor="#FFFFFF" stopOpacity="0.12" />
-          <stop offset="1" stopColor="#3A1F04" stopOpacity="0.25" />
-        </linearGradient>
-        <linearGradient id="vjPetalCupR" x1="1" y1="0" x2="0" y2="0">
-          <stop offset="0" stopColor="#3A1F04" stopOpacity="0.55" />
-          <stop offset="0.45" stopColor="#3A1F04" stopOpacity="0" />
-          <stop offset="0.8" stopColor="#FFFFFF" stopOpacity="0.12" />
-          <stop offset="1" stopColor="#3A1F04" stopOpacity="0.25" />
-        </linearGradient>
-        <linearGradient id="vjPetalSheen" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#fff" stopOpacity="0" />
-          <stop offset="0.42" stopColor="#fff" stopOpacity="0.55" />
-          <stop offset="0.6" stopColor="#fff" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      {list.map(([open, closed, delay, h, w], i) => (
-        <g
-          key={i}
-          className="vj-petal"
-          style={{ "--open": `${open}deg`, "--closed": `${closed}deg`, "--pd": `${delay}s` }}
-        >
-          <path d={petal(w, h)} fill={`url(#${fill})`} />
-          {/* cupped shading: darker on the side turned away from the light */}
-          <path d={petal(w, h)} fill={open >= 0 ? "url(#vjPetalCupR)" : "url(#vjPetalCupL)"} />
-          <path d={petal(w * 0.5, h * 0.95)} fill="url(#vjPetalSheen)" opacity="0.65" />
-          {/* fine veins */}
-          {[-0.28, -0.14, 0.14, 0.28].map((k) => (
-            <path
-              key={k}
-              d={`M0,-6 C${w * k * 0.8},${-h * 0.35} ${w * k},${-h * 0.62} ${w * k * 0.35},${-h * 0.88}`}
-              fill="none"
-              stroke="#7A4A0C"
-              strokeOpacity="0.22"
-              strokeWidth="0.9"
-            />
+    <defs>
+      {Object.entries(ROWS).map(([row, stops]) => (
+        <linearGradient key={row} id={`${id}-${row}`} x1="0" y1="0" x2="0" y2="1">
+          {stops.map(([o, c]) => (
+            <stop key={o} offset={o} stopColor={c} />
           ))}
-          <path d={vein(h)} fill="none" stroke="#FFF3C4" strokeOpacity="0.6" strokeWidth="1.5" />
-          {/* rim: bright edge with a thin dark outline */}
-          <path d={petal(w, h)} fill="none" stroke="#5C3608" strokeWidth="1.6" strokeOpacity="0.45" />
-          <path d={petal(w * 0.94, h * 0.985)} fill="none" stroke="#FFF1C4" strokeWidth="1" strokeOpacity="0.55" />
-        </g>
+        </linearGradient>
       ))}
-    </svg>
+      {/* cupped shading: the side turned away from the light is a little deeper */}
+      <linearGradient id={`${id}-cupL`} x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="#7a1238" stopOpacity="0.32" />
+        <stop offset="0.42" stopColor="#7a1238" stopOpacity="0" />
+        <stop offset="0.72" stopColor="#ffffff" stopOpacity="0.14" />
+        <stop offset="1" stopColor="#7a1238" stopOpacity="0.1" />
+      </linearGradient>
+      <linearGradient id={`${id}-cupR`} x1="1" y1="0" x2="0" y2="0">
+        <stop offset="0" stopColor="#7a1238" stopOpacity="0.32" />
+        <stop offset="0.42" stopColor="#7a1238" stopOpacity="0" />
+        <stop offset="0.72" stopColor="#ffffff" stopOpacity="0.14" />
+        <stop offset="1" stopColor="#7a1238" stopOpacity="0.1" />
+      </linearGradient>
+      {/* soft sheen down the middle of each petal */}
+      <linearGradient id={`${id}-sheen`} x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0.3" stopColor="#fff" stopOpacity="0" />
+        <stop offset="0.5" stopColor="#fff" stopOpacity="0.35" />
+        <stop offset="0.7" stopColor="#fff" stopOpacity="0" />
+      </linearGradient>
+      {/* warm light falling from the goddess onto the base */}
+      <linearGradient id={`${id}-base`} x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0" stopColor="#ffd98a" stopOpacity="0.35" />
+        <stop offset="0.35" stopColor="#ffd98a" stopOpacity="0" />
+      </linearGradient>
+    </defs>
   );
+}
+
+function Row({ list, row, id, sway = 1 }) {
+  return list.map(([open, closed, delay, h, w, k], i) => {
+    const right = open > 0 || (open === 0 && i % 2);
+    const d = petal(w, h, k);
+    return (
+      <g
+        key={`${row}${i}`}
+        className="vj-petal"
+        style={{
+          "--open": `${open}deg`,
+          "--closed": `${closed}deg`,
+          "--pd": `${delay}s`,
+          "--sw": `${(right ? 1 : -1) * (0.9 + (i % 3) * 0.35) * sway}deg`,
+          "--swd": `${5.5 + (i % 4) * 0.8}s`,
+        }}
+      >
+        <path d={d} fill={`url(#${id}-${row})`} />
+        <path d={d} fill={`url(#${id}-${right ? "cupR" : "cupL"})`} />
+        <path d={petal(w * 0.42, h * 0.94, k)} fill={`url(#${id}-sheen)`} />
+        {VEINS.map((f) => (
+          <path key={f} d={vein(w, h, f)} fill="none" stroke="#a3204f" strokeOpacity="0.13" strokeWidth="0.7" />
+        ))}
+        <path d={d} fill={`url(#${id}-base)`} />
+        {/* light rim and a whisper of an edge, instead of a hard outline */}
+        <path d={petal(w * 0.96, h * 0.99, k)} fill="none" stroke="#fff6f2" strokeOpacity="0.55" strokeWidth="0.9" />
+        <path d={d} fill="none" stroke="#7a1238" strokeOpacity="0.18" strokeWidth="0.6" />
+      </g>
+    );
+  });
 }
 
 export default function LotusReveal({ alt }) {
@@ -130,14 +147,25 @@ export default function LotusReveal({ alt }) {
         </g>
       </svg>
 
-      {/* petals that fan out behind her */}
-      <Petals list={BACK} fill="vjPetalPink" className="vj-lotus-back absolute left-1/2 pointer-events-none" />
+      {/* outer and middle petals, behind her */}
+      <svg viewBox="-230 -250 460 270" className="vj-lotus-back absolute left-1/2 pointer-events-none" aria-hidden="true">
+        <Defs id="vjLb" />
+        <g className="vj-row-outer">
+          <Row list={OUTER} row="outer" id="vjLb" />
+        </g>
+        <g className="vj-row-middle">
+          <Row list={MIDDLE} row="middle" id="vjLb" sway={0.8} />
+        </g>
+      </svg>
 
       {/* Sri Padmavathi */}
       <img src={goddessImg} alt={alt} className="vj-lotus-goddess absolute left-1/2 top-0" />
 
-      {/* petals in front */}
-      <Petals list={FRONT} fill="vjPetalGold" className="vj-lotus-front absolute left-1/2 pointer-events-none" />
+      {/* front petals */}
+      <svg viewBox="-230 -250 460 270" className="vj-lotus-front absolute left-1/2 pointer-events-none" aria-hidden="true">
+        <Defs id="vjLf" />
+        <Row list={FRONT} row="front" id="vjLf" sway={0.6} />
+      </svg>
     </div>
   );
 }
