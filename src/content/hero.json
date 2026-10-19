@@ -2,6 +2,15 @@
   "show_brand_slide": true,
   "slides": [
     {
+      "video": "/images/uploads/hero-film-wide.mp4",
+      "video_mobile": "/images/uploads/hero-film-phone.mp4",
+      "image": "/images/uploads/hero-film-wide-poster.webp",
+      "image_mobile": "/images/uploads/hero-film-phone-poster.webp",
+      "alt_en": "Padmavathi Jewellers — temple gold, bridal, diamond and lightweight collections",
+      "alt_te": "పద్మావతి జ్యువెలర్స్ — టెంపుల్ గోల్డ్, పెళ్లి, వజ్రాలు, తేలికపాటి ఆభరణాల కలెక్షన్లు",
+      "fit": "cover"
+    },
+    {
       "image": "/images/uploads/hero-temple-jewellery.webp",
       "image_mobile": "",
       "alt_en": "Temple Jewellery — three temple gold necklaces on velvet busts",

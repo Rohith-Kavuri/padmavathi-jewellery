@@ -201,8 +201,20 @@ collections:
             summary: "{{fields.alt_en}}"
             hint: "Drag slides to change their order. They play after the logo slide."
             fields:
+              - name: video
+                label: Video (laptop / desktop, optional)
+                widget: file
+                required: false
+                choose_url: false
+                hint: "Optional. An MP4 video plays in this slide instead of the image (silent, on repeat). Best: wide 1920 × 800 px, 15–30 seconds, under ~5 MB. The image below is shown while it loads."
+              - name: video_mobile
+                label: Video for phones (optional)
+                widget: file
+                required: false
+                choose_url: false
+                hint: "Optional portrait MP4 for phones, about 1080 × 1350 px, under ~5 MB. Leave empty to use the video above."
               - name: image
-                label: Image (laptop / desktop)
+                label: Image (laptop / desktop) — or the cover picture for a video
                 widget: image
                 choose_url: false
                 hint: "Wide images fill best: about 2560 × 960 px. Portrait images also work — they're shown whole with a soft blurred background. JPG or WebP, under ~500 KB."

@@ -22,9 +22,11 @@ const imageSlides = (heroFile.slides || [])
   .filter((s) => s && s.image)
   .map((s, i) => ({
     id: `slide-${i}`,
-    type: "image",
+    type: s.video ? "video" : "image",
     src: s.image,
     srcMobile: s.image_mobile || null,
+    video: s.video || null,
+    videoMobile: s.video_mobile || null,
     fit: s.fit === "cover" ? "cover" : "contain",
     bg: "#2C0610",
     caption: null,
@@ -190,6 +192,45 @@ function BrandSlide({ t }) {
   );
 }
 
+// A video banner: plays silently while its slide is showing, rewinds and
+// pauses when it isn't. Phones get the portrait video; tablets show the wide
+// one whole. The cover picture shows until the video can play.
+function VideoSlide({ slide, active, alt, onDuration }) {
+  const phone = useIsWide("(max-width: 767px)");
+  const tablet = useIsWide("(min-width: 768px) and (max-width: 1023px)");
+  const ref = useRef(null);
+  const src = phone && slide.videoMobile ? slide.videoMobile : slide.video;
+  const poster = phone && slide.srcMobile ? slide.srcMobile : slide.src;
+  const reduce = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    if (active && !reduce) {
+      try { v.currentTime = 0; } catch {}
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    } else v.pause();
+  }, [active, src, reduce]);
+
+  return (
+    <video
+      ref={ref}
+      key={src}
+      className="absolute inset-0 w-full h-full"
+      style={{ objectFit: tablet ? "contain" : "cover", background: "#2C0610" }}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload={active ? "auto" : "metadata"}
+      aria-label={alt}
+      onLoadedMetadata={(e) => onDuration && onDuration(e.currentTarget.duration)}
+    />
+  );
+}
+
 function useIsWide(query = "(min-width: 1024px)") {
   const get = () => typeof window !== "undefined" && window.matchMedia(query).matches;
   const [wide, setWide] = useState(get);
@@ -251,11 +292,15 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
   useEffect(() => setIndex((i) => (i < slides.length ? i : 0)), [slides.length]);
   const [paused, setPaused] = useState(false);
   const intervalRef = useRef(null);
+  const videoLen = useRef({});
 
   useEffect(() => {
     if (paused) return;
-    // the animated logo slide stays up longer so its intro can play out
-    const ms = slides[index]?.type === "brand" ? 7500 : 4500;
+    // the animated logo slide stays up longer so its intro can play out,
+    // and a video slide stays up for the length of the video
+    const cur = slides[index];
+    const ms =
+      cur?.type === "brand" ? 7500 : cur?.type === "video" ? Math.round((videoLen.current[cur.id] || 22) * 1000) : 4500;
     intervalRef.current = setTimeout(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, ms);
@@ -280,11 +325,13 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
         <div
           key={s.id}
           className="absolute inset-0 vj-slide"
-          style={{ opacity: i === index ? 1 : 0, background: s.type === "image" || s.type === "gallery" ? "#2C0610" : undefined }}
+          style={{ opacity: i === index ? 1 : 0, background: s.type === "image" || s.type === "gallery" || s.type === "video" ? "#2C0610" : undefined }}
           aria-hidden={i !== index}
         >
           {s.type === "brand" ? (
             <BrandSlide t={t} />
+          ) : s.type === "video" ? (
+            <VideoSlide slide={s} active={i === index} alt={tx(s.alt)} onDuration={(d) => (videoLen.current[s.id] = d)} />
           ) : s.type === "gallery" ? (
             <GallerySlide images={s.images} tx={tx} />
           ) : s.type === "image" ? (
