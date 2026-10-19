@@ -5,6 +5,7 @@ import markImg from "../assets/hero-logo-mark.webp";
 import nameImg from "../assets/hero-logo-name.webp";
 import subImg from "../assets/hero-logo-sub.webp";
 import LotusReveal from "./LotusReveal";
+import backdropImg from "../assets/hero-temple-necklace-hd.webp";
 import { useLang } from "../i18n/LanguageContext";
 import heroFile from "../content/hero.json";
 
@@ -22,9 +23,11 @@ const imageSlides = (heroFile.slides || [])
   .filter((s) => s && s.image)
   .map((s, i) => ({
     id: `slide-${i}`,
-    type: "image",
+    type: s.video ? "video" : "image",
     src: s.image,
     srcMobile: s.image_mobile || null,
+    video: s.video || null,
+    videoMobile: s.video_mobile || null,
     fit: s.fit === "cover" ? "cover" : "contain",
     bg: "#2C0610",
     caption: null,
@@ -53,6 +56,13 @@ const SPARKS = [
   { x: 60, y: 66, s: 11, d: 3.3, delay: 4.6 },
 ];
 
+// Soft out-of-focus lights drifting behind everything (left %, top %, size as
+// a share of the slide height, seconds per drift).
+const BOKEH = [
+  [8, 22, 0.16, 11], [19, 74, 0.1, 14], [33, 12, 0.08, 12], [44, 82, 0.13, 16], [58, 18, 0.07, 13],
+  [67, 70, 0.11, 15], [79, 30, 0.14, 12], [90, 78, 0.09, 17], [96, 12, 0.12, 14], [3, 90, 0.08, 13],
+];
+
 // Gold dust drifting up through the background (left %, size px, seconds).
 const DUST = [
   [6, 4, 13], [14, 3, 17], [23, 5, 11], [31, 2, 15], [42, 3, 19], [48, 4, 12],
@@ -75,10 +85,36 @@ function Spark({ size }) {
 // the slide comes back round.
 function BrandSlide({ t }) {
   return (
-    <div
-      className="vj-brand absolute inset-0 overflow-hidden"
-      style={{ background: "radial-gradient(ellipse at 28% 45%, #8E1D33 0%, #5C0F20 45%, #2C0610 100%)" }}
-    >
+    <div className="vj-brand absolute inset-0 overflow-hidden" style={{ background: "#2C0610" }}>
+      {/* soft-focus temple necklace behind a maroon wash, like the film */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <img src={backdropImg} alt="" className="vj-brand-bg absolute inset-0 w-full h-full" style={{ objectFit: "cover" }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 30% 48%, rgba(142,29,51,0.62) 0%, rgba(92,15,32,0.8) 45%, rgba(36,5,13,0.94) 100%)",
+          }}
+        />
+        {BOKEH.map(([x, y, size, dur], i) => (
+          <span
+            key={i}
+            className="vj-bokeh absolute rounded-full"
+            style={{
+              left: `${x}%`,
+              top: `${y}%`,
+              width: `calc(var(--hero-h) * ${size})`,
+              aspectRatio: "1",
+              transform: "translate(-50%, -50%)",
+              background: "radial-gradient(circle, rgba(255,214,130,0.17) 0%, rgba(242,180,80,0.06) 55%, rgba(242,180,80,0) 72%)",
+              "--d": `${dur}s`,
+              "--dx": `${i % 2 ? 18 : -14}px`,
+              "--dy": `${i % 3 ? -22 : 16}px`,
+              animationDelay: `${-i * 1.3}s`,
+            }}
+          />
+        ))}
+      </div>
       {/* gold dust */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {DUST.map(([x, size, dur], i) => (
@@ -98,11 +134,13 @@ function BrandSlide({ t }) {
         ))}
       </div>
 
-      {/* thin gold frame, echoing the poster's border */}
+      {/* cinematic vignette and a light sweep that crosses the slide */}
       <div
-        className="absolute inset-3 md:inset-5 pointer-events-none"
-        style={{ border: "1px solid rgba(242,183,5,0.35)", borderRadius: 6 }}
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 50%, rgba(12,1,5,0.55) 100%)" }}
+        aria-hidden="true"
       />
+      <span className="vj-brand-sweep absolute inset-0 pointer-events-none" aria-hidden="true" />
       {/* Two equal halves, each centred on both axes. Sizes are derived from
           the slide height (--hero-h, set on the carousel) rather than from
           percentages, so nothing can outgrow the frame on short or wide
@@ -111,10 +149,21 @@ function BrandSlide({ t }) {
         {/* left half — animated logo */}
         <div className="flex flex-col items-center justify-center text-center min-w-0">
           <div
+            className="vj-brand-eyebrow vj-mono"
+            style={{
+              color: "var(--gold-300)",
+              fontSize: "clamp(7px, min(calc(var(--hero-h) * 0.019), 1.9vw), 12px)",
+              letterSpacing: "0.42em",
+              marginBottom: "calc(var(--hero-h) * 0.035)",
+            }}
+          >
+            ✦ {t("hero.eyebrow")} ✦
+          </div>
+          <div
             className="relative"
             role="img"
             aria-label={t("hero.alt.logo")}
-            style={{ width: "min(100%, calc(var(--hero-h) * 0.58))", filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.35))" }}
+            style={{ width: "min(100%, calc(var(--hero-h) * 0.5))", filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.35))" }}
           >
             {/* soft glow behind the monogram */}
             <span
@@ -160,14 +209,26 @@ function BrandSlide({ t }) {
               </span>
             ))}
           </div>
-          <div
-            className="vj-brand-tag leading-snug"
+          {/* gold rule, then the tagline on one line (two balanced lines on phones) */}
+          <span
+            className="vj-brand-rule block"
             style={{
-              fontSize: "clamp(0.72rem, min(calc(var(--hero-h) * 0.04), 3.1vw), 1.55rem)",
+              width: "min(80%, calc(var(--hero-h) * 0.42))",
+              height: 1.5,
               marginTop: "calc(var(--hero-h) * 0.035)",
+              background: "linear-gradient(90deg, rgba(242,196,90,0), #f2c45a 20%, #fff3c4 50%, #f2c45a 80%, rgba(242,196,90,0))",
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="vj-brand-tag leading-snug md:whitespace-nowrap"
+            style={{
+              fontSize: "clamp(0.62rem, min(calc(var(--hero-h) * 0.028), 3vw), 1.35rem)",
+              marginTop: "calc(var(--hero-h) * 0.03)",
+              textWrap: "balance",
             }}
           >
-            <span className="vj-gold-text" style={{ letterSpacing: "0.06em", fontWeight: 600 }}>
+            <span className="vj-gold-text" style={{ letterSpacing: "0.05em", fontWeight: 600 }}>
               {t("hero.tagline")}
             </span>
           </div>
@@ -187,6 +248,45 @@ function BrandSlide({ t }) {
         </div>
       </div>
     </div>
+  );
+}
+
+// A video banner: plays silently while its slide is showing, rewinds and
+// pauses when it isn't. Phones get the portrait video; tablets show the wide
+// one whole. The cover picture shows until the video can play.
+function VideoSlide({ slide, active, alt, onDuration }) {
+  const phone = useIsWide("(max-width: 767px)");
+  const tablet = useIsWide("(min-width: 768px) and (max-width: 1023px)");
+  const ref = useRef(null);
+  const src = phone && slide.videoMobile ? slide.videoMobile : slide.video;
+  const poster = phone && slide.srcMobile ? slide.srcMobile : slide.src;
+  const reduce = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    if (active && !reduce) {
+      try { v.currentTime = 0; } catch {}
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    } else v.pause();
+  }, [active, src, reduce]);
+
+  return (
+    <video
+      ref={ref}
+      key={src}
+      className="absolute inset-0 w-full h-full"
+      style={{ objectFit: tablet ? "contain" : "cover", background: "#2C0610" }}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload={active ? "auto" : "metadata"}
+      aria-label={alt}
+      onLoadedMetadata={(e) => onDuration && onDuration(e.currentTarget.duration)}
+    />
   );
 }
 
@@ -251,11 +351,15 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
   useEffect(() => setIndex((i) => (i < slides.length ? i : 0)), [slides.length]);
   const [paused, setPaused] = useState(false);
   const intervalRef = useRef(null);
+  const videoLen = useRef({});
 
   useEffect(() => {
     if (paused) return;
-    // the animated logo slide stays up longer so its intro can play out
-    const ms = slides[index]?.type === "brand" ? 7500 : 4500;
+    // the animated logo slide stays up longer so its intro can play out,
+    // and a video slide stays up for the length of the video
+    const cur = slides[index];
+    const ms =
+      cur?.type === "brand" ? 7500 : cur?.type === "video" ? Math.round((videoLen.current[cur.id] || 22) * 1000) : 4500;
     intervalRef.current = setTimeout(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, ms);
@@ -280,11 +384,13 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
         <div
           key={s.id}
           className="absolute inset-0 vj-slide"
-          style={{ opacity: i === index ? 1 : 0, background: s.type === "image" || s.type === "gallery" ? "#2C0610" : undefined }}
+          style={{ opacity: i === index ? 1 : 0, background: s.type === "image" || s.type === "gallery" || s.type === "video" ? "#2C0610" : undefined }}
           aria-hidden={i !== index}
         >
           {s.type === "brand" ? (
             <BrandSlide t={t} />
+          ) : s.type === "video" ? (
+            <VideoSlide slide={s} active={i === index} alt={tx(s.alt)} onDuration={(d) => (videoLen.current[s.id] = d)} />
           ) : s.type === "gallery" ? (
             <GallerySlide images={s.images} tx={tx} />
           ) : s.type === "image" ? (

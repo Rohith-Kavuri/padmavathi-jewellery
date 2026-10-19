@@ -31,6 +31,7 @@ export const STRINGS = {
 
     // hero
     "hero.tagline": "Timeless Beauty · Trusted Forever",
+    "hero.eyebrow": "WHERE TRADITION MEETS GRACE",
     "hero.necklaceCaption": "TEMPLE GOLD COLLECTION",
     "hero.alt.logo": "Padmavathi Jewellers logo",
     "hero.alt.necklace": "Temple gold necklace with Lakshmi motif and gold pearls",
@@ -242,6 +243,7 @@ export const STRINGS = {
 
     // hero
     "hero.tagline": "శాశ్వత సౌందర్యం · ఎప్పటికీ నమ్మకం",
+    "hero.eyebrow": "సంప్రదాయ వైభవం · సొగసైన రూపం",
     "hero.necklaceCaption": "టెంపుల్ గోల్డ్ కలెక్షన్",
     "hero.alt.logo": "పద్మావతి జ్యువెలర్స్ లోగో",
     "hero.alt.necklace": "లక్ష్మీదేవి రూపం, బంగారు ముత్యాలతో టెంపుల్ గోల్డ్ నెక్లెస్",
