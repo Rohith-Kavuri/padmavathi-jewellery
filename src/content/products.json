@@ -305,6 +305,61 @@
       "metal": "Gold",
       "price": 0,
       "id": 2
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0158.jpg",
+      "name_en": "Bangles",
+      "category": "Bangles",
+      "metal": "Gold",
+      "price": 0,
+      "id": 3
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0154.jpg",
+      "name_en": "Bangles",
+      "category": "Bangles",
+      "metal": "Gold",
+      "price": 0,
+      "id": -2
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0153.jpg",
+      "name_en": "Bangles",
+      "category": "Bangles",
+      "metal": "Gold",
+      "price": 0,
+      "id": 7
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0152.jpg",
+      "name_en": "Bangles",
+      "category": "Bangles",
+      "metal": "Gold",
+      "price": 0,
+      "id": 8
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0151.jpg",
+      "name_en": "Bangles",
+      "category": "Bangles",
+      "price": 0,
+      "id": 5,
+      "metal": "Gold"
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0150.jpg",
+      "name_en": "Bangles",
+      "category": "Bangles",
+      "price": 0,
+      "weight": "",
+      "id": 6,
+      "metal": "Gold"
     }
   ]
 }
