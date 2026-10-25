@@ -287,6 +287,24 @@
       "image": "/images/uploads/chatgpt-image-oct-3-2026-05_33_13-pm.png",
       "weight": 0,
       "id": 1
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0149.jpg",
+      "name_en": "Bangles",
+      "category": "Bangles",
+      "metal": "Gold",
+      "price": 0,
+      "id": -1
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0150.jpg",
+      "name_en": "Bangles",
+      "category": "Bangles",
+      "metal": "Gold",
+      "price": 0,
+      "id": 2
     }
   ]
 }
