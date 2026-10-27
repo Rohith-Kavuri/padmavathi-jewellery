@@ -1,19 +1,6 @@
 {
   "products": [
     {
-      "name_te": "దేవిక యాంటిక్ నెక్లెస్",
-      "metal": "Gold",
-      "price": 0,
-      "desc_en": "Temple motifs cast in 22K gold, finished entirely by hand.",
-      "weight": 0,
-      "tag": "Bestseller",
-      "id": 1,
-      "image": "/images/uploads/whatsapp-image-2026-10-02-at-11.30.13-pm-1-.jpeg",
-      "name_en": "Devika Antique Necklace",
-      "category": "Necklace",
-      "desc_te": "22K బంగారంలో పోతపోసిన దేవాలయ నమూనాలు, పూర్తిగా చేతితో తీర్చిదిద్దినవి."
-    },
-    {
       "name_te": "పద్మ డ్రాప్ చెవిపోగులు",
       "metal": "Gold",
       "price": 0,
@@ -89,19 +76,6 @@
       "image": "/images/uploads/chatgpt-image-oct-3-2026-06_31_33-pm.png",
       "name_en": "Gold Watch",
       "category": "Bangles",
-      "desc_te": ""
-    },
-    {
-      "name_te": "",
-      "metal": "Gold",
-      "price": 0,
-      "desc_en": "A continuous line of gold, claw-set in white gold.",
-      "weight": null,
-      "tag": "",
-      "id": 9,
-      "image": "/images/uploads/chatgpt-image-oct-3-2026-07_11_44-pm.png",
-      "name_en": "Choker",
-      "category": "Necklace",
       "desc_te": ""
     },
     {
@@ -235,15 +209,6 @@
       "desc_te": "తెల్ల బంగారు కాలర్ వెంబడి క్రమంగా పెరిగే వజ్రపు పూల అమరిక."
     },
     {
-      "tag": null,
-      "image": "/images/uploads/whatsapp-image-2026-10-02-at-11.30.15-pm.jpeg",
-      "name_en": "Kundana",
-      "category": "Necklace",
-      "metal": "Gold",
-      "price": 0,
-      "id": 1
-    },
-    {
       "tag": "Bestseller",
       "name_en": "Ring",
       "category": "Rings",
@@ -251,16 +216,6 @@
       "image": "/images/uploads/whatsapp-image-2026-10-03-at-5.32.17-am-1-.jpeg",
       "price": 0,
       "id": 5
-    },
-    {
-      "tag": "",
-      "category": "Necklace",
-      "metal": "Gold",
-      "price": 0,
-      "name_en": "Chandra Haram",
-      "image": "/images/uploads/chatgpt-image-oct-3-2026-05_33_13-pm.png",
-      "weight": 0,
-      "id": 1
     },
     {
       "tag": "",
@@ -451,6 +406,51 @@
       "metal": "Gold",
       "price": 0,
       "id": 4
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0132-1-.jpg",
+      "name_en": "Haram",
+      "category": "HARAM",
+      "metal": "Gold",
+      "price": 0,
+      "id": 100
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0131.jpg",
+      "name_en": "Haram",
+      "category": "HARAM",
+      "metal": "Gold",
+      "price": 0,
+      "id": 101
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0130.jpg",
+      "name_en": "Haram",
+      "category": "HARAM",
+      "metal": "Gold",
+      "price": 0,
+      "id": 102
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0129.jpg",
+      "name_en": "Haram",
+      "category": "HARAM",
+      "metal": "Gold",
+      "price": 0,
+      "id": 103
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261024-wa0128.jpg",
+      "name_en": "haram",
+      "category": "HARAM",
+      "metal": "Gold",
+      "price": 0,
+      "id": 104
     }
   ]
 }
