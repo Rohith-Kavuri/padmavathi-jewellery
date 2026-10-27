@@ -360,6 +360,87 @@
       "weight": "",
       "id": 6,
       "metal": "Gold"
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_0000000089208208b29abcdf960f474a.png",
+      "name_en": "Chain",
+      "category": "Chains",
+      "metal": "Gold",
+      "price": 0,
+      "id": 1
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_00000000236c8208a79631d2ae73fd9c.png",
+      "name_en": "Chain",
+      "category": "Chains",
+      "metal": "Gold",
+      "price": 0,
+      "id": 2
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_0000000059c482089f1129f7b3ec4882.png",
+      "name_en": "Chain",
+      "category": "Chains",
+      "metal": "Gold",
+      "price": 0,
+      "id": 3
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_000000008bf88208992cf9d077f71537.png",
+      "name_en": "Chain",
+      "category": "Chains",
+      "metal": "Gold",
+      "price": 0,
+      "id": 4
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_000000001a48820890736a852db5432d.png",
+      "name_en": "Chain",
+      "category": "Chains",
+      "metal": "Gold",
+      "price": 0,
+      "id": 5
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_00000000eff4821192f61bfea4eaebce.png",
+      "name_en": "Chain",
+      "category": "Chains",
+      "metal": "Gold",
+      "price": 0,
+      "id": 6
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_00000000d78c82088e3636a9d36a247e.png",
+      "name_en": "Chain",
+      "category": "Chains",
+      "price": 0,
+      "metal": "Gold",
+      "id": 7
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_00000000c76482088a9c06cec98fc187.png",
+      "name_en": "Chain",
+      "category": "Chains",
+      "metal": "Gold",
+      "price": 0,
+      "id": 8
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_00000000c22c820893c9e30ee6a9cce1.png",
+      "name_en": "Chain",
+      "category": "Chains",
+      "metal": "Gold",
+      "price": 0,
+      "id": 9
     }
   ]
 }
