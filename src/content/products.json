@@ -415,6 +415,42 @@
       "metal": "Gold",
       "price": 0,
       "id": 9
+    },
+    {
+      "tag": "",
+      "category": "GuttaPusalu Necklaces",
+      "image": "/images/uploads/img-20261025-wa0018.jpg",
+      "name_en": "GuttaPusalu Necklaces",
+      "metal": "Gold",
+      "price": 0,
+      "id": 1
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261025-wa0017.jpg",
+      "name_en": "GuttaPusalu Necklaces",
+      "metal": "Gold",
+      "category": "GuttaPusalu Necklaces",
+      "price": 0,
+      "id": 2
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261025-wa0016.jpg",
+      "name_en": "GuttaPusalu Necklaces",
+      "category": "GuttaPusalu Necklaces",
+      "metal": "Gold",
+      "price": 0,
+      "id": 3
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261025-wa0015.jpg",
+      "name_en": "GuttaPusalu Necklaces",
+      "category": "GuttaPusalu Necklaces",
+      "metal": "Gold",
+      "price": 0,
+      "id": 4
     }
   ]
 }
