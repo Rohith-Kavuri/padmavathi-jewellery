@@ -53,28 +53,28 @@
       "desc_te": ""
     },
     {
-      "name_te": "ఇరా సాలిటైర్ ఉంగరం",
-      "metal": "Diamond",
+      "name_te": "",
+      "metal": "Gold",
       "price": 0,
       "desc_en": "A single round brilliant, raised on a tapered band.",
       "weight": null,
       "tag": "New",
       "id": 11,
-      "image": "/images/uploads/whatsapp-image-2026-10-02-at-11.23.49-pm.jpeg",
-      "name_en": "Ira Solitaire Ring",
+      "image": "/images/uploads/file_00000000b888820885a162f98be13d5b.png",
+      "name_en": "Ring",
       "category": "Rings",
       "desc_te": "సన్నబడే బ్యాండ్‌పై ఎత్తుగా అమర్చిన ఒకే రౌండ్ బ్రిలియంట్ వజ్రం."
     },
     {
-      "name_te": "తర్క ప్లాటినం బ్యాండ్",
+      "name_te": "",
       "metal": "Gold",
       "price": 0,
       "desc_en": "A plain band, brushed by hand for a quiet shine.",
       "weight": 0,
       "tag": "",
       "id": 12,
-      "image": "/images/uploads/whatsapp-image-2026-10-03-at-5.32.13-am.jpeg",
-      "name_en": "Tarka Platinum Band",
+      "image": "/images/uploads/file_000000001da88208a4a635ddd7889b30.png",
+      "name_en": "Ring",
       "category": "Rings",
       "desc_te": "సున్నితమైన మెరుపు కోసం చేతితో బ్రష్ చేసిన సాదా బ్యాండ్."
     },
@@ -86,7 +86,7 @@
       "weight": 0,
       "tag": "",
       "id": 13,
-      "image": "/images/uploads/whatsapp-image-2026-10-03-at-5.32.17-am-2-.jpeg",
+      "image": "/images/uploads/file_00000000eabc82089bfb6732d38c754c.png",
       "name_en": "Gold Ring",
       "category": "Rings",
       "desc_te": "చిన్న వజ్రాల గుత్తిని తక్కువ ఎత్తులో పొదిగిన రోజ్ గోల్డ్ ఉంగరం."
@@ -151,7 +151,7 @@
       "weight": 0,
       "tag": "New",
       "id": 18,
-      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_59_41-pm.png",
+      "image": "/images/uploads/file_000000005b94821198e3218b5a5b9a4e.png",
       "name_en": "Rose Gold Diamond Ring",
       "category": "Rings",
       "desc_te": "ఒకే వజ్రం పొదిగిన ప్లాటినం కన్నీటిబొట్టు ఆకారపు లాకెట్."
@@ -476,6 +476,42 @@
       "metal": "Gold",
       "price": 0,
       "id": 116
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_0000000035908208adeefe85ecae3e0e.png",
+      "name_en": "Ring",
+      "category": "Rings",
+      "metal": "Gold",
+      "price": 0,
+      "id": 120
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_00000000557082089b618bc6c171dae3.png",
+      "name_en": "Ring",
+      "category": "Rings",
+      "metal": "Gold",
+      "price": 0,
+      "id": 121
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_000000000578820893c91f7314eafec9.png",
+      "name_en": "Ring",
+      "category": "Rings",
+      "metal": "Gold",
+      "price": 0,
+      "id": 121
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/file_000000004808820888be5ddf150687c4.png",
+      "name_en": "Ring",
+      "category": "Rings",
+      "metal": "Gold",
+      "price": 0,
+      "id": 125
     }
   ]
 }
