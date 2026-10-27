@@ -1,58 +1,6 @@
 {
   "products": [
     {
-      "name_te": "పద్మ డ్రాప్ చెవిపోగులు",
-      "metal": "Gold",
-      "price": 0,
-      "desc_en": "Lotus-petal drops with a soft antique matte finish.",
-      "weight": 0,
-      "tag": "New",
-      "id": 3,
-      "image": "/images/uploads/chatgpt-image-oct-3-2026-05_17_38-pm.png",
-      "name_en": "Padma Drop Earrings",
-      "category": "Earrings",
-      "desc_te": "మృదువైన యాంటిక్ మ్యాట్ మెరుగుతో తామర రేకుల లోలాకులు."
-    },
-    {
-      "name_te": "నృత్య జుంకాలు",
-      "metal": "Gold",
-      "price": 0,
-      "desc_en": "Dancer's bells in miniature — they sway when you do.",
-      "weight": 0,
-      "tag": "",
-      "id": 4,
-      "image": "/images/uploads/photo-2026-08-18-00-21-00.jpg",
-      "name_en": "Nritya Jhumka",
-      "category": "Earrings",
-      "desc_te": "నర్తకి గజ్జెలకు చిన్న రూపం — మీరు కదిలితే అవీ ఊగుతాయి."
-    },
-    {
-      "name_te": "ఆహార్య వజ్రాల కమ్మలు",
-      "metal": "Diamond",
-      "price": 0,
-      "desc_en": "Round brilliant studs set in a four-claw gallery.",
-      "weight": null,
-      "tag": "",
-      "id": 5,
-      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_12_47-pm.png",
-      "name_en": "Aaharya Diamond Studs",
-      "category": "Earrings",
-      "desc_te": "నాలుగు గోళ్ల అమరికలో పొదిగిన రౌండ్ బ్రిలియంట్ వజ్రపు కమ్మలు."
-    },
-    {
-      "name_te": "",
-      "metal": "Diamond",
-      "price": 0,
-      "desc_en": "Freshwater Diamond strung between gold rondelles.",
-      "weight": 0,
-      "tag": "",
-      "id": 10,
-      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_26_32-pm.png",
-      "name_en": "Diamond- Rose gold Bracelet",
-      "category": "Bracelets",
-      "desc_te": ""
-    },
-    {
       "name_te": "",
       "metal": "Gold",
       "price": 0,
@@ -92,58 +40,6 @@
       "desc_te": "చిన్న వజ్రాల గుత్తిని తక్కువ ఎత్తులో పొదిగిన రోజ్ గోల్డ్ ఉంగరం."
     },
     {
-      "name_te": "మంగళ ప్రమాణ మంగళసూత్రం",
-      "metal": "Gold",
-      "price": 0,
-      "desc_en": "Black-bead chain with twin gold vati pendants.",
-      "weight": 0,
-      "tag": "Bestseller",
-      "id": 14,
-      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_48_33-pm.png",
-      "name_en": "Mangal Vow Mangalsutra",
-      "category": "Mangalsutra",
-      "desc_te": "జంట బంగారు తాళిబొట్లతో నల్లపూసల గొలుసు."
-    },
-    {
-      "name_te": "అనోఖీ పోల్కీ పెళ్లి సెట్",
-      "metal": "Diamond",
-      "price": 0,
-      "desc_en": "Uncut polki necklace, earrings and maang tikka, complete.",
-      "weight": null,
-      "tag": "Bestseller",
-      "id": 15,
-      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_03_50-pm.png",
-      "name_en": "Anokhi Polki Bridal Set",
-      "category": "Bridal Set",
-      "desc_te": "కట్ చేయని పోల్కీ నెక్లెస్, చెవిపోగులు, పాపిడి బిళ్ల — పూర్తి సెట్."
-    },
-    {
-      "name_te": "మీనాకారీ చోకర్ సెట్",
-      "metal": "Gold",
-      "price": 0,
-      "desc_en": "Hand-enamelled choker with matching jhumkas in peacock blue.",
-      "weight": 0,
-      "tag": "",
-      "id": 16,
-      "image": "/images/uploads/whatsapp-image-2026-10-02-at-11.30.14-pm-3-.jpeg",
-      "name_en": "Meenakari Choker Set",
-      "category": "Bridal Set",
-      "desc_te": "నెమలి నీలి రంగులో చేతి ఎనామెల్ చోకర్, దానికి సరిపోయే జుంకాలతో."
-    },
-    {
-      "name_te": "కనక బంగారు నాణెం లాకెట్",
-      "metal": "Gold",
-      "price": 0,
-      "desc_en": "A coin pendant struck with a Lakshmi motif, on a fine chain.",
-      "weight": 0,
-      "tag": "",
-      "id": 17,
-      "image": "/images/uploads/chatgpt-image-oct-3-2026-06_36_48-pm.png",
-      "name_en": "Kanaka Gold Coin Pendant",
-      "category": "Pendant",
-      "desc_te": "సన్నని గొలుసుపై లక్ష్మీ రూపం ముద్రించిన నాణెం లాకెట్."
-    },
-    {
       "name_te": "",
       "metal": "Diamond",
       "price": 0,
@@ -155,28 +51,6 @@
       "name_en": "Rose Gold Diamond Ring",
       "category": "Rings",
       "desc_te": "ఒకే వజ్రం పొదిగిన ప్లాటినం కన్నీటిబొట్టు ఆకారపు లాకెట్."
-    },
-    {
-      "name_te": "సౌదామిని వజ్రాల నెక్లెస్",
-      "metal": "Diamond",
-      "price": 0,
-      "desc_en": "Graduated diamond florets along a fitted white-gold collar.",
-      "weight": null,
-      "tag": "New",
-      "id": 20,
-      "image": "/images/uploads/chatgpt-image-oct-1-2026-08_55_33-pm.png",
-      "name_en": "Saudamini Diamond Necklace",
-      "category": "Necklace",
-      "desc_te": "తెల్ల బంగారు కాలర్ వెంబడి క్రమంగా పెరిగే వజ్రపు పూల అమరిక."
-    },
-    {
-      "tag": "Bestseller",
-      "name_en": "Ring",
-      "category": "Rings",
-      "metal": "Gold",
-      "image": "/images/uploads/whatsapp-image-2026-10-03-at-5.32.17-am-1-.jpeg",
-      "price": 0,
-      "id": 5
     },
     {
       "tag": "",
