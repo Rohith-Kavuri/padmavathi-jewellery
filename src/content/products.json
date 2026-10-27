@@ -412,6 +412,70 @@
       "metal": "Gold",
       "price": 0,
       "id": 104
+    },
+    {
+      "tag": "",
+      "name_en": "Kundan Mango Mala",
+      "image": "/images/uploads/img-20261025-wa0026.jpg",
+      "category": "Kundan Mango Mala",
+      "metal": "Gold",
+      "price": 0,
+      "id": 110
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261025-wa0025.jpg",
+      "name_en": "Kundan Mango Mala",
+      "category": "Kundan Mango Mala",
+      "metal": "Gold",
+      "price": 0,
+      "id": 111
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261025-wa0024.jpg",
+      "name_en": "Kundan Mango Mala",
+      "category": "Kundan Mango Mala",
+      "metal": "Gold",
+      "price": 0,
+      "id": 112
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261025-wa0023.jpg",
+      "name_en": "Kundan Mango Mala",
+      "category": "Kundan Mango Mala",
+      "metal": "Gold",
+      "price": 0,
+      "weight": "",
+      "id": 113
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261025-wa0022.jpg",
+      "name_en": "Kundan Mango Mala",
+      "category": "Kundan Mango Mala",
+      "metal": "Gold",
+      "price": 0,
+      "id": 114
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261025-wa0021.jpg",
+      "name_en": "Kundan Mango Mala",
+      "category": "Kundan Mango Mala",
+      "metal": "Gold",
+      "price": 0,
+      "id": 115
+    },
+    {
+      "tag": "",
+      "image": "/images/uploads/img-20261025-wa0020.jpg",
+      "name_en": "Kundan Mango Mala",
+      "category": "Kundan Mango Mala",
+      "metal": "Gold",
+      "price": 0,
+      "id": 116
     }
   ]
 }
