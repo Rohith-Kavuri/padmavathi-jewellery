@@ -254,6 +254,29 @@
   background-size: 120px 120px;
 }
 
+/* Product card: the name's button stretches over the whole card, so a tap
+   anywhere opens Quick view; the focus ring is drawn around the card. */
+.vj-stretch {
+  color: inherit;
+  font: inherit;
+  text-transform: inherit;
+}
+.vj-stretch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.vj-stretch:focus {
+  outline: none;
+}
+.vj-stretch:focus-visible::after {
+  outline: 2px solid var(--gold-500);
+  outline-offset: -2px;
+}
+
 /* Ribbon badge on product cards (notched tail on the right) */
 .vj-ribbon {
   clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%);
