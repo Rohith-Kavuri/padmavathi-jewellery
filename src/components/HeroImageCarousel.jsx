@@ -5,6 +5,7 @@ import markImg from "../assets/hero-logo-mark.webp";
 import nameImg from "../assets/hero-logo-name.webp";
 import subImg from "../assets/hero-logo-sub.webp";
 import LotusReveal from "./LotusReveal";
+import { FESTIVE, DiwaliSlide } from "./Festive";
 import backdropImg from "../assets/hero-temple-necklace-hd.webp";
 import { useLang } from "../i18n/LanguageContext";
 import heroFile from "../content/hero.json";
@@ -43,6 +44,8 @@ const imageSlides = (heroFile.slides || [])
 // keep one banner per slide.
 const SLIDES = [
   ...(heroFile.show_brand_slide !== false || imageSlides.length === 0 ? [{ id: "brand", type: "brand", caption: null }] : []),
+  // festive wishes (Homepage → Festive mode), only while festive mode is on
+  ...(FESTIVE.on && FESTIVE.wishes ? [{ id: "wishes", type: "wishes", caption: null }] : []),
   ...imageSlides,
 ];
 
@@ -359,7 +362,7 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
     // and a video slide stays up for the length of the video
     const cur = slides[index];
     const ms =
-      cur?.type === "brand" ? 7500 : cur?.type === "video" ? Math.round((videoLen.current[cur.id] || 22) * 1000) : 4500;
+      cur?.type === "brand" || cur?.type === "wishes" ? 7500 : cur?.type === "video" ? Math.round((videoLen.current[cur.id] || 22) * 1000) : 4500;
     intervalRef.current = setTimeout(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, ms);
@@ -389,6 +392,8 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
         >
           {s.type === "brand" ? (
             <BrandSlide t={t} />
+          ) : s.type === "wishes" ? (
+            <DiwaliSlide />
           ) : s.type === "video" ? (
             <VideoSlide slide={s} active={i === index} alt={tx(s.alt)} onDuration={(d) => (videoLen.current[s.id] = d)} />
           ) : s.type === "gallery" ? (
