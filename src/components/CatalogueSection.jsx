@@ -3,6 +3,7 @@ import { BookOpen, X } from "lucide-react";
 import { CATALOGUES } from "../data/site";
 import { CATEGORIES } from "../data/products";
 import { useLang } from "../i18n/LanguageContext";
+import { photo } from "../data/media";
 
 // "Take the collection home": a fanned stack of catalogue covers and a
 // "Browse catalogues" button. The button opens a popup where visitors pick a
@@ -19,7 +20,7 @@ function fmtDate(d, lang) {
 
 function Cover({ cat, tx }) {
   return cat.cover ? (
-    <img src={cat.cover} alt="" loading="lazy" className="block w-full rounded-r-md rounded-l-sm" />
+    <img {...photo(cat.cover, [240, 400], "192px")} alt="" loading="lazy" decoding="async" className="block w-full rounded-r-md rounded-l-sm" />
   ) : (
     <div
       className="w-full aspect-[7/10] rounded-r-md rounded-l-sm flex items-center justify-center vj-display text-lg text-center px-3"

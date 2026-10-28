@@ -40,6 +40,9 @@ export const SOCIALS = [
 // WhatsApp link with a custom message (e.g. asking for a piece's price).
 export const whatsappWith = (text) =>
   wa ? `https://wa.me/${wa.length === 10 ? "91" + wa : wa}?text=${encodeURIComponent(text)}` : "";
+// WhatsApp "send to…" link: opens WhatsApp with the text ready and lets the
+// visitor pick who to send it to (used by "Share this piece").
+export const whatsappShare = (text) => `https://wa.me/?text=${encodeURIComponent(text)}`;
 export const PHONE_URL = STORE.phone ? `tel:${STORE.phone.replace(/[^\d+]/g, "")}` : "";
 export const MAP_EMBED_URL = STORE.mapQuery
   ? `https://www.google.com/maps?q=${encodeURIComponent(STORE.mapQuery)}&output=embed`

@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { FEATURED } from "../data/site";
 import { useLang } from "../i18n/LanguageContext";
+import { photo } from "../data/media";
 
 // Large two-part spotlight: collection photo in a gold arch on one side,
 // its story and a button on the other. Edited in the admin page
@@ -28,7 +29,7 @@ export default function FeaturedSpotlight({ onExplore }) {
             boxShadow: "0 0 0 8px rgba(255,201,60,0.1), 0 30px 60px -20px rgba(0,0,0,0.7)",
           }}
         >
-          <img src={FEATURED.image} alt={tx(FEATURED.title)} loading="lazy" className="vj-kb-hover w-full h-full object-cover" />
+          <img {...photo(FEATURED.image, [400, 600, 800], "(min-width: 640px) 384px, 90vw")} alt={tx(FEATURED.title)} loading="lazy" decoding="async" className="vj-kb-hover w-full h-full object-cover" />
         </div>
 
         <div className="text-center md:text-left">

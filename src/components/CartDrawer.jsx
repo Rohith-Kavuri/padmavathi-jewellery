@@ -3,6 +3,7 @@ import JewelGlyph from "./JewelGlyph";
 import { PRODUCTS, getGem } from "../data/products";
 import { fmtINR, priceFor } from "../utils/format";
 import { useLang } from "../i18n/LanguageContext";
+import { sized } from "../data/media";
 
 export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal, onCheckoutRequest }) {
   const { t, tx } = useLang();
@@ -42,7 +43,7 @@ export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal
                     style={{ width: 56, height: 56, background: `linear-gradient(160deg, ${gem[500]}, ${gem[700]})`, flexShrink: 0 }}
                   >
                     {p.image ? (
-                      <img src={p.image} alt="" className="w-full h-full object-cover" />
+                      <img src={sized(p.image, 168)} alt="" loading="lazy" className="w-full h-full object-cover" />
                     ) : (
                       <div style={{ color: gem.tint, width: 32, height: 32 }}>
                         <JewelGlyph category={p.category} className="w-full h-full" />
