@@ -50,7 +50,7 @@ export default function ProductCard({ product, onQuickView, onAddToCart, onViewI
                   alt: tx(product.name),
                   rect: img.getBoundingClientRect(),
                   title: tx(product.name),
-                  subtitle: [t(`metal.${product.metal}`), product.weight != null && fmtWeight(product.weight, t("unit.g")), product.showPrice ? fmtINR(product.base22) : t("price.onRequest")].filter(Boolean).join(" · "),
+                  subtitle: [t(`metal.${product.metal}`), product.weight != null && fmtWeight(product.weight, t("unit.g")), product.showPrice && fmtINR(product.base22)].filter(Boolean).join(" · "),
                 });
               } else onQuickView(product);
             }}
@@ -94,13 +94,11 @@ export default function ProductCard({ product, onQuickView, onAddToCart, onViewI
       <div className="vj-mono text-[10px] mt-1" style={{ color: "var(--ink-soft)" }}>
         {[t(`metal.${product.metal}`), product.weight != null && fmtWeight(product.weight, t("unit.g"))].filter(Boolean).join(" · ")}
       </div>
-      {product.showPrice ? (
+      {/* price only when it's switched on; otherwise nothing here
+          ("Price on request" and the WhatsApp button are in Quick view) */}
+      {product.showPrice && (
         <div className="vj-display text-xl font-semibold mt-1.5" style={{ color: "#8a5a0e" }}>
           {fmtINR(product.base22)}
-        </div>
-      ) : (
-        <div className="vj-display italic text-base mt-1.5" style={{ color: "#8a5a0e" }}>
-          {t("price.onRequest")}
         </div>
       )}
       <button

@@ -35,9 +35,15 @@ function CatalogueModal({ onClose }) {
   const [tab, setTab] = useState("All");
 
   // category tabs: "All" + every category that has at least one catalogue
+  // one tab per topic used by the catalogues (in the order they're listed in
+  // the admin page); a topic that matches a shop category uses its Telugu name too
   const tabs = useMemo(() => {
-    const used = new Set(CATALOGUES.map((c) => c.category).filter(Boolean));
-    return [{ key: "All", label: null }, ...CATEGORIES.filter((c) => used.has(c.key))];
+    const seen = [];
+    CATALOGUES.forEach((c) => c.category && !seen.includes(c.category) && seen.push(c.category));
+    return [
+      { key: "All", label: null },
+      ...seen.map((key) => ({ key, label: CATEGORIES.find((c) => c.key === key)?.label || { en: key, te: key } })),
+    ];
   }, []);
   const shown = tab === "All" ? CATALOGUES : CATALOGUES.filter((c) => c.category === tab);
 
@@ -111,13 +117,13 @@ function CatalogueModal({ onClose }) {
         {/* catalogues */}
         <div className="overflow-y-auto px-5 md:px-8 py-6">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-5 gap-y-8">
-            {shown.map((cat) => {
+            {shown.map((cat, i) => {
               const meta = [cat.pages ? t("catalogue.pages", { count: cat.pages }) : "", fmtDate(cat.updated, lang)]
                 .filter(Boolean)
                 .join(" · ");
               return (
                 <a
-                  key={cat.pdf}
+                  key={`${cat.title.en}-${cat.pdf}-${i}`}
                   href={viewUrl(cat.pdf)}
                   target="_blank"
                   rel="noopener"
@@ -180,7 +186,7 @@ export default function CatalogueSection({ onBookVisit }) {
           {fan.length ? (
             fan.map((cat, pos) => (
               <div
-                key={cat.pdf}
+                key={`${cat.title.en}-${cat.pdf}-${pos}`}
                 className={`vj-fan-card ${pos === 0 ? "relative" : "absolute inset-0"}`}
                 data-pos={pos}
                 style={{ zIndex: 3 - pos }}

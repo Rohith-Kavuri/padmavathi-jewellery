@@ -146,7 +146,9 @@ export default function App() {
   }
 
   function scrollToCatalog(category) {
-    if (category) setActiveCategory(category);
+    // a link to a category that was renamed or removed opens all jewellery
+    // instead of an empty list
+    if (category) setActiveCategory(CATEGORIES.some((c) => c.key === category) ? category : "All");
     catalogRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 

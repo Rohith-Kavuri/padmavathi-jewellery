@@ -158,15 +158,10 @@ collections:
               - { name: title_en, label: Name (English), widget: string, hint: "e.g. Bridal Collection 2026" }
               - { name: title_te, label: Name (Telugu), widget: string, required: false }
               - name: category
-                label: Category
-                widget: relation
-                collection: catalog
-                file: categories
-                search_fields: ["categories.*.label_en"]
-                display_fields: ["categories.*.label_en"]
-                value_field: "categories.*.key"
+                label: Tab in the catalogue popup
+                widget: string
                 required: false
-                hint: "Which category tab it appears under in the catalogue popup. Leave empty for a general catalogue (shown under 'All')."
+                hint: "Type the tab name it should appear under, e.g. Rings, Earrings, Pendants, Watches. Catalogues with the same name share a tab. Leave empty to show it only under 'All'."
               - name: pdf
                 label: PDF file
                 widget: file
@@ -274,18 +269,14 @@ collections:
           - { name: button_te, label: Button (Telugu), widget: string, required: false }
           - name: category
             label: Button opens
-            widget: select
-            options:
-              - { label: "All jewellery", value: "All" }
-              - { label: "Necklaces", value: "Necklace" }
-              - { label: "Earrings", value: "Earrings" }
-              - { label: "Bangles", value: "Bangles" }
-              - { label: "Bracelets", value: "Bracelets" }
-              - { label: "Rings", value: "Rings" }
-              - { label: "Mangalsutra", value: "Mangalsutra" }
-              - { label: "Bridal Sets", value: "Bridal Set" }
-              - { label: "Chains", value: "Chains" }
-              - { label: "Pendants", value: "Pendant" }
+            widget: relation
+            collection: catalog
+            file: categories
+            search_fields: ["categories.*.label_en"]
+            display_fields: ["categories.*.label_en"]
+            value_field: "categories.*.key"
+            required: false
+            hint: "Which category the button shows. Leave empty to show all jewellery. The list always matches your current categories."
 
       - name: occasions
         label: Shop by occasion
@@ -310,18 +301,14 @@ collections:
               - { name: text_te, label: Short line (Telugu), widget: string, required: false }
               - name: category
                 label: Card opens
-                widget: select
-                options:
-                  - { label: "All jewellery", value: "All" }
-                  - { label: "Necklaces", value: "Necklace" }
-                  - { label: "Earrings", value: "Earrings" }
-                  - { label: "Bangles", value: "Bangles" }
-                  - { label: "Bracelets", value: "Bracelets" }
-                  - { label: "Rings", value: "Rings" }
-                  - { label: "Mangalsutra", value: "Mangalsutra" }
-                  - { label: "Bridal Sets", value: "Bridal Set" }
-                  - { label: "Chains", value: "Chains" }
-                  - { label: "Pendants", value: "Pendant" }
+                widget: relation
+                collection: catalog
+                file: categories
+                search_fields: ["categories.*.label_en"]
+                display_fields: ["categories.*.label_en"]
+                value_field: "categories.*.key"
+                required: false
+                hint: "Which category this card shows. Leave empty to show all jewellery. The list always matches your current categories."
 
       - name: store
         label: Shop details (address, phone, WhatsApp, hours)
