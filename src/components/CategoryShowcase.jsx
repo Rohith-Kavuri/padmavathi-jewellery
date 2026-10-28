@@ -3,6 +3,7 @@ import { CATEGORIES, PRODUCTS, getGem } from "../data/products";
 import { useLang } from "../i18n/LanguageContext";
 import { photo } from "../data/media";
 import JewelGlyph from "./JewelGlyph";
+import SectionTitle from "./SectionTitle";
 
 // One large photo card per category. "Show more" opens that category's
 // items in the collection below. Photos come from the admin page
@@ -14,9 +15,7 @@ export default function CategoryShowcase({ onSelectCategory }) {
   return (
     <section id="categories-section" className="px-4 md:px-6 pt-10 pb-4" style={{ scrollMarginTop: 80 }}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="vj-display text-2xl md:text-3xl mb-6" style={{ color: "var(--plum-900)" }}>
-          {t("category.heading")}
-        </h2>
+        <SectionTitle eyebrow={t("category.eyebrow")} title={t("category.heading")} className="mb-8 md:mb-10" />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-6">
           {CATEGORIES.map((c) => {

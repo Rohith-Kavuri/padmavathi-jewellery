@@ -6,7 +6,6 @@ import { priceFor } from "./utils/format";
 import TopUtilityBar from "./components/TopUtilityBar";
 import { FestiveThoranam, FestiveBand } from "./components/Festive";
 import TrustStrip from "./components/TrustStrip";
-import Ornament from "./components/Ornament";
 import OccasionShowcase from "./components/OccasionShowcase";
 import FeaturedSpotlight from "./components/FeaturedSpotlight";
 import VisitUs from "./components/VisitUs";
@@ -276,8 +275,6 @@ export default function App() {
       <div className="vj-reveal">
         <FeaturedSpotlight onExplore={(key) => scrollToCatalog(key)} />
       </div>
-
-      <Ornament className="pt-2" />
 
       <div className="vj-reveal">
       <Catalog
