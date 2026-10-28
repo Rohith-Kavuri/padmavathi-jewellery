@@ -103,7 +103,7 @@ export default function App() {
     });
     if (sortBy === "priceAsc") list = [...list].sort((a, b) => a.base22 - b.base22);
     if (sortBy === "priceDesc") list = [...list].sort((a, b) => b.base22 - a.base22);
-    if (sortBy === "newest") list = [...list].sort((a, b) => b.id - a.id);
+    if (sortBy === "newest") list = [...list].sort((a, b) => b.order - a.order || b.id - a.id);
     return list;
   }, [activeCategory, activeMetal, sortBy, searchTerm]);
 
@@ -146,7 +146,9 @@ export default function App() {
   }
 
   function scrollToCatalog(category) {
-    if (category) setActiveCategory(category);
+    // a link to a category that was renamed or removed opens all jewellery
+    // instead of an empty list
+    if (category) setActiveCategory(CATEGORIES.some((c) => c.key === category) ? category : "All");
     catalogRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 

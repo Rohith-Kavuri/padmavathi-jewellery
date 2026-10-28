@@ -4,6 +4,8 @@ import JewelGlyph from "./JewelGlyph";
 import { fmtINR, priceFor, fmtWeight } from "../utils/format";
 import { getGem, categoryLabel } from "../data/products";
 import { useLang } from "../i18n/LanguageContext";
+import { whatsappWith } from "../data/site";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 // Sample video used for every product's Quick View (per request) until
 // real per-product product videos are available.
@@ -56,7 +58,7 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
                     alt: tx(product.name),
                     rect: e.currentTarget.querySelector("img").getBoundingClientRect(),
                     title: tx(product.name),
-                    subtitle: `${t(`metal.${product.metal}`)} · ${fmtWeight(product.weight, t("unit.g"))} · ${fmtINR(priceFor(product, purity))}`,
+                    subtitle: [t(`metal.${product.metal}`), product.weight != null && fmtWeight(product.weight, t("unit.g")), product.showPrice ? fmtINR(priceFor(product, purity)) : t("price.onRequest")].filter(Boolean).join(" · "),
                   })
                 }
               >
@@ -134,7 +136,7 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
                 {tx(product.name)}
               </h3>
               <div className="vj-mono text-xs mt-1" style={{ color: gem[700] }}>
-                {tx(categoryLabel(product.category))} · {t(`metal.${product.metal}`)} · {fmtWeight(product.weight, t("unit.g"))}
+                {[tx(categoryLabel(product.category)), t(`metal.${product.metal}`), product.weight != null && fmtWeight(product.weight, t("unit.g"))].filter(Boolean).join(" · ")}
               </div>
             </div>
             <button onClick={onClose} className="vj-focus" aria-label={t("aria.close")}>
@@ -169,10 +171,29 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
             </div>
           )}
 
-          <div className="flex items-center justify-between mt-5">
-            <div className="vj-display text-2xl font-semibold" style={{ color: "var(--plum-900)" }}>
-              {fmtINR(priceFor(product, purity))}
-            </div>
+          <div className="flex flex-wrap items-center justify-between gap-3 mt-5">
+            {product.showPrice ? (
+              <div className="vj-display text-2xl font-semibold" style={{ color: "var(--plum-900)" }}>
+                {fmtINR(priceFor(product, purity))}
+              </div>
+            ) : (
+              <div className="flex flex-col gap-1.5">
+                <div className="vj-display italic text-xl" style={{ color: "var(--plum-900)" }}>
+                  {t("price.onRequest")}
+                </div>
+                {whatsappWith("x") && (
+                  <a
+                    href={whatsappWith(t("price.askMessage", { name: tx(product.name) }))}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="vj-focus inline-flex items-center gap-1.5 text-xs font-semibold rounded-full px-3 py-1.5 self-start"
+                    style={{ background: "#1f8f4e", color: "#fff" }}
+                  >
+                    <WhatsAppIcon size={14} /> {t("price.ask")}
+                  </a>
+                )}
+              </div>
+            )}
             <button
               onClick={() => onAddToCart(product, product.metal === "Gold" ? purity : 22)}
               className="vj-shimmer vj-focus px-6 py-2.5 rounded-full text-sm font-semibold"

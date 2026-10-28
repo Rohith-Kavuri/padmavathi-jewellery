@@ -7,6 +7,7 @@
 // shape the rest of the site uses, so components don't need to know.
 import categoriesFile from "../content/categories.json";
 import productsFile from "../content/products.json";
+import settingsFile from "../content/settings.json";
 
 // Uploaded images are stored as site paths like "/images/uploads/x.jpg";
 // empty means "no photo yet" and components fall back to the line icon.
@@ -26,7 +27,7 @@ export function categoryLabel(key) {
 export const METALS = ["All", "Gold", "Diamond", "Platinum", "Silver"];
 
 // Sort keys — labels come from strings.js ("sort.featured" etc.)
-export const SORTS = ["featured", "priceAsc", "priceDesc", "newest"];
+export const SORTS_ALL = ["featured", "priceAsc", "priceDesc", "newest"];
 
 // Five-color gemstone system — every category gets a gem identity so the
 // catalogue reads as colorful and varied rather than one flat brand color.
@@ -59,19 +60,33 @@ export function getGem(category) {
 }
 
 // weight is in grams; null where weight isn't the pricing basis (diamond pieces)
-const num = (v) => (v === "" || v == null || Number.isNaN(Number(v)) ? null : Number(v));
+const num = (v) => (v === "" || v == null || Number.isNaN(Number(v)) || Number(v) <= 0 ? null : Number(v));
 
-export const PRODUCTS = productsFile.products.map((p) => ({
-  id: Number(p.id),
+// Prices show only when the master switch is on (admin: Homepage → Price
+// display), the item's own "Show price" is on, and a price has been entered.
+// Otherwise the site shows "Price on request".
+export const SHOW_PRICES = settingsFile.show_prices === true;
+
+// "id" is the item's position in the list, so it's always unique even if two
+// products were given the same "Product number" in the admin page; that
+// number ("order") is still used for the "Newest" sort.
+export const PRODUCTS = productsFile.products.map((p, i) => ({
+  id: i,
+  order: Number(p.id) || 0,
   category: p.category,
   metal: p.metal,
   base22: Number(p.price) || 0,
+  showPrice: SHOW_PRICES && p.show_price !== false && Number(p.price) > 0,
   weight: num(p.weight),
   tag: p.tag || null,
   name: { en: p.name_en, te: p.name_te || p.name_en },
   desc: { en: p.desc_en || "", te: p.desc_te || p.desc_en || "" },
   image: img(p.image),
 }));
+
+// price sorting only makes sense when some prices are on show
+export const ANY_PRICE = PRODUCTS.some((p) => p.showPrice);
+export const SORTS = ANY_PRICE ? SORTS_ALL : SORTS_ALL.filter((s) => !s.startsWith("price"));
 
 export const TESTIMONIALS = [
   {

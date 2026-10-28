@@ -53,7 +53,7 @@ export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal
                     <div className="text-sm truncate">{tx(p.name)}</div>
                     <div className="vj-mono text-xs" style={{ color: "var(--gold-700)" }}>
                       {p.metal === "Gold" ? c.purity + "K · " : ""}
-                      {fmtINR(priceFor(p, c.purity))}
+                      {p.showPrice ? fmtINR(priceFor(p, c.purity)) : t("price.onRequest")}
                     </div>
                     <div className="flex items-center gap-2 mt-1">
                       <button onClick={() => onUpdateQty(c.id, c.purity, -1)} className="vj-focus" aria-label={t("cart.decrease")}>
@@ -74,7 +74,9 @@ export default function CartDrawer({ open, onClose, cart, onUpdateQty, cartTotal
         <div className="pt-4" style={{ borderTop: "1px solid var(--line)" }}>
           <div className="flex justify-between text-sm mb-3">
             <span>{t("cart.total")}</span>
-            <span className="vj-mono">{fmtINR(cartTotal)}</span>
+            <span className="vj-mono">
+              {cart.every((c) => PRODUCTS.find((pp) => pp.id === c.id)?.showPrice) ? fmtINR(cartTotal) : t("price.onRequest")}
+            </span>
           </div>
           <button
             disabled={cart.length === 0}
