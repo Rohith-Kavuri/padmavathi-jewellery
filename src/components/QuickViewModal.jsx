@@ -1,16 +1,83 @@
 import { useEffect, useState } from "react";
-import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ZoomIn, Link2, Share2, Check } from "lucide-react";
 import JewelGlyph from "./JewelGlyph";
 import { fmtINR, priceFor, fmtWeight } from "../utils/format";
 import { getGem, categoryLabel } from "../data/products";
 import { useLang } from "../i18n/LanguageContext";
-import { whatsappWith } from "../data/site";
+import { whatsappWith, whatsappShare } from "../data/site";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { photo, sized } from "../data/media";
 
 // Sample video used for every product's Quick View (per request) until
 // real per-product product videos are available.
 const VIDEO_ID = "3-3hAZZwMss"; // https://youtu.be/3-3hAZZwMss
 const MEDIA_SLIDES = ["image", "video"];
+
+// "Share this piece": the piece's own page (/p/<slug>/). WhatsApp shows that
+// page's photo and name in the chat; opening it lands on this Quick view.
+const pieceUrl = (product) => `${window.location.origin}/p/${product.slug}/`;
+const canNativeShare = () => typeof navigator !== "undefined" && typeof navigator.share === "function" && window.matchMedia("(pointer: coarse)").matches;
+
+function ShareRow({ product }) {
+  const { t, tx } = useLang();
+  const [copied, setCopied] = useState(false);
+  const url = pieceUrl(product);
+  const message = t("share.message", { name: tx(product.name) });
+  const native = canNativeShare();
+
+  useEffect(() => setCopied(false), [product.id]);
+
+  async function more() {
+    if (native) {
+      try {
+        await navigator.share({ title: tx(product.name), text: message, url });
+      } catch {}
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      const box = document.createElement("textarea");
+      box.value = url;
+      document.body.appendChild(box);
+      box.select();
+      try { document.execCommand("copy"); } catch {}
+      box.remove();
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2200);
+  }
+
+  return (
+    <div className="flex items-center gap-2 mt-5 pt-4" style={{ borderTop: "1px solid var(--line)" }}>
+      <a
+        href={whatsappShare(`${message}\n${url}`)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="vj-focus flex-1 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors border border-[#1f8f4e] text-[#17703c] hover:bg-[#1f8f4e] hover:text-white"
+      >
+        <WhatsAppIcon size={17} /> {t("share.button")}
+      </a>
+      <button
+        type="button"
+        onClick={more}
+        aria-label={native ? t("share.more") : t("share.copy")}
+        title={native ? t("share.more") : t("share.copy")}
+        className="vj-focus relative w-11 h-11 flex-shrink-0 rounded-full flex items-center justify-center transition-colors"
+        style={{ border: "1px solid rgba(142,29,51,0.35)", color: copied ? "#17703c" : "var(--plum-900)" }}
+      >
+        {copied ? <Check size={18} /> : native ? <Share2 size={17} /> : <Link2 size={18} />}
+        <span
+          role="status"
+          className="absolute bottom-full mb-2 right-0 whitespace-nowrap rounded-full px-3 py-1 text-[11px] font-semibold pointer-events-none transition-opacity"
+          style={{ background: "var(--plum-900)", color: "var(--gold-100)", opacity: copied ? 1 : 0 }}
+        >
+          {copied ? t("share.copied") : ""}
+        </span>
+      </button>
+    </div>
+  );
+}
 
 export default function QuickViewModal({ product, purity, setPurity, onClose, onAddToCart, onViewImage }) {
   const { t, tx } = useLang();
@@ -54,7 +121,7 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
                 aria-label={t("lightbox.view", { name: product.name })}
                 onClick={(e) =>
                   onViewImage?.({
-                    src: product.image,
+                    src: sized(product.image, 1200),
                     alt: tx(product.name),
                     rect: e.currentTarget.querySelector("img").getBoundingClientRect(),
                     title: tx(product.name),
@@ -62,7 +129,7 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
                   })
                 }
               >
-                <img src={product.image} alt={tx(product.name)} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img {...photo(product.image, [600, 900, 1200], "(min-width: 768px) 448px, 100vw")} alt={tx(product.name)} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <span
                   className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-semibold"
                   style={{ background: "rgba(36,5,13,0.65)", color: "var(--gold-100)", border: "1px solid rgba(227,170,44,0.6)" }}
@@ -202,6 +269,8 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
               {t("quickview.add")}
             </button>
           </div>
+
+          <ShareRow product={product} />
         </div>
       </div>
     </div>

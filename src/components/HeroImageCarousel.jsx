@@ -9,6 +9,14 @@ import { FESTIVE, DiwaliSlide } from "./Festive";
 import backdropImg from "../assets/hero-temple-necklace-hd.webp";
 import { useLang } from "../i18n/LanguageContext";
 import heroFile from "../content/hero.json";
+import { photo } from "../data/media";
+
+// Visitors on "Data Saver" or a very slow connection see the film's cover
+// picture instead of the film.
+const SAVE_DATA = (() => {
+  const c = typeof navigator !== "undefined" && navigator.connection;
+  return !!c && (c.saveData === true || /2g/.test(c.effectiveType || ""));
+})();
 
 // Four hero panels.
 //  1. "brand"  — the first thing visitors see: the logo (black background
@@ -257,7 +265,10 @@ function BrandSlide({ t }) {
 // A video banner: plays silently while its slide is showing, rewinds and
 // pauses when it isn't. Phones get the portrait video; tablets show the wide
 // one whole. The cover picture shows until the video can play.
-function VideoSlide({ slide, active, alt, onDuration }) {
+// The film itself (4–5 MB) is only fetched once `load` is on, a few seconds
+// before its turn, so people who leave or scroll away earlier never download
+// it. On Data Saver it's never fetched: the cover picture is shown instead.
+function VideoSlide({ slide, active, load, alt, onDuration }) {
   const phone = useIsWide("(max-width: 767px)");
   const tablet = useIsWide("(min-width: 768px) and (max-width: 1023px)");
   const ref = useRef(null);
@@ -267,13 +278,18 @@ function VideoSlide({ slide, active, alt, onDuration }) {
 
   useEffect(() => {
     const v = ref.current;
-    if (!v) return;
+    if (!v || !load) return;
     if (active && !reduce) {
       try { v.currentTime = 0; } catch {}
       const p = v.play();
       if (p && p.catch) p.catch(() => {});
     } else v.pause();
-  }, [active, src, reduce]);
+  }, [active, load, src, reduce]);
+
+  if (SAVE_DATA)
+    return (
+      <img src={poster} alt={alt} className="vj-kb absolute inset-0 w-full h-full" style={{ objectFit: tablet ? "contain" : "cover", background: "#2C0610" }} />
+    );
 
   return (
     <video
@@ -281,12 +297,12 @@ function VideoSlide({ slide, active, alt, onDuration }) {
       key={src}
       className="absolute inset-0 w-full h-full"
       style={{ objectFit: tablet ? "contain" : "cover", background: "#2C0610" }}
-      src={src}
+      src={load ? src : undefined}
       poster={poster}
       muted
       loop
       playsInline
-      preload={active ? "auto" : "metadata"}
+      preload={load ? "auto" : "none"}
       aria-label={alt}
       onLoadedMetadata={(e) => onDuration && onDuration(e.currentTarget.duration)}
     />
@@ -310,7 +326,7 @@ function GallerySlide({ images, tx }) {
   return (
     <>
       <img
-        src={images[0].src}
+        {...photo(images[0].src, [800, 1200], "36vw")}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full"
@@ -320,7 +336,7 @@ function GallerySlide({ images, tx }) {
         {images.map((im) => (
           <img
             key={im.id}
-            src={im.src}
+            {...photo(im.src, [800, 1200], "36vw")}
             alt={tx(im.alt)}
             className="block w-auto h-auto rounded-xl"
             style={{
@@ -356,18 +372,42 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
   const intervalRef = useRef(null);
   const videoLen = useRef({});
 
+  // The slideshow rests while it's scrolled out of view (no downloads, no
+  // battery use) and carries on when it's back.
+  const boxRef = useRef(null);
+  const [onScreen, setOnScreen] = useState(true);
   useEffect(() => {
-    if (paused) return;
+    const el = boxRef.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(([e]) => setOnScreen(e.isIntersecting), { threshold: 0.15 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  // Banner pictures and the film are only filled in for the slide on show
+  // and, 3 s into it, the next one, so nothing is downloaded long before it's
+  // needed. Once a slide has been filled in it stays that way.
+  const [warm, setWarm] = useState(() => new Set());
+  useEffect(() => {
+    const add = (id) => id && setWarm((w) => (w.has(id) ? w : new Set(w).add(id)));
+    add(slides[index]?.id);
+    if (!onScreen) return;
+    const id = setTimeout(() => add(slides[(index + 1) % slides.length]?.id), 3000);
+    return () => clearTimeout(id);
+  }, [index, slides, onScreen]);
+
+  useEffect(() => {
+    if (paused || !onScreen) return;
     // the animated logo slide stays up longer so its intro can play out,
     // and a video slide stays up for the length of the video
     const cur = slides[index];
     const ms =
-      cur?.type === "brand" || cur?.type === "wishes" ? 7500 : cur?.type === "video" ? Math.round((videoLen.current[cur.id] || 22) * 1000) : 4500;
+      cur?.type === "brand" || cur?.type === "wishes" ? 7500 : cur?.type === "video" && !SAVE_DATA ? Math.round((videoLen.current[cur.id] || 22) * 1000) : 4500;
     intervalRef.current = setTimeout(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, ms);
     return () => clearTimeout(intervalRef.current);
-  }, [paused, slides, index]);
+  }, [paused, onScreen, slides, index]);
 
   function goTo(i) {
     setIndex(((i % slides.length) + slides.length) % slides.length);
@@ -382,7 +422,7 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
     : { "--hero-h": "380px", height: 380, border: "1px solid var(--line)", boxShadow: "0 30px 60px -25px rgba(43,34,48,0.45)" };
 
   return (
-    <div className={containerClass} style={containerStyle} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <div ref={boxRef} className={containerClass} style={containerStyle} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       {slides.map((s, i) => (
         <div
           key={s.id}
@@ -395,15 +435,15 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
           ) : s.type === "wishes" ? (
             <DiwaliSlide />
           ) : s.type === "video" ? (
-            <VideoSlide slide={s} active={i === index} alt={tx(s.alt)} onDuration={(d) => (videoLen.current[s.id] = d)} />
-          ) : s.type === "gallery" ? (
+            <VideoSlide slide={s} active={i === index && onScreen} load={warm.has(s.id)} alt={tx(s.alt)} onDuration={(d) => (videoLen.current[s.id] = d)} />
+          ) : !warm.has(s.id) ? null : s.type === "gallery" ? (
             <GallerySlide images={s.images} tx={tx} />
           ) : s.type === "image" ? (
             <>
               {/* blurred copy fills the side bands so a "contain" image never sits on flat bars */}
               {s.fit === "contain" && (
                 <img
-                  src={s.src}
+                  {...photo(s.src, [800, 1200, 1600], "100vw")}
                   alt=""
                   aria-hidden="true"
                   className="absolute inset-0 w-full h-full"
@@ -412,9 +452,9 @@ export default function HeroImageCarousel({ fullBleed = false, children }) {
               )}
               {/* phones get the optional phone image, everything else the main one */}
               <picture>
-                {s.srcMobile && <source media="(max-width: 639px)" srcSet={s.srcMobile} />}
+                {s.srcMobile && <source media="(max-width: 639px)" srcSet={photo(s.srcMobile, [800, 1200]).srcSet || s.srcMobile} sizes="100vw" />}
                 <img
-                  src={s.src}
+                  {...photo(s.src, [800, 1200, 1600], "100vw")}
                   alt={tx(s.alt)}
                   className="vj-kb relative w-full h-full"
                   style={{ objectFit: s.fit || "cover", objectPosition: "center", filter: s.fit === "contain" ? "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" : undefined }}

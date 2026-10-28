@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { PRODUCTS, CATEGORIES } from "./data/products";
+import { slugCode } from "./data/slug";
 import { priceFor } from "./utils/format";
 
 import TopUtilityBar from "./components/TopUtilityBar";
@@ -126,6 +127,32 @@ export default function App() {
     setQuickView(product.id);
     setQuickViewPurity(22);
   }
+
+  // A shared piece's link (/p/<slug>/, or ?piece=<slug>) opens that piece in
+  // Quick view, with the collection below showing its category. If the piece
+  // was renamed since, the code at the end of the link still finds it; if it
+  // was removed, the homepage simply opens as usual.
+  useEffect(() => {
+    const m = window.location.pathname.match(/^\/p\/([^/]+)/);
+    const slug = (m ? decodeURIComponent(m[1]) : new URLSearchParams(window.location.search).get("piece") || "").replace(/\/+$/, "");
+    if (!slug) return;
+    const piece = PRODUCTS.find((p) => p.slug === slug) || PRODUCTS.find((p) => p.code === slugCode(slug));
+    if (!piece) {
+      window.history.replaceState(null, "", "/" + window.location.hash);
+      return;
+    }
+    if (CATEGORIES.some((c) => c.key === piece.category)) setActiveCategory(piece.category);
+    openQuickView(piece);
+  }, []);
+
+  // once that piece is closed, the address goes back to the plain homepage
+  const hadQuickView = useRef(false);
+  useEffect(() => {
+    if (quickView !== null) hadQuickView.current = true;
+    else if (hadQuickView.current && (/^\/p\//.test(window.location.pathname) || window.location.search.includes("piece="))) {
+      window.history.replaceState(null, "", "/" + window.location.hash);
+    }
+  }, [quickView]);
 
   function addToCart(product, purity, qty = 1) {
     setCart((c) => {

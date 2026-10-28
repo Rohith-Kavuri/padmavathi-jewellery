@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { X, ZoomIn, ZoomOut } from "lucide-react";
 import { useLang } from "../i18n/LanguageContext";
+import { original } from "../data/media";
 
 // Full-screen photo viewer.
 // - Opens with the photo growing smoothly from where it was tapped.
@@ -47,6 +48,11 @@ export default function Lightbox({ item, onClose }) {
       setBox({ w: Math.round(img.naturalWidth * r), h: Math.round(img.naturalHeight * r) });
       setAnimate(false);
       setPhase("entering");
+    };
+    // a resized copy that fails to load falls back to the original photo
+    img.onerror = () => {
+      const o = original(item.src);
+      if (o !== item.src) img.src = item.src = o;
     };
     img.src = item.src;
   }, [item]);

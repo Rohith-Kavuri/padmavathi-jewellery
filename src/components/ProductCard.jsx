@@ -3,6 +3,7 @@ import JewelGlyph from "./JewelGlyph";
 import { fmtINR, fmtWeight } from "../utils/format";
 import { getGem } from "../data/products";
 import { useLang } from "../i18n/LanguageContext";
+import { photo, sized } from "../data/media";
 
 export default function ProductCard({ product, onQuickView, onAddToCart, onViewImage }) {
   const { t, tx } = useLang();
@@ -46,7 +47,7 @@ export default function ProductCard({ product, onQuickView, onAddToCart, onViewI
               const img = e.currentTarget.querySelector("img");
               if (onViewImage) {
                 onViewImage({
-                  src: product.image,
+                  src: sized(product.image, 1200),
                   alt: tx(product.name),
                   rect: img.getBoundingClientRect(),
                   title: tx(product.name),
@@ -56,9 +57,10 @@ export default function ProductCard({ product, onQuickView, onAddToCart, onViewI
             }}
           >
             <img
-              src={product.image}
+              {...photo(product.image, [360, 540, 720], "(min-width: 1024px) 270px, (min-width: 768px) 30vw, 46vw")}
               alt={tx(product.name)}
               loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             {/* zoom hint on hover */}

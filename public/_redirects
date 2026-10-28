@@ -1,0 +1,4 @@
+# "Share this piece" links (/p/<piece>/) are real pages made at build time.
+# If a shared piece has since been renamed or removed, its old link opens the
+# homepage instead, which still finds a renamed piece by the code at the end.
+/p/*  /?piece=:splat  302

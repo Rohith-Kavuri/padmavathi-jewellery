@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { CATEGORIES, PRODUCTS, getGem } from "../data/products";
 import { useLang } from "../i18n/LanguageContext";
+import { photo } from "../data/media";
 import JewelGlyph from "./JewelGlyph";
 
 // One large photo card per category. "Show more" opens that category's
@@ -35,9 +36,10 @@ export default function CategoryShowcase({ onSelectCategory }) {
               >
                 {c.image ? (
                   <img
-                    src={c.image}
+                    {...photo(c.image, [360, 540, 720], "(min-width: 768px) 30vw, 46vw")}
                     alt=""
                     loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : (

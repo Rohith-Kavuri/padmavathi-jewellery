@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { OCCASIONS } from "../data/site";
 import { useLang } from "../i18n/LanguageContext";
+import { photo } from "../data/media";
 
 // Four photo cards — Bridal, Festive, Daily Wear, Gifting. Each opens a
 // category in the collection. Edited in the admin page (Homepage → Shop by
@@ -30,9 +31,10 @@ export default function OccasionShowcase({ onSelect }) {
             >
               {o.image && (
                 <img
-                  src={o.image}
+                  {...photo(o.image, [360, 540, 720], "(min-width: 1024px) 23vw, 46vw")}
                   alt=""
                   loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               )}

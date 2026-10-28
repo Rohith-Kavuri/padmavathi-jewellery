@@ -8,6 +8,7 @@
 import categoriesFile from "../content/categories.json";
 import productsFile from "../content/products.json";
 import settingsFile from "../content/settings.json";
+import { productSlugs } from "./slug";
 
 // Uploaded images are stored as site paths like "/images/uploads/x.jpg";
 // empty means "no photo yet" and components fall back to the line icon.
@@ -69,9 +70,13 @@ export const SHOW_PRICES = settingsFile.show_prices === true;
 
 // "id" is the item's position in the list, so it's always unique even if two
 // products were given the same "Product number" in the admin page; that
-// number ("order") is still used for the "Newest" sort.
+// number ("order") is still used for the "Newest" sort. "slug" is the
+// piece's own web address for sharing (see slug.js).
+const SLUGS = productSlugs(productsFile.products);
 export const PRODUCTS = productsFile.products.map((p, i) => ({
   id: i,
+  slug: SLUGS[i].slug,
+  code: SLUGS[i].code,
   order: Number(p.id) || 0,
   category: p.category,
   metal: p.metal,
