@@ -2,6 +2,7 @@
   "products": [
     {
       "name_te": "",
+      "show_price": true,
       "metal": "Gold",
       "price": 0,
       "desc_en": "A single round brilliant, raised on a tapered band.",
@@ -11,11 +12,11 @@
       "image": "/images/uploads/file_00000000b888820885a162f98be13d5b.png",
       "name_en": "Ring",
       "category": "Rings",
-      "desc_te": "సన్నబడే బ్యాండ్‌పై ఎత్తుగా అమర్చిన ఒకే రౌండ్ బ్రిలియంట్ వజ్రం.",
-      "show_price": true
+      "desc_te": "సన్నబడే బ్యాండ్‌పై ఎత్తుగా అమర్చిన ఒకే రౌండ్ బ్రిలియంట్ వజ్రం."
     },
     {
       "name_te": "",
+      "show_price": true,
       "metal": "Gold",
       "price": 0,
       "desc_en": "A plain band, brushed by hand for a quiet shine.",
@@ -25,11 +26,11 @@
       "image": "/images/uploads/file_000000001da88208a4a635ddd7889b30.png",
       "name_en": "Ring",
       "category": "Rings",
-      "desc_te": "సున్నితమైన మెరుపు కోసం చేతితో బ్రష్ చేసిన సాదా బ్యాండ్.",
-      "show_price": true
+      "desc_te": "సున్నితమైన మెరుపు కోసం చేతితో బ్రష్ చేసిన సాదా బ్యాండ్."
     },
     {
       "name_te": "",
+      "show_price": true,
       "metal": "Gold",
       "price": 0,
       "desc_en": "gold with a low-set cluster of small diamonds.",
@@ -39,11 +40,11 @@
       "image": "/images/uploads/file_00000000eabc82089bfb6732d38c754c.png",
       "name_en": "Gold Ring",
       "category": "Rings",
-      "desc_te": "చిన్న వజ్రాల గుత్తిని తక్కువ ఎత్తులో పొదిగిన రోజ్ గోల్డ్ ఉంగరం.",
-      "show_price": true
+      "desc_te": "చిన్న వజ్రాల గుత్తిని తక్కువ ఎత్తులో పొదిగిన రోజ్ గోల్డ్ ఉంగరం."
     },
     {
       "name_te": "",
+      "show_price": true,
       "metal": "Diamond",
       "price": 0,
       "desc_en": "A teardrop pendant in diamond , set with a single diamond.",
@@ -53,8 +54,7 @@
       "image": "/images/uploads/file_000000005b94821198e3218b5a5b9a4e.png",
       "name_en": "Rose Gold Diamond Ring",
       "category": "Rings",
-      "desc_te": "ఒకే వజ్రం పొదిగిన ప్లాటినం కన్నీటిబొట్టు ఆకారపు లాకెట్.",
-      "show_price": true
+      "desc_te": "ఒకే వజ్రం పొదిగిన ప్లాటినం కన్నీటిబొట్టు ఆకారపు లాకెట్."
     },
     {
       "tag": "",
@@ -127,15 +127,15 @@
       "show_price": true
     },
     {
-      "tag": "",
-      "image": "/images/uploads/img-20261024-wa0149.jpg",
-      "name_en": "Bangles",
-      "category": "Bangles",
+      "show_price": true,
+      "metal": "Gold",
       "price": 0,
       "weight": "",
+      "tag": "",
       "id": 6,
-      "metal": "Gold",
-      "show_price": true
+      "image": "/images/uploads/img-20261024-wa0149.jpg",
+      "name_en": "Bangles",
+      "category": "Bangles"
     },
     {
       "tag": "",
@@ -348,15 +348,15 @@
       "show_price": true
     },
     {
-      "tag": "",
-      "image": "/images/uploads/img-20261025-wa0023.jpg",
-      "name_en": "Kundan Mango Mala",
-      "category": "Kundan Mango Mala",
+      "show_price": true,
       "metal": "Gold",
       "price": 0,
       "weight": "",
+      "tag": "",
       "id": 113,
-      "show_price": true
+      "image": "/images/uploads/img-20261025-wa0023.jpg",
+      "name_en": "Kundan Mango Mala",
+      "category": "Kundan Mango Mala"
     },
     {
       "tag": "",
@@ -427,6 +427,17 @@
       "price": 0,
       "id": 125,
       "show_price": true
+    },
+    {
+      "name_te": "చెవిపోగులు",
+      "show_price": true,
+      "metal": "Gold",
+      "price": 0,
+      "tag": "",
+      "id": 104,
+      "image": "/images/uploads/img-20261028-wa0026.jpg",
+      "name_en": "Ear ring",
+      "category": "Ear Rings"
     }
   ]
 }
