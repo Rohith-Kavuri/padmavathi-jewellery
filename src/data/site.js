@@ -37,6 +37,9 @@ export const SOCIALS = [
   (STORE.youtube || WHATSAPP_URL) && { key: "youtube", href: STORE.youtube || WHATSAPP_URL },
   STORE.facebook && { key: "facebook", href: STORE.facebook },
 ].filter(Boolean);
+// WhatsApp link with a custom message (e.g. asking for a piece's price).
+export const whatsappWith = (text) =>
+  wa ? `https://wa.me/${wa.length === 10 ? "91" + wa : wa}?text=${encodeURIComponent(text)}` : "";
 export const PHONE_URL = STORE.phone ? `tel:${STORE.phone.replace(/[^\d+]/g, "")}` : "";
 export const MAP_EMBED_URL = STORE.mapQuery
   ? `https://www.google.com/maps?q=${encodeURIComponent(STORE.mapQuery)}&output=embed`

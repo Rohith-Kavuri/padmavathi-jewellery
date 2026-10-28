@@ -63,7 +63,7 @@ collections:
             label: Products
             label_singular: Product
             widget: list
-            summary: "{{fields.name_en}}  ·  {{fields.category}}  ·  {{fields.image | ternary('✓ has photo', 'no photo yet')}}"
+            summary: "{{fields.name_en}}  ·  {{fields.category}}  ·  {{fields.image | ternary('✓ has photo', 'no photo yet')}}  ·  {{fields.show_price | ternary('price on', 'price hidden')}}"
             fields:
               - name: image
                 label: Photo
@@ -91,6 +91,12 @@ collections:
                 value_type: int
                 min: 0
                 hint: "For gold pieces enter the 22K price — 18K and 24K prices are worked out automatically."
+              - name: show_price
+                label: Show this item's price
+                widget: boolean
+                default: true
+                required: false
+                hint: "Off = this item shows 'Price on request' instead of its price. Prices only appear on the website when 'Show prices on the website' is on (Homepage → Price display)."
               - name: weight
                 label: Weight (grams)
                 widget: number
@@ -185,6 +191,15 @@ collections:
                 value_type: int
                 min: 0
                 required: false
+      - name: prices
+        label: "Price display (show / hide prices)"
+        file: src/content/settings.json
+        fields:
+          - name: show_prices
+            label: Show prices on the website
+            widget: boolean
+            default: false
+            hint: "Off = every item shows 'Price on request' (with an 'Ask for price on WhatsApp' button in Quick view). On = items show their price, except any item whose own 'Show this item's price' is switched off (Catalogue → Products). Items with no price entered always show 'Price on request'."
       - name: hero
         label: Hero slides (top banner)
         file: src/content/hero.json

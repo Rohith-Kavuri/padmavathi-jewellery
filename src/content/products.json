@@ -11,7 +11,8 @@
       "image": "/images/uploads/file_00000000b888820885a162f98be13d5b.png",
       "name_en": "Ring",
       "category": "Rings",
-      "desc_te": "సన్నబడే బ్యాండ్‌పై ఎత్తుగా అమర్చిన ఒకే రౌండ్ బ్రిలియంట్ వజ్రం."
+      "desc_te": "సన్నబడే బ్యాండ్‌పై ఎత్తుగా అమర్చిన ఒకే రౌండ్ బ్రిలియంట్ వజ్రం.",
+      "show_price": true
     },
     {
       "name_te": "",
@@ -24,7 +25,8 @@
       "image": "/images/uploads/file_000000001da88208a4a635ddd7889b30.png",
       "name_en": "Ring",
       "category": "Rings",
-      "desc_te": "సున్నితమైన మెరుపు కోసం చేతితో బ్రష్ చేసిన సాదా బ్యాండ్."
+      "desc_te": "సున్నితమైన మెరుపు కోసం చేతితో బ్రష్ చేసిన సాదా బ్యాండ్.",
+      "show_price": true
     },
     {
       "name_te": "",
@@ -37,7 +39,8 @@
       "image": "/images/uploads/file_00000000eabc82089bfb6732d38c754c.png",
       "name_en": "Gold Ring",
       "category": "Rings",
-      "desc_te": "చిన్న వజ్రాల గుత్తిని తక్కువ ఎత్తులో పొదిగిన రోజ్ గోల్డ్ ఉంగరం."
+      "desc_te": "చిన్న వజ్రాల గుత్తిని తక్కువ ఎత్తులో పొదిగిన రోజ్ గోల్డ్ ఉంగరం.",
+      "show_price": true
     },
     {
       "name_te": "",
@@ -50,7 +53,8 @@
       "image": "/images/uploads/file_000000005b94821198e3218b5a5b9a4e.png",
       "name_en": "Rose Gold Diamond Ring",
       "category": "Rings",
-      "desc_te": "ఒకే వజ్రం పొదిగిన ప్లాటినం కన్నీటిబొట్టు ఆకారపు లాకెట్."
+      "desc_te": "ఒకే వజ్రం పొదిగిన ప్లాటినం కన్నీటిబొట్టు ఆకారపు లాకెట్.",
+      "show_price": true
     },
     {
       "tag": "",
@@ -59,7 +63,8 @@
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
-      "id": -1
+      "id": -1,
+      "show_price": true
     },
     {
       "tag": "",
@@ -68,7 +73,8 @@
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
-      "id": 2
+      "id": 2,
+      "show_price": true
     },
     {
       "tag": "",
@@ -77,7 +83,8 @@
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
-      "id": 3
+      "id": 3,
+      "show_price": true
     },
     {
       "tag": "",
@@ -86,7 +93,8 @@
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
-      "id": -2
+      "id": -2,
+      "show_price": true
     },
     {
       "tag": "",
@@ -95,7 +103,8 @@
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
-      "id": 7
+      "id": 7,
+      "show_price": true
     },
     {
       "tag": "",
@@ -104,7 +113,8 @@
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
-      "id": 8
+      "id": 8,
+      "show_price": true
     },
     {
       "tag": "",
@@ -113,7 +123,8 @@
       "category": "Bangles",
       "price": 0,
       "id": 5,
-      "metal": "Gold"
+      "metal": "Gold",
+      "show_price": true
     },
     {
       "tag": "",
@@ -123,7 +134,8 @@
       "price": 0,
       "weight": "",
       "id": 6,
-      "metal": "Gold"
+      "metal": "Gold",
+      "show_price": true
     },
     {
       "tag": "",
@@ -132,7 +144,8 @@
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
-      "id": 1
+      "id": 1,
+      "show_price": true
     },
     {
       "tag": "",
@@ -141,7 +154,8 @@
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
-      "id": 2
+      "id": 2,
+      "show_price": true
     },
     {
       "tag": "",
@@ -150,7 +164,8 @@
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
-      "id": 3
+      "id": 3,
+      "show_price": true
     },
     {
       "tag": "",
@@ -159,7 +174,8 @@
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
-      "id": 4
+      "id": 4,
+      "show_price": true
     },
     {
       "tag": "",
@@ -168,7 +184,8 @@
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
-      "id": 5
+      "id": 5,
+      "show_price": true
     },
     {
       "tag": "",
@@ -177,7 +194,8 @@
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
-      "id": 6
+      "id": 6,
+      "show_price": true
     },
     {
       "tag": "",
@@ -186,7 +204,8 @@
       "category": "Chains",
       "price": 0,
       "metal": "Gold",
-      "id": 7
+      "id": 7,
+      "show_price": true
     },
     {
       "tag": "",
@@ -195,7 +214,8 @@
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
-      "id": 8
+      "id": 8,
+      "show_price": true
     },
     {
       "tag": "",
@@ -204,7 +224,8 @@
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
-      "id": 9
+      "id": 9,
+      "show_price": true
     },
     {
       "tag": "",
@@ -213,7 +234,8 @@
       "name_en": "GuttaPusalu Necklaces",
       "metal": "Gold",
       "price": 0,
-      "id": 1
+      "id": 1,
+      "show_price": true
     },
     {
       "tag": "",
@@ -222,7 +244,8 @@
       "metal": "Gold",
       "category": "GuttaPusalu Necklaces",
       "price": 0,
-      "id": 2
+      "id": 2,
+      "show_price": true
     },
     {
       "tag": "",
@@ -231,7 +254,8 @@
       "category": "GuttaPusalu Necklaces",
       "metal": "Gold",
       "price": 0,
-      "id": 3
+      "id": 3,
+      "show_price": true
     },
     {
       "tag": "",
@@ -240,7 +264,8 @@
       "category": "GuttaPusalu Necklaces",
       "metal": "Gold",
       "price": 0,
-      "id": 4
+      "id": 4,
+      "show_price": true
     },
     {
       "tag": "",
@@ -249,7 +274,8 @@
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
-      "id": 100
+      "id": 100,
+      "show_price": true
     },
     {
       "tag": "",
@@ -258,7 +284,8 @@
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
-      "id": 101
+      "id": 101,
+      "show_price": true
     },
     {
       "tag": "",
@@ -267,7 +294,8 @@
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
-      "id": 102
+      "id": 102,
+      "show_price": true
     },
     {
       "tag": "",
@@ -276,7 +304,8 @@
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
-      "id": 103
+      "id": 103,
+      "show_price": true
     },
     {
       "tag": "",
@@ -285,7 +314,8 @@
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
-      "id": 104
+      "id": 104,
+      "show_price": true
     },
     {
       "tag": "",
@@ -294,7 +324,8 @@
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
-      "id": 110
+      "id": 110,
+      "show_price": true
     },
     {
       "tag": "",
@@ -303,7 +334,8 @@
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
-      "id": 111
+      "id": 111,
+      "show_price": true
     },
     {
       "tag": "",
@@ -312,7 +344,8 @@
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
-      "id": 112
+      "id": 112,
+      "show_price": true
     },
     {
       "tag": "",
@@ -322,7 +355,8 @@
       "metal": "Gold",
       "price": 0,
       "weight": "",
-      "id": 113
+      "id": 113,
+      "show_price": true
     },
     {
       "tag": "",
@@ -331,7 +365,8 @@
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
-      "id": 114
+      "id": 114,
+      "show_price": true
     },
     {
       "tag": "",
@@ -340,7 +375,8 @@
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
-      "id": 115
+      "id": 115,
+      "show_price": true
     },
     {
       "tag": "",
@@ -349,7 +385,8 @@
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
-      "id": 116
+      "id": 116,
+      "show_price": true
     },
     {
       "tag": "",
@@ -358,7 +395,8 @@
       "category": "Rings",
       "metal": "Gold",
       "price": 0,
-      "id": 120
+      "id": 120,
+      "show_price": true
     },
     {
       "tag": "",
@@ -367,7 +405,8 @@
       "category": "Rings",
       "metal": "Gold",
       "price": 0,
-      "id": 121
+      "id": 121,
+      "show_price": true
     },
     {
       "tag": "",
@@ -376,7 +415,8 @@
       "category": "Rings",
       "metal": "Gold",
       "price": 0,
-      "id": 121
+      "id": 121,
+      "show_price": true
     },
     {
       "tag": "",
@@ -385,7 +425,8 @@
       "category": "Rings",
       "metal": "Gold",
       "price": 0,
-      "id": 125
+      "id": 125,
+      "show_price": true
     }
   ]
 }
