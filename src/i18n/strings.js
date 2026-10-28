@@ -48,11 +48,13 @@ export const STRINGS = {
     "aria.goToSlide": "Go to slide {n}",
 
     // categories + catalogue
-    "category.heading": "Shop by category",
+    "category.heading": "Shop by *category*",
+    "category.eyebrow": "OUR COLLECTIONS",
     "category.showMore": "Show more",
     "catalog.showMore": "Show {count} more",
     "catalog.backToCategories": "All categories",
-    "catalog.title": "The collection",
+    "catalog.title": "The *collection*",
+    "catalog.eyebrow": "HANDPICKED FOR YOU",
     "catalog.count.one": "{count} piece",
     "catalog.count.other": "{count} pieces",
     "catalog.all": "All",
@@ -109,7 +111,7 @@ export const STRINGS = {
 
     // gold rates
     "rates.eyebrow": "TODAY'S RATE",
-    "rates.title": "Gold & metal rates",
+    "rates.title": "Gold & metal *rates*",
     "rates.body":
       "Today's rates at our showroom, per gram. Final prices include making charges and GST, shown separately on your bill.",
     "rates.updated": "Updated on {date}",
@@ -130,10 +132,11 @@ export const STRINGS = {
     "trust.packaging": "Premium Packaging",
 
     // occasions, visit us, bottom bar
-    "occasion.heading": "Shop by occasion",
+    "occasion.heading": "Shop by *occasion*",
+    "occasion.eyebrow": "FOR EVERY MOMENT",
     "occasion.explore": "Explore",
     "visit.eyebrow": "VISIT US",
-    "visit.title": "Visit our showroom",
+    "visit.title": "Visit our *showroom*",
     "visit.directions": "Get directions",
     "visit.whatsapp": "WhatsApp us",
     "visit.mapTitle": "Map showing our showroom",
@@ -269,11 +272,13 @@ export const STRINGS = {
     "aria.goToSlide": "స్లయిడ్ {n}కి వెళ్లండి",
 
     // categories + catalogue
-    "category.heading": "రకాల వారీగా షాపింగ్ చేయండి",
+    "category.heading": "*రకాల* వారీగా షాపింగ్ చేయండి",
+    "category.eyebrow": "మా కలెక్షన్లు",
     "category.showMore": "మరిన్ని చూడండి",
     "catalog.showMore": "మరో {count} చూపించు",
     "catalog.backToCategories": "అన్ని రకాలు",
-    "catalog.title": "మా కలెక్షన్",
+    "catalog.title": "మా *కలెక్షన్*",
+    "catalog.eyebrow": "మీ కోసం ఎంచుకున్నవి",
     "catalog.count.one": "{count} ఆభరణం",
     "catalog.count.other": "{count} ఆభరణాలు",
     "catalog.all": "అన్నీ",
@@ -330,7 +335,7 @@ export const STRINGS = {
 
     // gold rates
     "rates.eyebrow": "నేటి ధర",
-    "rates.title": "బంగారం & లోహాల ధరలు",
+    "rates.title": "బంగారం & లోహాల *ధరలు*",
     "rates.body":
       "మా షోరూమ్‌లో నేటి ధరలు, గ్రాముకు. తుది ధరల్లో తయారీ ఛార్జీలు, GST ఉంటాయి — మీ బిల్లులో వేరుగా చూపిస్తాం.",
     "rates.updated": "{date} న అప్‌డేట్ చేయబడింది",
@@ -351,10 +356,11 @@ export const STRINGS = {
     "trust.packaging": "ప్రీమియం ప్యాకేజింగ్",
 
     // occasions, visit us, bottom bar
-    "occasion.heading": "సందర్భం వారీగా షాపింగ్ చేయండి",
+    "occasion.heading": "*సందర్భం* వారీగా షాపింగ్ చేయండి",
+    "occasion.eyebrow": "ప్రతి సందర్భానికి",
     "occasion.explore": "చూడండి",
     "visit.eyebrow": "మమ్మల్ని సందర్శించండి",
-    "visit.title": "మా షోరూమ్‌ను సందర్శించండి",
+    "visit.title": "మా *షోరూమ్‌ను* సందర్శించండి",
     "visit.directions": "దారి చూపించు",
     "visit.whatsapp": "వాట్సాప్ చేయండి",
     "visit.mapTitle": "మా షోరూమ్ మ్యాప్",

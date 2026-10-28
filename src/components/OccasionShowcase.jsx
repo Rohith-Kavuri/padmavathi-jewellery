@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { OCCASIONS } from "../data/site";
 import { useLang } from "../i18n/LanguageContext";
 import { photo } from "../data/media";
+import SectionTitle from "./SectionTitle";
 
 // Four photo cards — Bridal, Festive, Daily Wear, Gifting. Each opens a
 // category in the collection. Edited in the admin page (Homepage → Shop by
@@ -13,9 +14,7 @@ export default function OccasionShowcase({ onSelect }) {
   return (
     <section className="px-4 md:px-6 pt-10 pb-2">
       <div className="max-w-6xl mx-auto">
-        <h2 className="vj-display text-2xl md:text-3xl mb-6" style={{ color: "var(--plum-900)" }}>
-          {t("occasion.heading")}
-        </h2>
+        <SectionTitle eyebrow={t("occasion.eyebrow")} title={t("occasion.heading")} className="mb-8 md:mb-10" />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
           {OCCASIONS.map((o, i) => (
             <button

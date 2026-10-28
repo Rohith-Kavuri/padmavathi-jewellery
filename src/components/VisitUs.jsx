@@ -3,6 +3,7 @@ import { STORE, WHATSAPP_URL, PHONE_URL, MAP_EMBED_URL, DIRECTIONS_URL, SOCIALS 
 import { SocialRow } from "./SocialIcons";
 import { useLang } from "../i18n/LanguageContext";
 import WhatsAppIcon from "./WhatsAppIcon";
+import SectionTitle from "./SectionTitle";
 
 // Showroom details + map. Details are edited in the admin page
 // (Homepage → Shop details); empty fields are simply not shown.
@@ -16,12 +17,7 @@ export default function VisitUs({ onBookVisit }) {
     <section id="visit-section" className="px-4 md:px-6 py-12 md:py-16" style={{ scrollMarginTop: 110 }}>
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         <div>
-          <div className="vj-mono text-xs tracking-widest mb-2" style={{ color: "var(--gold-700)" }}>
-            {t("visit.eyebrow")}
-          </div>
-          <h2 className="vj-display text-3xl md:text-4xl mb-5" style={{ color: "var(--plum-900)" }}>
-            {t("visit.title")}
-          </h2>
+          <SectionTitle eyebrow={t("visit.eyebrow")} title={t("visit.title")} align="left" className="mb-6" />
 
           <div
             className="rounded-2xl p-5 md:p-6 space-y-4"

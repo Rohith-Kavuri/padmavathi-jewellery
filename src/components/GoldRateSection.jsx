@@ -1,6 +1,7 @@
 import { fmtINR } from "../utils/format";
 import { RATE_ROWS, fmtRatesDate } from "../data/rates";
 import { useLang } from "../i18n/LanguageContext";
+import SectionTitle from "./SectionTitle";
 
 // Today's rates as entered in the admin page (Homepage → Today's gold &
 // metal rates). Rates left empty there are not shown.
@@ -9,15 +10,10 @@ export default function GoldRateSection() {
   const date = fmtRatesDate(lang);
 
   return (
-    <section id="rates-section" className="px-4 md:px-6 py-12" style={{ background: "var(--plum-900)", scrollMarginTop: 110 }}>
+    <section id="rates-section" className="vj-zari-both relative px-4 md:px-6 py-14" style={{ background: "var(--plum-900)", scrollMarginTop: 110 }}>
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-start">
         <div>
-          <div className="vj-mono text-xs tracking-widest mb-2" style={{ color: "var(--gold-300)" }}>
-            {t("rates.eyebrow")}
-          </div>
-          <h2 className="vj-display text-3xl mb-3" style={{ color: "var(--gold-100)" }}>
-            {t("rates.title")}
-          </h2>
+          <SectionTitle eyebrow={t("rates.eyebrow")} title={t("rates.title")} align="left" tone="dark" className="mb-4" />
           <p className="text-sm max-w-sm" style={{ color: "rgba(255,251,242,0.75)" }}>
             {t("rates.body")}
           </p>

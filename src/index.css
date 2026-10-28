@@ -254,6 +254,55 @@
   background-size: 120px 120px;
 }
 
+/* ---------- Section headings (SectionTitle.jsx) ---------- */
+.vj-root h2.vj-display.vj-section-title,
+.vj-root #rates-section h2.vj-display.vj-section-title {
+  font-size: clamp(2rem, 6vw, 3.15rem);
+  letter-spacing: 0.005em;
+  /* plain colour (set on the element), not the default gold heading fill */
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+.vj-gold-word {
+  font-style: italic;
+  font-weight: 600;
+  padding-right: 0.06em;
+  background: linear-gradient(100deg, #8a5a0e 0%, #c8902a 30%, #e2b24e 48%, #b8862b 66%, #7d500c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.vj-section-title-dark .vj-gold-word {
+  background-image: linear-gradient(100deg, #e3aa2c 0%, #f6d77c 30%, #fff1c1 48%, #f2c45a 66%, #c8902a 100%);
+}
+
+/* ---------- Zari border: a gold temple-border band, like a silk saree's
+   edge, along the top/bottom of the maroon sections ---------- */
+.vj-zari-top::before,
+.vj-zari-both::before,
+.vj-zari-both::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='24' viewBox='0 0 32 24'><path d='M0 1.4h32' stroke='%23e3aa2c' stroke-width='1.6'/><path d='M0 22.7h32' stroke='%23e3aa2c' stroke-width='1.4'/><g fill='%23f2c45a'><circle cx='4' cy='4.6' r='.95'/><circle cx='12' cy='4.6' r='.95'/><circle cx='20' cy='4.6' r='.95'/><circle cx='28' cy='4.6' r='.95'/></g><path d='M4 21 16 8.2 28 21' fill='%23e3aa2c' fill-opacity='.2' stroke='%23e3aa2c' stroke-width='1'/><path d='M9.6 21 16 14.2 22.4 21z' fill='%23e8b445'/><circle cx='16' cy='10.9' r='1.15' fill='%23fff1c1'/><path d='M0 12.4 2.6 15 0 17.6zM32 12.4 29.4 15 32 17.6z' fill='%23f2c45a'/></svg>");
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;
+}
+.vj-zari-top::before,
+.vj-zari-both::before {
+  top: 8px;
+}
+.vj-zari-both::after {
+  bottom: 8px;
+  transform: scaleY(-1);
+}
+
 /* Product card: the name's button stretches over the whole card, so a tap
    anywhere opens Quick view; the focus ring is drawn around the card. */
 .vj-stretch {

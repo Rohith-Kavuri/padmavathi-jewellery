@@ -18,7 +18,7 @@ export default function Testimonials() {
 
   return (
     <section
-      className="px-4 md:px-6 py-14"
+      className="vj-zari-both relative px-4 md:px-6 py-16"
       style={{ background: "var(--plum-900)" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

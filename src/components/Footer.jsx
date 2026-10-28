@@ -34,7 +34,7 @@ export default function Footer({ onSelectCategory, onBookVisit, onGoVisit, onGoR
 
   return (
     <footer
-      className="relative overflow-hidden px-4 md:px-6 pt-14 pb-8"
+      className="vj-zari-top relative overflow-hidden px-4 md:px-6 pt-16 pb-8"
       style={{ background: "radial-gradient(ellipse at 50% 0%, #5C0F20 0%, #3A0812 45%, #1E040A 100%)", color: "rgba(251,236,200,0.75)" }}
     >
       <Corner className="absolute top-3 left-3 w-16 h-16 md:w-24 md:h-24" />
