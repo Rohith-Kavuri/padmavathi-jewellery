@@ -49,7 +49,7 @@ git push
    **OAuth Apps** → **New OAuth App**
 2. Fill in:
    - Application name: `Padmavathi Admin`
-   - Homepage URL: `https://padmavathijewellery.netlify.app`
+   - Homepage URL: `https://padmavathijewellers.com`
    - Authorization callback URL: `https://api.netlify.com/auth/done`
 3. **Register application** → copy the **Client ID** → click
    **Generate a new client secret** → copy the secret.
@@ -63,8 +63,9 @@ git push
 
 ### c. Use it
 
-Open **https://padmavathijewellery.netlify.app/admin/** →
+Open **https://padmavathijewellers.com/admin/** →
 **Login with GitHub** → edit → **Publish**.
+(The old address, https://padmavathijewellery.netlify.app/admin/, works too.)
 
 ---
 

@@ -6,6 +6,9 @@ backend:
   name: github
   repo: Rohith-Kavuri/padmavathi-jewellery
   branch: main
+  # GitHub sign-in goes through this Netlify project, so the admin page works
+  # the same on padmavathijewellers.com, the netlify.app address and previews
+  site_domain: padmavathijewellery.netlify.app
   commit_messages:
     update: "Admin: update {{collection}} ({{slug}})"
     uploadMedia: "Admin: upload {{path}}"
@@ -20,8 +23,8 @@ local_backend: true
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
-site_url: https://padmavathijewellery.netlify.app
-display_url: https://padmavathijewellery.netlify.app
+site_url: https://padmavathijewellers.com
+display_url: https://padmavathijewellers.com
 
 collections:
   - name: catalog

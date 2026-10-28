@@ -1,5 +1,5 @@
 // A short, stable web address for each product, used by "Share this piece"
-// (padmavathijewellers…/p/kundan-mango-mala-4k2x9q/).
+// (padmavathijewellers.com/p/kundan-mango-mala-4k2x9q/).
 //
 // It is the product's name plus a short code made from its photo, so it stays
 // the same when products are reordered or numbered differently in the admin

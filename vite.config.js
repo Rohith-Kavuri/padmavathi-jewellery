@@ -10,7 +10,7 @@ import { writeSharePages } from "./scripts/share-pages.js";
 // or a preview link (DEPLOY_PRIME_URL), so previews show their own card.
 const SITE_URL = (
   (process.env.CONTEXT === "production" ? process.env.URL : process.env.DEPLOY_PRIME_URL || process.env.URL) ||
-  "https://padmavathijewellery.netlify.app"
+  "https://padmavathijewellers.com"
 ).replace(/\/$/, "");
 
 let outDir = "dist";
