@@ -443,6 +443,35 @@
   font-weight: 700 !important;
 }
 
+/* ---------- festive mode: thoranam strands sway, diya flames flicker ---------- */
+.vj-strand {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  animation: vj-strand 4.2s ease-in-out infinite alternate;
+}
+@keyframes vj-strand {
+  from { transform: rotate(-3deg); }
+  to { transform: rotate(3deg); }
+}
+.vj-flame {
+  transform-box: view-box;
+  transform-origin: 30px 34px;
+  animation: vj-flame 1.6s ease-in-out infinite;
+}
+@keyframes vj-flame {
+  0%, 100% { transform: scale(1, 1) rotate(0deg); opacity: 1; }
+  25% { transform: scale(0.93, 1.07) rotate(-2deg); opacity: 0.95; }
+  50% { transform: scale(1.04, 0.95) rotate(1.5deg); opacity: 1; }
+  75% { transform: scale(0.96, 1.05) rotate(-1deg); opacity: 0.92; }
+}
+.vj-diya-glow {
+  animation: vj-diya-glow 2.4s ease-in-out infinite;
+}
+@keyframes vj-diya-glow {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
 /* ---------- first slide: film-style backdrop, arch, sweep ---------- */
 .vj-brand-bg {
   filter: blur(14px) saturate(1.15);
@@ -692,6 +721,9 @@
   .vj-slide .vj-brand-arch,
   .vj-slide .vj-brand-shine,
   .vj-slide .vj-arch-sweep,
+  .vj-strand,
+  .vj-flame,
+  .vj-diya-glow,
   .vj-gold-text,
   .vj-brand-bg,
   .vj-bokeh,

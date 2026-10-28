@@ -3,6 +3,7 @@ import { PRODUCTS, CATEGORIES } from "./data/products";
 import { priceFor } from "./utils/format";
 
 import TopUtilityBar from "./components/TopUtilityBar";
+import { FestiveThoranam, FestiveBand } from "./components/Festive";
 import TrustStrip from "./components/TrustStrip";
 import Ornament from "./components/Ornament";
 import OccasionShowcase from "./components/OccasionShowcase";
@@ -200,6 +201,8 @@ export default function App() {
     <div className="vj-root pb-16 md:pb-0" data-lang={lang}>
       <TopUtilityBar />
 
+      <FestiveThoranam />
+
       <Header
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -230,6 +233,8 @@ export default function App() {
       />
 
       <Hero />
+
+      <FestiveBand />
 
       <TrustStrip />
 

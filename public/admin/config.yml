@@ -186,6 +186,29 @@ collections:
                 value_type: int
                 min: 0
                 required: false
+      - name: festive
+        label: "Festive mode (Diwali, Sankranti, Akshaya Tritiya …)"
+        file: src/content/festive.json
+        fields:
+          - name: enabled
+            label: Festive mode on
+            widget: boolean
+            default: false
+            hint: "Shows the marigold thoranam above the header and a festive band with glowing diyas under the top banner."
+          - name: until
+            label: Turn off automatically after
+            widget: datetime
+            format: "YYYY-MM-DD"
+            date_format: "DD MMM YYYY"
+            time_format: false
+            required: false
+            hint: "Optional. The decorations disappear by themselves after this date. Leave empty to keep them until you switch festive mode off."
+          - { name: title_en, label: Festive heading (English), widget: string, hint: "e.g. DHANTERAS & DIWALI FESTIVE COLLECTION, SANKRANTI SPECIALS" }
+          - { name: title_te, label: Festive heading (Telugu), widget: string, required: false }
+          - { name: text_en, label: Message or offer (English), widget: string, required: false, hint: "Your festive offer or a short message, e.g. 'Making charges from 6% till Diwali'. Leave empty for just the heading." }
+          - { name: text_te, label: Message or offer (Telugu), widget: string, required: false }
+          - { name: show_thoranam, label: Show the marigold thoranam, widget: boolean, default: true, required: false }
+          - { name: show_diyas, label: Show the diyas, widget: boolean, default: true, required: false }
       - name: prices
         label: "Price display (show / hide prices)"
         file: src/content/settings.json
