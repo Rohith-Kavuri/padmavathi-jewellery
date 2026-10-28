@@ -33,6 +33,20 @@ export function writeSharePages({ outDir, siteUrl, root = process.cwd() }) {
   const products = read("products.json").products || [];
   const categories = read("categories.json").categories || [];
   const slugs = productSlugs(products);
+  const sized = JSON.parse(fs.readFileSync(path.join(root, "src/data/sized.json"), "utf8"));
+  const publicDir = path.join(root, "public");
+
+  // The preview picture: the square copy made by scripts/shrink-photos.py;
+  // for a photo without one, the original if it's light enough for WhatsApp
+  // (it skips heavy pictures), otherwise the shop's own preview picture.
+  const pictureFor = (src) => {
+    const e = src && sized[src];
+    if (e && e.share) return { url: `${siteUrl}/images/sized/${e.name}-share.jpg`, w: 800, h: 800 };
+    const file = src && path.join(publicDir, src);
+    if (file && /\.(jpe?g|png)$/i.test(src) && fs.existsSync(file) && fs.statSync(file).size <= 450 * 1024)
+      return { url: siteUrl + encodeURI(src) };
+    return { url: `${siteUrl}/og-image.jpg`, w: 1200, h: 630 };
+  };
 
   products.forEach((p, i) => {
     const slug = slugs[i].slug;
@@ -43,11 +57,8 @@ export function writeSharePages({ outDir, siteUrl, root = process.cwd() }) {
     const text =
       (p.desc_en && p.desc_en.trim()) ||
       `${category} from Padmavathi Jewellers, Main Road, Giddalur. Tap to see this piece and chat with us on WhatsApp.`;
-    // the piece's photo, cut square and shrunk by Netlify's image service so
-    // WhatsApp shows it (it skips pictures that are too heavy)
-    const image = p.image
-      ? `${siteUrl}/.netlify/images?url=${encodeURIComponent(p.image)}&w=800&h=800&fit=cover&fm=jpg&q=80`
-      : `${siteUrl}/og-image.jpg`;
+    const pic = pictureFor(p.image);
+    const image = pic.url;
 
     let html = home;
     html = setTag(html, /(<title>)[^<]*(<\/title>)/, title);
@@ -58,8 +69,14 @@ export function writeSharePages({ outDir, siteUrl, root = process.cwd() }) {
     html = meta(html, "property", "og:url", url);
     html = meta(html, "property", "og:image", image);
     html = meta(html, "property", "og:image:secure_url", image);
-    html = meta(html, "property", "og:image:width", p.image ? "800" : "1200");
-    html = meta(html, "property", "og:image:height", p.image ? "800" : "630");
+    if (pic.w) {
+      html = meta(html, "property", "og:image:width", String(pic.w));
+      html = meta(html, "property", "og:image:height", String(pic.h));
+    } else {
+      // size unknown: leave it to WhatsApp to read from the picture
+      html = html.replace(/\s*<meta property="og:image:(width|height)"[^>]*>/g, "");
+      html = html.replace(/(<meta property="og:image:type" content=")[^"]*(")/, (_, a, b) => a + (/\.png$/i.test(p.image) ? "image/png" : "image/jpeg") + b);
+    }
     html = meta(html, "property", "og:image:alt", `${name} — Padmavathi Jewellers`);
     html = meta(html, "name", "twitter:title", title);
     html = meta(html, "name", "twitter:description", text);
