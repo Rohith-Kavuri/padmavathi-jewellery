@@ -102,7 +102,7 @@ const Catalog = forwardRef(function Catalog(
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
               {visible.map((p) => (
                 <ProductCard key={p.id} product={p} onQuickView={onQuickView} onAddToCart={onAddToCart} onViewImage={onViewImage} />
               ))}
