@@ -209,6 +209,11 @@ collections:
           - { name: text_te, label: Message or offer (Telugu), widget: string, required: false }
           - { name: show_thoranam, label: Show the marigold thoranam, widget: boolean, default: true, required: false }
           - { name: show_diyas, label: Show the diyas, widget: boolean, default: true, required: false }
+          - { name: show_wishes_slide, label: Show the festive wishes slide, widget: boolean, default: true, required: false, hint: "A slide with your festive greeting, rangoli, diyas and fireworks, right after the first banner slide." }
+          - { name: wish_title_en, label: Greeting (English), widget: string, required: false, hint: "e.g. Happy Diwali, Happy Sankranti" }
+          - { name: wish_title_te, label: Greeting (Telugu), widget: string, required: false, hint: "e.g. దీపావళి శుభాకాంక్షలు" }
+          - { name: wish_text_en, label: Wish message (English), widget: text, required: false }
+          - { name: wish_text_te, label: Wish message (Telugu), widget: text, required: false }
       - name: prices
         label: "Price display (show / hide prices)"
         file: src/content/settings.json

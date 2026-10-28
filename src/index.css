@@ -472,6 +472,77 @@
   50% { opacity: 1; }
 }
 
+/* ---------- festive wishes slide ---------- */
+.vj-rangoli {
+  transform: translate(var(--rx), -50%);
+  animation: vj-rangoli-turn 120s linear infinite;
+  filter: drop-shadow(0 0 18px rgba(242, 196, 90, 0.25));
+  opacity: 0.92;
+}
+.vj-rangoli-r {
+  animation-direction: reverse;
+}
+/* laptops: big mandalas peeking in at the middle of each side;
+   phones: smaller ones tucked into opposite corners, clear of the text */
+.vj-rangoli-l,
+.vj-rangoli-r {
+  top: 50%;
+  width: calc(var(--hero-h) * 0.95);
+}
+@media (max-width: 767px) {
+  .vj-rangoli-l,
+  .vj-rangoli-r {
+    width: calc(var(--hero-h) * 0.56);
+    opacity: 0.7;
+  }
+  .vj-rangoli-l { top: 7%; }
+  .vj-rangoli-r { top: 93%; }
+}
+@keyframes vj-rangoli-turn {
+  from { transform: translate(var(--rx), -50%) rotate(0deg); }
+  to { transform: translate(var(--rx), -50%) rotate(360deg); }
+}
+.vj-rg {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+}
+.vj-slide[aria-hidden="false"] .vj-rg-1 { animation: vj-rg-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both; }
+.vj-slide[aria-hidden="false"] .vj-rg-2 { animation: vj-rg-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s both; }
+.vj-slide[aria-hidden="false"] .vj-rg-3 { animation: vj-rg-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.7s both; }
+.vj-slide[aria-hidden="false"] .vj-rg-4 { animation: vj-rg-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.95s both; }
+@keyframes vj-rg-in {
+  from { opacity: 0; transform: scale(0.55) rotate(-20deg); }
+  to { opacity: 1; transform: none; }
+}
+.vj-burst {
+  opacity: 0;
+}
+.vj-slide[aria-hidden="false"] .vj-burst {
+  animation: vj-burst 3.4s ease-out var(--bd) infinite;
+}
+@keyframes vj-burst {
+  0% { opacity: 0; transform: scale(0.15); }
+  8% { opacity: 1; }
+  55% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.12) translateY(6px); }
+}
+.vj-slide[aria-hidden="false"] .vj-wish-eyebrow { animation: vj-fade-up 0.9s ease 0.4s both; }
+.vj-slide[aria-hidden="false"] .vj-wish-title { animation: vj-track-in 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.7s both; }
+.vj-slide[aria-hidden="false"] .vj-wish-rule { animation: vj-rule-grow 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 1.6s both; }
+.vj-slide[aria-hidden="false"] .vj-wish-text { animation: vj-fade-up 0.9s ease 1.9s both; }
+.vj-slide[aria-hidden="false"] .vj-wish-sign { animation: vj-fade-up 0.9s ease 2.3s both; }
+@keyframes vj-track-in {
+  from { opacity: 0; letter-spacing: 0.32em; filter: blur(8px); }
+  to { opacity: 1; letter-spacing: 0.06em; filter: blur(0) drop-shadow(0 2px 2px rgba(20, 3, 8, 0.55)); }
+}
+.vj-slide[aria-hidden="false"] .vj-ignite {
+  animation: vj-ignite 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) var(--ig) both;
+}
+@keyframes vj-ignite {
+  from { opacity: 0; transform: translateY(10px) scale(0.85); }
+  to { opacity: 1; transform: none; }
+}
+
 /* ---------- first slide: film-style backdrop, arch, sweep ---------- */
 .vj-brand-bg {
   filter: blur(14px) saturate(1.15);
@@ -721,6 +792,15 @@
   .vj-slide .vj-brand-arch,
   .vj-slide .vj-brand-shine,
   .vj-slide .vj-arch-sweep,
+  .vj-rangoli,
+  .vj-slide .vj-rg,
+  .vj-slide .vj-burst,
+  .vj-slide .vj-wish-eyebrow,
+  .vj-slide .vj-wish-title,
+  .vj-slide .vj-wish-rule,
+  .vj-slide .vj-wish-text,
+  .vj-slide .vj-wish-sign,
+  .vj-slide .vj-ignite,
   .vj-strand,
   .vj-flame,
   .vj-diya-glow,
