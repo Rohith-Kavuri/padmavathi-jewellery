@@ -590,6 +590,16 @@
       "metal": "Gold",
       "price": 0,
       "id": 1
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261029-wa0029.jpg",
+      "name_en": "Couple ring",
+      "category": "1",
+      "metal": "Gold",
+      "price": 0,
+      "id": 1
     }
   ]
 }
