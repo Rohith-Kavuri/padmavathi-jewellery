@@ -504,6 +504,17 @@
       "image": "/images/uploads/img-20261028-wa0025.jpg",
       "name_en": "Ear Ring",
       "category": "Ear Rings"
+    },
+    {
+      "name_te": "చెవిపోగులు",
+      "show_price": true,
+      "metal": "Gold",
+      "price": 0,
+      "tag": "",
+      "id": 100,
+      "image": "/images/uploads/img-20261028-wa0030.jpg",
+      "name_en": "Ear Ring",
+      "category": "Ear Rings"
     }
   ]
 }
