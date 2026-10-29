@@ -570,6 +570,16 @@
       "image": "/images/uploads/img-20261028-wa0036.jpg",
       "name_en": "Ear Ring",
       "category": "Ear Rings"
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261029-wa0027.jpg",
+      "name_en": "Couple Ring",
+      "category": "1",
+      "metal": "Gold",
+      "price": 0,
+      "id": 1
     }
   ]
 }
