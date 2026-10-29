@@ -611,6 +611,56 @@
       "image": "/images/uploads/img-20261029-wa0030.jpg",
       "name_en": "Couple rings",
       "category": "1"
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261030-wa0001.jpg",
+      "name_en": "Temple Jewellery",
+      "category": "Temple Jewellery",
+      "price": 0,
+      "id": 11,
+      "metal": "Gold"
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261030-wa0002.jpg",
+      "name_en": "Temple Jewellery",
+      "category": "Temple Jewellery",
+      "metal": "Gold",
+      "price": 0,
+      "id": 11
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261030-wa0003.jpg",
+      "name_en": "Temple Jewellery",
+      "category": "Temple Jewellery",
+      "metal": "Gold",
+      "price": 0,
+      "id": 25
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261030-wa0004.jpg",
+      "name_en": "Temple Jewellery",
+      "category": "Temple Jewellery",
+      "metal": "Gold",
+      "price": 0,
+      "id": 34
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261030-wa0005.jpg",
+      "name_en": "Temple Jewellery",
+      "category": "Temple Jewellery",
+      "metal": "Gold",
+      "price": 0,
+      "id": 55
     }
   ]
 }
