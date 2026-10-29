@@ -782,6 +782,16 @@
       "image": "/images/uploads/img-20261030-wa0019.jpg",
       "name_en": "Temple Jewellery",
       "category": "Temple Jewellery"
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/whatsapp-image-2026-10-29-at-14.08.21.jpeg",
+      "name_en": "Name Couple Ring ",
+      "category": "1",
+      "metal": "Gold",
+      "price": 0,
+      "id": 44
     }
   ]
 }
