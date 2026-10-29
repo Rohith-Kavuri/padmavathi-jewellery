@@ -446,30 +446,8 @@
       "price": 0,
       "tag": "",
       "id": 100,
-      "image": "/images/uploads/img-20261028-wa0024.jpg",
+      "image": "/images/uploads/img-20261028-wa0022.jpg",
       "name_en": "Ear Ring",
-      "category": "Ear Rings"
-    },
-    {
-      "name_te": "చెవిపోగులు",
-      "show_price": true,
-      "metal": "Gold",
-      "price": 0,
-      "tag": "",
-      "id": 100,
-      "image": "/images/uploads/img-20261028-wa0023.jpg",
-      "name_en": "Ear Ring",
-      "category": "Ear Rings"
-    },
-    {
-      "name_te": "చెవిపోగులు",
-      "show_price": true,
-      "metal": "Gold",
-      "price": 0,
-      "tag": "",
-      "id": 10,
-      "image": "/images/uploads/img-20261028-wa0023.jpg",
-      "name_en": "Ear Rings",
       "category": "Ear Rings"
     }
   ]
