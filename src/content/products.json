@@ -792,6 +792,57 @@
       "metal": "Gold",
       "price": 0,
       "id": 44
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261030-wa0041.jpg",
+      "id": 110,
+      "price": 2,
+      "metal": "Gold",
+      "category": "Temple Jewellery",
+      "name_en": "Temple Jewellery"
+    },
+    {
+      "show_price": true,
+      "metal": "Gold",
+      "price": 2,
+      "weight": "",
+      "tag": "",
+      "id": 15,
+      "image": "/images/uploads/img-20261030-wa0042.jpg",
+      "name_en": "Temple Jewellery",
+      "category": "Temple Jewellery"
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261030-wa0043.jpg",
+      "id": 11,
+      "price": 4,
+      "metal": "Gold",
+      "category": "Temple Jewellery",
+      "name_en": "Temple Jewellery"
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261030-wa0044.jpg",
+      "id": 14,
+      "price": 2,
+      "metal": "Gold",
+      "category": "Temple Jewellery",
+      "name_en": "Temple Jewellery"
+    },
+    {
+      "show_price": true,
+      "tag": "",
+      "image": "/images/uploads/img-20261030-wa0045.jpg",
+      "id": 11,
+      "price": 0,
+      "metal": "Gold",
+      "category": "Temple Jewellery",
+      "name_en": "Temple Jewellery"
     }
   ]
 }
