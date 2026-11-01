@@ -74,13 +74,12 @@ export const STRINGS = {
     "card.quickView": "Quick view",
 
     // quick view
-    "quickview.video": "{name} video",
     "quickview.purity": "Purity",
     "quickview.add": "Add to bag",
     "aria.prev": "Previous",
     "aria.next": "Next",
-    "aria.showImage": "Show image",
-    "aria.showVideo": "Show video",
+    "aria.showPhoto": "Show photo {n}",
+    "card.photos": "{count} photos",
 
     // bag
     "cart.title": "Your bag",
@@ -295,13 +294,12 @@ export const STRINGS = {
     "card.quickView": "త్వరిత వీక్షణ",
 
     // quick view
-    "quickview.video": "{name} వీడియో",
     "quickview.purity": "స్వచ్ఛత",
     "quickview.add": "బ్యాగ్‌లో చేర్చండి",
     "aria.prev": "మునుపటి",
     "aria.next": "తదుపరి",
-    "aria.showImage": "చిత్రం చూపించు",
-    "aria.showVideo": "వీడియో చూపించు",
+    "aria.showPhoto": "ఫోటో {n} చూపించు",
+    "card.photos": "{count} ఫోటోలు",
 
     // bag
     "cart.title": "మీ బ్యాగ్",

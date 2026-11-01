@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight, ZoomIn, Link2, Share2, Check } from "lucide-react";
 import JewelGlyph from "./JewelGlyph";
 import { fmtINR, priceFor, fmtWeight } from "../utils/format";
@@ -7,11 +7,6 @@ import { useLang } from "../i18n/LanguageContext";
 import { whatsappWith, whatsappShare } from "../data/site";
 import WhatsAppIcon from "./WhatsAppIcon";
 import { photo, sized } from "../data/media";
-
-// Sample video used for every product's Quick View (per request) until
-// real per-product product videos are available.
-const VIDEO_ID = "3-3hAZZwMss"; // https://youtu.be/3-3hAZZwMss
-const MEDIA_SLIDES = ["image", "video"];
 
 // "Share this piece": the piece's own page (/p/<slug>/). WhatsApp shows that
 // page's photo and name in the chat; opening it lands on this Quick view.
@@ -82,18 +77,49 @@ function ShareRow({ product }) {
 export default function QuickViewModal({ product, purity, setPurity, onClose, onAddToCart, onViewImage }) {
   const { t, tx } = useLang();
   const [mediaIndex, setMediaIndex] = useState(0);
+  // photos already shown once stay loaded; the rest load as they come up
+  const [seen, setSeen] = useState(() => new Set([0]));
+  const swipe = useRef(null);
 
-  // reset to the image slide whenever a different product is opened
+  // back to the first photo whenever a different product is opened
   useEffect(() => {
     setMediaIndex(0);
+    setSeen(new Set([0]));
   }, [product?.id]);
 
   if (!product) return null;
   const gem = getGem(product.category);
+  // the piece's photos (admin page: "Photo" plus "More photos")
+  const photos = product.photos || [];
+  const count = photos.length;
 
   function goTo(i) {
-    setMediaIndex(((i % MEDIA_SLIDES.length) + MEDIA_SLIDES.length) % MEDIA_SLIDES.length);
+    if (count < 2) return;
+    const next = ((i % count) + count) % count;
+    setMediaIndex(next);
+    setSeen((s) => (s.has(next) ? s : new Set(s).add(next)));
   }
+
+  // swipe left/right on phones to change photo (a tap still opens the zoom)
+  const onTouchStart = (e) => {
+    const p = e.touches[0];
+    swipe.current = { x: p.clientX, y: p.clientY, moved: false };
+  };
+  const onTouchEnd = (e) => {
+    const s = swipe.current;
+    if (!s) return;
+    const p = e.changedTouches[0];
+    const dx = p.clientX - s.x;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(p.clientY - s.y)) {
+      s.moved = true;
+      goTo(mediaIndex + (dx < 0 ? 1 : -1));
+    }
+  };
+  const swiped = () => {
+    const moved = swipe.current?.moved;
+    swipe.current = null;
+    return moved;
+  };
 
   return (
     <div
@@ -106,94 +132,111 @@ export default function QuickViewModal({ product, purity, setPurity, onClose, on
         style={{ background: "var(--cream)", maxHeight: "92vh" }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* sliding media view: product photo/glyph <-> video.
+        {/* the piece's photos as a slideshow (arrows, dots, swipe on phones).
             Square so product photos show in full: full width on phones,
-            left half of the window from tablet size up. */}
-        <div className="relative w-full md:w-1/2 flex-shrink-0 aspect-square" style={{ background: "#000" }}>
-          <div
-            className="absolute inset-0 vj-slide"
-            style={{ opacity: mediaIndex === 0 ? 1 : 0, pointerEvents: mediaIndex === 0 ? "auto" : "none" }}
-          >
-            {product.image ? (
-              <button
-                type="button"
-                className="vj-focus group absolute inset-0 w-full h-full cursor-zoom-in"
-                aria-label={t("lightbox.view", { name: product.name })}
-                onClick={(e) =>
-                  onViewImage?.({
-                    src: sized(product.image, 1200),
-                    alt: tx(product.name),
-                    rect: e.currentTarget.querySelector("img").getBoundingClientRect(),
-                    title: tx(product.name),
-                    subtitle: [t(`metal.${product.metal}`), product.weight != null && fmtWeight(product.weight, t("unit.g")), product.showPrice ? fmtINR(priceFor(product, purity)) : t("price.onRequest")].filter(Boolean).join(" · "),
-                  })
-                }
+            left half of the window from tablet size up. Tap a photo to zoom. */}
+        <div
+          className="relative w-full md:w-1/2 flex-shrink-0 aspect-square overflow-hidden"
+          style={{ background: "#000" }}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          {count ? (
+            photos.map((src, i) => (
+              <div
+                key={src + i}
+                className="absolute inset-0 vj-slide"
+                style={{ opacity: i === mediaIndex ? 1 : 0, pointerEvents: i === mediaIndex ? "auto" : "none" }}
+                aria-hidden={i !== mediaIndex}
               >
-                <img {...photo(product.image, [600, 900, 1200], "(min-width: 768px) 448px, 100vw")} alt={tx(product.name)} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <span
-                  className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-semibold"
-                  style={{ background: "rgba(36,5,13,0.65)", color: "var(--gold-100)", border: "1px solid rgba(227,170,44,0.6)" }}
-                >
-                  <ZoomIn size={13} /> {t("lightbox.tapToZoom")}
-                </span>
-              </button>
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center" style={{ background: `linear-gradient(160deg, ${gem[500]}, ${gem[700]})` }}>
-                <div style={{ color: gem.tint, width: 110, height: 110 }}>
-                  <JewelGlyph category={product.category} className="w-full h-full" />
-                </div>
+                {(seen.has(i) || i === (mediaIndex + 1) % count) && (
+                  <button
+                    type="button"
+                    tabIndex={i === mediaIndex ? 0 : -1}
+                    className="vj-focus group absolute inset-0 w-full h-full cursor-zoom-in"
+                    aria-label={t("lightbox.view", { name: product.name })}
+                    onClick={(e) => {
+                      if (swiped()) return;
+                      onViewImage?.({
+                        src: sized(src, 1200),
+                        alt: tx(product.name),
+                        rect: e.currentTarget.querySelector("img").getBoundingClientRect(),
+                        title: tx(product.name),
+                        subtitle: [t(`metal.${product.metal}`), product.weight != null && fmtWeight(product.weight, t("unit.g")), product.showPrice ? fmtINR(priceFor(product, purity)) : t("price.onRequest")].filter(Boolean).join(" · "),
+                      });
+                    }}
+                  >
+                    <img
+                      {...photo(src, [600, 900, 1200], "(min-width: 768px) 448px, 100vw")}
+                      alt={count > 1 ? `${tx(product.name)} (${i + 1}/${count})` : tx(product.name)}
+                      draggable={false}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </button>
+                )}
               </div>
-            )}
-          </div>
+            ))
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center" style={{ background: `linear-gradient(160deg, ${gem[500]}, ${gem[700]})` }}>
+              <div style={{ color: gem.tint, width: 110, height: 110 }}>
+                <JewelGlyph category={product.category} className="w-full h-full" />
+              </div>
+            </div>
+          )}
 
-          <div
-            className="absolute inset-0 vj-slide"
-            style={{ opacity: mediaIndex === 1 ? 1 : 0, pointerEvents: mediaIndex === 1 ? "auto" : "none" }}
-          >
-            {mediaIndex === 1 && (
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-                title={t("quickview.video", { name: product.name })}
-                style={{ display: "block", border: "none" }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            )}
-          </div>
+          {count > 0 && (
+            <span
+              className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-semibold pointer-events-none"
+              style={{ background: "rgba(36,5,13,0.65)", color: "var(--gold-100)", border: "1px solid rgba(227,170,44,0.6)" }}
+            >
+              <ZoomIn size={13} /> {t("lightbox.tapToZoom")}
+            </span>
+          )}
 
-          <button
-            onClick={() => goTo(mediaIndex - 1)}
-            className="vj-focus absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full"
-            style={{ background: "rgba(31,24,37,0.5)", color: "white" }}
-            aria-label={t("aria.prev")}
-          >
-            <ChevronLeft size={16} />
-          </button>
-          <button
-            onClick={() => goTo(mediaIndex + 1)}
-            className="vj-focus absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full"
-            style={{ background: "rgba(31,24,37,0.5)", color: "white" }}
-            aria-label={t("aria.next")}
-          >
-            <ChevronRight size={16} />
-          </button>
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
-            {MEDIA_SLIDES.map((s, i) => (
+          {count > 1 && (
+            <>
+              <span
+                className="vj-mono absolute top-3 left-3 rounded-full px-2.5 py-1 text-[11px] pointer-events-none"
+                style={{ background: "rgba(36,5,13,0.65)", color: "var(--gold-100)", border: "1px solid rgba(227,170,44,0.45)" }}
+              >
+                {mediaIndex + 1} / {count}
+              </span>
               <button
-                key={s}
-                onClick={() => goTo(i)}
-                aria-label={t(s === "image" ? "aria.showImage" : "aria.showVideo")}
-                style={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: "50%",
-                  background: i === mediaIndex ? "white" : "rgba(255,255,255,0.4)",
-                }}
-              />
-            ))}
-          </div>
+                onClick={() => goTo(mediaIndex - 1)}
+                className="vj-focus absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center"
+                style={{ background: "rgba(36,5,13,0.55)", color: "var(--gold-100)", border: "1px solid rgba(227,170,44,0.5)" }}
+                aria-label={t("aria.prevImage")}
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => goTo(mediaIndex + 1)}
+                className="vj-focus absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center"
+                style={{ background: "rgba(36,5,13,0.55)", color: "var(--gold-100)", border: "1px solid rgba(227,170,44,0.5)" }}
+                aria-label={t("aria.nextImage")}
+              >
+                <ChevronRight size={18} />
+              </button>
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {photos.map((src, i) => (
+                  <button
+                    key={src + i}
+                    onClick={() => goTo(i)}
+                    aria-label={t("aria.showPhoto", { n: i + 1 })}
+                    aria-current={i === mediaIndex}
+                    className="transition-all"
+                    style={{
+                      width: i === mediaIndex ? 18 : 7,
+                      height: 7,
+                      borderRadius: 999,
+                      background: i === mediaIndex ? "var(--gold-300)" : "rgba(255,255,255,0.55)",
+                      boxShadow: "0 1px 3px rgba(0,0,0,0.4)",
+                    }}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         <div className="p-6 md:p-8 md:w-1/2 flex flex-col justify-center">

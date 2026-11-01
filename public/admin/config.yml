@@ -69,11 +69,19 @@ collections:
             summary: "{{fields.name_en}}  ·  {{fields.category}}  ·  {{fields.image | ternary('✓ has photo', 'no photo yet')}}  ·  {{fields.show_price | ternary('price on', 'price hidden')}}"
             fields:
               - name: image
-                label: Photo
+                label: Main photo
                 widget: image
                 required: false
-                hint: "Square photo works best (at least 800 × 800 px). Leave empty to show the line icon."
+                hint: "Shown on the product's card in the collection and when the piece is shared on WhatsApp. Portrait or square works best (at least 800 px wide). Leave empty to show the line icon."
                 choose_url: false
+              - name: photos
+                label: More photos (optional)
+                label_singular: photo
+                widget: list
+                required: false
+                collapsed: false
+                hint: "Extra photos of the same piece: other angles, close-ups, worn. Click 'Add photo' for each one; drag to reorder. In Quick view customers swipe or use the arrows to see them all after the main photo."
+                field: { name: photo, label: Photo, widget: image, choose_url: false }
               - { name: name_en, label: Name (English), widget: string }
               - { name: name_te, label: Name (Telugu), widget: string, required: false }
               - name: category

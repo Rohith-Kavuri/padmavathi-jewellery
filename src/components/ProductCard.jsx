@@ -1,4 +1,4 @@
-import { ShoppingBag, ArrowRight } from "lucide-react";
+import { ShoppingBag, ArrowRight, Images } from "lucide-react";
 import JewelGlyph from "./JewelGlyph";
 import { fmtINR, fmtWeight } from "../utils/format";
 import { getGem } from "../data/products";
@@ -38,6 +38,17 @@ export default function ProductCard({ product, onQuickView, onAddToCart }) {
           <div className="vj-icon-wrap" style={{ color: gem[500] }}>
             <JewelGlyph category={product.category} />
           </div>
+        )}
+
+        {/* more than one photo: a small badge, so people know to look */}
+        {product.photos?.length > 1 && (
+          <span
+            className="vj-mono absolute top-3 right-3 z-[2] inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] pointer-events-none"
+            style={{ background: "rgba(36,5,13,0.6)", color: "var(--gold-100)", border: "1px solid rgba(227,170,44,0.5)" }}
+            aria-label={t("card.photos", { count: product.photos.length })}
+          >
+            <Images size={11} /> {product.photos.length}
+          </span>
         )}
 
         {/* thin gold line where the photo meets the card */}
