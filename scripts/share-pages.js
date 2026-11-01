@@ -57,7 +57,9 @@ export function writeSharePages({ outDir, siteUrl, root = process.cwd() }) {
     const text =
       (p.desc_en && p.desc_en.trim()) ||
       `${category} from Padmavathi Jewellers, Main Road, Giddalur. Tap to see this piece and chat with us on WhatsApp.`;
-    const pic = pictureFor(p.image);
+    // main photo, or the first of "More photos" if there's no main one
+    const mainPhoto = p.image || (Array.isArray(p.photos) && p.photos.find(Boolean)) || "";
+    const pic = pictureFor(mainPhoto);
     const image = pic.url;
 
     let html = home;
@@ -75,7 +77,7 @@ export function writeSharePages({ outDir, siteUrl, root = process.cwd() }) {
     } else {
       // size unknown: leave it to WhatsApp to read from the picture
       html = html.replace(/\s*<meta property="og:image:(width|height)"[^>]*>/g, "");
-      html = html.replace(/(<meta property="og:image:type" content=")[^"]*(")/, (_, a, b) => a + (/\.png$/i.test(p.image) ? "image/png" : "image/jpeg") + b);
+      html = html.replace(/(<meta property="og:image:type" content=")[^"]*(")/, (_, a, b) => a + (/\.png$/i.test(mainPhoto) ? "image/png" : "image/jpeg") + b);
     }
     html = meta(html, "property", "og:image:alt", `${name} — Padmavathi Jewellers`);
     html = meta(html, "name", "twitter:title", title);

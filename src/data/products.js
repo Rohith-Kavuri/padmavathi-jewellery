@@ -73,6 +73,10 @@ export const SHOW_PRICES = settingsFile.show_prices === true;
 // number ("order") is still used for the "Newest" sort. "slug" is the
 // piece's own web address for sharing (see slug.js).
 const SLUGS = productSlugs(productsFile.products);
+// All of a piece's photos: the main "Photo" first, then any "More photos"
+// from the admin page (empty or repeated entries are skipped).
+const photosOf = (p) => [...new Set([p.image, ...(Array.isArray(p.photos) ? p.photos : [])].map(img).filter(Boolean))];
+
 export const PRODUCTS = productsFile.products.map((p, i) => ({
   id: i,
   slug: SLUGS[i].slug,
@@ -86,7 +90,8 @@ export const PRODUCTS = productsFile.products.map((p, i) => ({
   tag: p.tag || null,
   name: { en: p.name_en, te: p.name_te || p.name_en },
   desc: { en: p.desc_en || "", te: p.desc_te || p.desc_en || "" },
-  image: img(p.image),
+  photos: photosOf(p),
+  image: photosOf(p)[0] || null,
 }));
 
 // price sorting only makes sense when some prices are on show
