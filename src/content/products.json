@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "name_te": "",
+      "name_te": "పువ్వు డిజైన్ రాళ్ల ఉంగరం",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
@@ -10,12 +10,12 @@
       "tag": "New",
       "id": 11,
       "image": "/images/uploads/file_00000000b888820885a162f98be13d5b.png",
-      "name_en": "Ring",
+      "name_en": "Flower Burst Stone Ring",
       "category": "Rings",
       "desc_te": "సన్నబడే బ్యాండ్‌పై ఎత్తుగా అమర్చిన ఒకే రౌండ్ బ్రిలియంట్ వజ్రం."
     },
     {
-      "name_te": "",
+      "name_te": "ఆకుల అలల పువ్వు ఉంగరం",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
@@ -24,12 +24,12 @@
       "tag": "",
       "id": 12,
       "image": "/images/uploads/file_000000001da88208a4a635ddd7889b30.png",
-      "name_en": "Ring",
+      "name_en": "Leafy Wave Flower Ring",
       "category": "Rings",
       "desc_te": "సున్నితమైన మెరుపు కోసం చేతితో బ్రష్ చేసిన సాదా బ్యాండ్."
     },
     {
-      "name_te": "",
+      "name_te": "హాలో సాలిటైర్ ఉంగరం",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
@@ -38,12 +38,12 @@
       "tag": "",
       "id": 13,
       "image": "/images/uploads/file_00000000eabc82089bfb6732d38c754c.png",
-      "name_en": "Gold Ring",
+      "name_en": "Halo Solitaire Ring",
       "category": "Rings",
       "desc_te": "చిన్న వజ్రాల గుత్తిని తక్కువ ఎత్తులో పొదిగిన రోజ్ గోల్డ్ ఉంగరం."
     },
     {
-      "name_te": "",
+      "name_te": "రోజ్ గోల్డ్ డైమండ్ బ్యాండ్లు",
       "show_price": true,
       "metal": "Diamond",
       "price": 0,
@@ -52,79 +52,86 @@
       "tag": "New",
       "id": 18,
       "image": "/images/uploads/file_000000005b94821198e3218b5a5b9a4e.png",
-      "name_en": "Rose Gold Diamond Ring",
+      "name_en": "Rose Gold Diamond Stacking Bands",
       "category": "Rings",
       "desc_te": "ఒకే వజ్రం పొదిగిన ప్లాటినం కన్నీటిబొట్టు ఆకారపు లాకెట్."
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0149.jpg",
-      "name_en": "Bangles",
+      "name_en": "Antique Stone Kada Pair",
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
       "id": -1,
-      "show_price": true
+      "show_price": true,
+      "name_te": "యాంటిక్ రాళ్ల కడియాల జత"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0150.jpg",
-      "name_en": "Bangles",
+      "name_en": "Red Stone Antique Bangle Set",
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
       "id": 2,
-      "show_price": true
+      "show_price": true,
+      "name_te": "ఎరుపు రాళ్ల యాంటిక్ గాజుల సెట్"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0158.jpg",
-      "name_en": "Bangles",
+      "name_en": "Floral Red Stone Bangles",
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
       "id": 3,
-      "show_price": true
+      "show_price": true,
+      "name_te": "పువ్వు డిజైన్ ఎరుపు రాళ్ల గాజులు"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0154.jpg",
-      "name_en": "Bangles",
+      "name_en": "Slim Red Stone Gold Bangles",
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
       "id": -2,
-      "show_price": true
+      "show_price": true,
+      "name_te": "సన్నని ఎరుపు రాళ్ల బంగారు గాజులు"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0153.jpg",
-      "name_en": "Bangles",
+      "name_en": "Broad Floral Filigree Bangles",
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
       "id": 7,
-      "show_price": true
+      "show_price": true,
+      "name_te": "వెడల్పాటి పువ్వుల నగిషీ గాజులు"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0152.jpg",
-      "name_en": "Bangles",
+      "name_en": "Slim Green Stone Bangles",
       "category": "Bangles",
       "metal": "Gold",
       "price": 0,
       "id": 8,
-      "show_price": true
+      "show_price": true,
+      "name_te": "సన్నని ఆకుపచ్చ రాళ్ల గాజులు"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0151.jpg",
-      "name_en": "Bangles",
+      "name_en": "Red & Green Stone Line Bangles",
       "category": "Bangles",
       "price": 0,
       "id": 5,
       "metal": "Gold",
-      "show_price": true
+      "show_price": true,
+      "name_te": "ఎరుపు-ఆకుపచ్చ రాళ్ల వరుస గాజులు"
     },
     {
       "show_price": true,
@@ -134,218 +141,240 @@
       "tag": "",
       "id": 6,
       "image": "/images/uploads/img-20261024-wa0149.jpg",
-      "name_en": "Bangles",
-      "category": "Bangles"
+      "name_en": "Antique Stone Kada Pair",
+      "category": "Bangles",
+      "name_te": "యాంటిక్ రాళ్ల కడియాల జత"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_0000000089208208b29abcdf960f474a.png",
-      "name_en": "Chain",
+      "name_en": "Swirl Teardrop Necklace",
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
       "id": 1,
-      "show_price": true
+      "show_price": true,
+      "name_te": "మెలికల బొట్టు డిజైన్ నెక్లెస్"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_00000000236c8208a79631d2ae73fd9c.png",
-      "name_en": "Chain",
+      "name_en": "Circle Swirl Pendant Chain",
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
       "id": 2,
-      "show_price": true
+      "show_price": true,
+      "name_te": "వృత్తం డిజైన్ లాకెట్ చైన్"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_0000000059c482089f1129f7b3ec4882.png",
-      "name_en": "Chain",
+      "name_en": "Blue Drop Pendant Chain",
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
       "id": 3,
-      "show_price": true
+      "show_price": true,
+      "name_te": "నీలం రాయి లాకెట్ చైన్"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_000000008bf88208992cf9d077f71537.png",
-      "name_en": "Chain",
+      "name_en": "Flower Cluster Necklace",
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
       "id": 4,
-      "show_price": true
+      "show_price": true,
+      "name_te": "పువ్వుల గుత్తి నెక్లెస్"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_000000001a48820890736a852db5432d.png",
-      "name_en": "Chain",
+      "name_en": "Green Drop Stone Necklace",
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
       "id": 5,
-      "show_price": true
+      "show_price": true,
+      "name_te": "ఆకుపచ్చ బొట్టు రాళ్ల నెక్లెస్"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_00000000eff4821192f61bfea4eaebce.png",
-      "name_en": "Chain",
+      "name_en": "Oval Stone Pendant Chain",
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
       "id": 6,
-      "show_price": true
+      "show_price": true,
+      "name_te": "అండాకార రాళ్ల లాకెట్ చైన్"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_00000000d78c82088e3636a9d36a247e.png",
-      "name_en": "Chain",
+      "name_en": "Delicate Gold Drop Necklace",
       "category": "Chains",
       "price": 0,
       "metal": "Gold",
       "id": 7,
-      "show_price": true
+      "show_price": true,
+      "name_te": "సున్నితమైన బంగారు డ్రాప్ నెక్లెస్"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_00000000c76482088a9c06cec98fc187.png",
-      "name_en": "Chain",
+      "name_en": "Twin Leaf Pendant Chain",
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
       "id": 8,
-      "show_price": true
+      "show_price": true,
+      "name_te": "జంట ఆకుల లాకెట్ చైన్"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_00000000c22c820893c9e30ee6a9cce1.png",
-      "name_en": "Chain",
+      "name_en": "Gold Leaf Link Necklace",
       "category": "Chains",
       "metal": "Gold",
       "price": 0,
       "id": 9,
-      "show_price": true
+      "show_price": true,
+      "name_te": "బంగారు ఆకుల నెక్లెస్"
     },
     {
       "tag": "",
       "category": "GuttaPusalu Necklaces",
       "image": "/images/uploads/img-20261025-wa0018.jpg",
-      "name_en": "GuttaPusalu Necklaces",
+      "name_en": "Peacock Medallion Guttapusalu Necklace",
       "metal": "Gold",
       "price": 0,
       "id": 1,
-      "show_price": true
+      "show_price": true,
+      "name_te": "నెమలి పతకాల గుట్టపూసల హారం"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261025-wa0017.jpg",
-      "name_en": "GuttaPusalu Necklaces",
+      "name_en": "Lakshmi Guttapusalu Necklace",
       "metal": "Gold",
       "category": "GuttaPusalu Necklaces",
       "price": 0,
       "id": 2,
-      "show_price": true
+      "show_price": true,
+      "name_te": "లక్ష్మీ గుట్టపూసల హారం"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261025-wa0016.jpg",
-      "name_en": "GuttaPusalu Necklaces",
+      "name_en": "Lakshmi Pendant Long Guttapusalu Haram",
       "category": "GuttaPusalu Necklaces",
       "metal": "Gold",
       "price": 0,
       "id": 3,
-      "show_price": true
+      "show_price": true,
+      "name_te": "లక్ష్మీ లాకెట్ పొడవాటి గుట్టపూసల హారం"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261025-wa0015.jpg",
-      "name_en": "GuttaPusalu Necklaces",
+      "name_en": "Sita Rama Guttapusalu Necklace",
       "category": "GuttaPusalu Necklaces",
       "metal": "Gold",
       "price": 0,
       "id": 4,
-      "show_price": true
+      "show_price": true,
+      "name_te": "సీతారామ గుట్టపూసల హారం"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0132-1-.jpg",
-      "name_en": "Haram",
+      "name_en": "Lakshmi Peacock Haram Set",
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
       "id": 100,
-      "show_price": true
+      "show_price": true,
+      "name_te": "లక్ష్మీ నెమలి హారం సెట్"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0131.jpg",
-      "name_en": "Haram",
+      "name_en": "Antique Lakshmi Haram Set",
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
       "id": 101,
-      "show_price": true
+      "show_price": true,
+      "name_te": "యాంటిక్ లక్ష్మీ హారం సెట్"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0130.jpg",
-      "name_en": "Haram",
+      "name_en": "Peacock Pendant Haram Set",
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
       "id": 102,
-      "show_price": true
+      "show_price": true,
+      "name_te": "నెమలి లాకెట్ హారం సెట్"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0129.jpg",
-      "name_en": "Haram",
+      "name_en": "Green Peacock Lakshmi Haram Set",
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
       "id": 103,
-      "show_price": true
+      "show_price": true,
+      "name_te": "ఆకుపచ్చ నెమలి లక్ష్మీ హారం సెట్"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261024-wa0128.jpg",
-      "name_en": "haram",
+      "name_en": "Lakshmi Pearl Drop Haram Set",
       "category": "HARAM",
       "metal": "Gold",
       "price": 0,
       "id": 104,
-      "show_price": true
+      "show_price": true,
+      "name_te": "ముత్యాల లక్ష్మీ హారం సెట్"
     },
     {
       "tag": "",
-      "name_en": "Kundan Mango Mala",
+      "name_en": "White Kundan Mango Mala",
       "image": "/images/uploads/img-20261025-wa0026.jpg",
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
       "id": 110,
-      "show_price": true
+      "show_price": true,
+      "name_te": "తెల్ల కుందన్ మామిడి పిందెల హారం"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261025-wa0025.jpg",
-      "name_en": "Kundan Mango Mala",
+      "name_en": "Pink Kundan Mango Mala",
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
       "id": 111,
-      "show_price": true
+      "show_price": true,
+      "name_te": "గులాబీ కుందన్ మామిడి పిందెల హారం"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261025-wa0024.jpg",
-      "name_en": "Kundan Mango Mala",
+      "name_en": "Gold Bead Kundan Mango Mala",
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
       "id": 112,
-      "show_price": true
+      "show_price": true,
+      "name_te": "బంగారు పూసల కుందన్ మామిడి పిందెల హారం"
     },
     {
       "show_price": true,
@@ -355,251 +384,262 @@
       "tag": "",
       "id": 113,
       "image": "/images/uploads/img-20261025-wa0023.jpg",
-      "name_en": "Kundan Mango Mala",
-      "category": "Kundan Mango Mala"
+      "name_en": "Kundan Choker & Mango Mala Set",
+      "category": "Kundan Mango Mala",
+      "name_te": "కుందన్ చోకర్ & మామిడి పిందెల హారం సెట్"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261025-wa0022.jpg",
-      "name_en": "Kundan Mango Mala",
+      "name_en": "Red & Green Kundan Mango Mala",
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
       "id": 114,
-      "show_price": true
+      "show_price": true,
+      "name_te": "ఎరుపు-ఆకుపచ్చ కుందన్ మామిడి పిందెల హారం"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261025-wa0021.jpg",
-      "name_en": "Kundan Mango Mala",
+      "name_en": "Gold Mesh Kundan Mango Necklace",
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
       "id": 115,
-      "show_price": true
+      "show_price": true,
+      "name_te": "బంగారు అల్లిక కుందన్ మామిడి నెక్లెస్"
     },
     {
       "tag": "",
       "image": "/images/uploads/img-20261025-wa0020.jpg",
-      "name_en": "Kundan Mango Mala",
+      "name_en": "Floral Kundan Mango Mala",
       "category": "Kundan Mango Mala",
       "metal": "Gold",
       "price": 0,
       "id": 116,
-      "show_price": true
+      "show_price": true,
+      "name_te": "పువ్వుల కుందన్ మామిడి పిందెల హారం"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_0000000035908208adeefe85ecae3e0e.png",
-      "name_en": "Ring",
+      "name_en": "Swirl Solitaire Gold Ring",
       "category": "Rings",
       "metal": "Gold",
       "price": 0,
       "id": 120,
-      "show_price": true
+      "show_price": true,
+      "name_te": "మెలిక సాలిటైర్ బంగారు ఉంగరం"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_00000000557082089b618bc6c171dae3.png",
-      "name_en": "Ring",
+      "name_en": "Two-Tone Solitaire Bands",
       "category": "Rings",
       "metal": "Gold",
       "price": 0,
       "id": 121,
-      "show_price": true
+      "show_price": true,
+      "name_te": "టూ-టోన్ సాలిటైర్ ఉంగరాలు"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_000000000578820893c91f7314eafec9.png",
-      "name_en": "Ring",
+      "name_en": "Petite Flower Cluster Ring",
       "category": "Rings",
       "metal": "Gold",
       "price": 0,
       "id": 121,
-      "show_price": true
+      "show_price": true,
+      "name_te": "చిన్న పువ్వు రాళ్ల ఉంగరం"
     },
     {
       "tag": "",
       "image": "/images/uploads/file_000000004808820888be5ddf150687c4.png",
-      "name_en": "Ring",
+      "name_en": "Feather Wave Stone Ring",
       "category": "Rings",
       "metal": "Gold",
       "price": 0,
       "id": 125,
-      "show_price": true
+      "show_price": true,
+      "name_te": "ఈక అలల రాళ్ల ఉంగరం"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "ముత్యాల లక్ష్మీ నెమలి చెవిపోగులు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 104,
       "image": "/images/uploads/img-20261028-wa0025.jpg",
-      "name_en": "Ear Ring",
+      "name_en": "Lakshmi Peacock Pearl Earrings",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "యాంటిక్ బంగారు డ్రాప్ చెవిపోగులు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 100,
       "image": "/images/uploads/img-20261028-wa0021-1-.jpg",
-      "name_en": "Ear Ring",
+      "name_en": "Antique Gold Drop Earrings",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "బంగారు పూసల జుంకాలు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 104,
       "image": "/images/uploads/img-20261028-wa0023.jpg",
-      "name_en": "Ear Rings",
+      "name_en": "Gold Bead Jhumkas",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "యాంటిక్ టెంపుల్ జుంకాలు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 100,
       "image": "/images/uploads/img-20261028-wa0022.jpg",
-      "name_en": "Ear Ring",
+      "name_en": "Antique Temple Jhumkas",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "ఎరుపు రాళ్ల యాంటిక్ జుంకాలు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 100,
       "image": "/images/uploads/img-20261028-wa0024.jpg",
-      "name_en": "Ear ring",
+      "name_en": "Red Stone Antique Jhumkas",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "ముత్యాల చాంద్‌బాలీ చెవిపోగులు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 100,
       "image": "/images/uploads/img-20261028-wa0026.jpg",
-      "name_en": "Ear Ring ",
+      "name_en": "Pearl Chandbali Earrings",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "ముత్యాల లక్ష్మీ నెమలి చెవిపోగులు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 100,
       "image": "/images/uploads/img-20261028-wa0025.jpg",
-      "name_en": "Ear Ring",
+      "name_en": "Lakshmi Peacock Pearl Earrings",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "అంచెల ముత్యాల జుంకాలు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 100,
       "image": "/images/uploads/img-20261028-wa0031.jpg",
-      "name_en": "Ear Ring",
+      "name_en": "Layered Pearl Jhumkas",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "ఆకుపచ్చ రాయి కుచ్చుల చెవిపోగులు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 1,
       "image": "/images/uploads/img-20261028-wa0034.jpg",
-      "name_en": "Ear Ring",
+      "name_en": "Green Stone Tassel Earrings",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "యాంటిక్ కాసుల చెవిపోగులు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 1,
       "image": "/images/uploads/img-20261028-wa0033.jpg",
-      "name_en": "Ear Ring",
+      "name_en": "Antique Coin Drop Earrings",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "లక్ష్మీ ఆకుపచ్చ పూసల చెవిపోగులు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 1,
       "image": "/images/uploads/img-20261028-wa0032.jpg",
-      "name_en": "Ear Ring",
+      "name_en": "Lakshmi Green Bead Earrings",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "టెంపుల్ చాంద్‌బాలీ చెవిపోగులు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 5,
       "image": "/images/uploads/img-20261028-wa0035.jpg",
-      "name_en": "Ear RIng",
+      "name_en": "Temple Chandbali Earrings",
       "category": "Ear Rings"
     },
     {
-      "name_te": "చెవిపోగులు",
+      "name_te": "నెమలి ముత్యాల జుంకాలు",
       "show_price": true,
       "metal": "Gold",
       "price": 0,
       "tag": "",
       "id": 1,
       "image": "/images/uploads/img-20261028-wa0036.jpg",
-      "name_en": "Ear Ring",
+      "name_en": "Peacock Pearl Jhumkas",
       "category": "Ear Rings"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261029-wa0027.jpg",
-      "name_en": "Couple Ring",
+      "name_en": "Solitaire & Textured Couple Rings",
       "category": "1",
       "metal": "Gold",
       "price": 0,
-      "id": 1
+      "id": 1,
+      "name_te": "సాలిటైర్ జంట ఉంగరాలు"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261029-wa0028.jpg",
-      "name_en": "Couple ring",
+      "name_en": "Matching Solitaire Couple Bands",
       "category": "1",
       "metal": "Gold",
       "price": 0,
-      "id": 1
+      "id": 1,
+      "name_te": "ఒకేలాంటి సాలిటైర్ జంట ఉంగరాలు"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261029-wa0029.jpg",
-      "name_en": "Couple ring",
+      "name_en": "Flower & Square Couple Rings",
       "category": "1",
       "metal": "Gold",
       "price": 0,
-      "id": 1
+      "id": 1,
+      "name_te": "పువ్వు & చతురస్ర జంట ఉంగరాలు"
     },
     {
       "show_price": true,
@@ -609,138 +649,152 @@
       "tag": "",
       "id": 1,
       "image": "/images/uploads/img-20261029-wa0030.jpg",
-      "name_en": "Couple rings",
-      "category": "1"
+      "name_en": "Square Solitaire Couple Rings",
+      "category": "1",
+      "name_te": "చతురస్ర సాలిటైర్ జంట ఉంగరాలు"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0001.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Nakshi Temple Necklace",
       "category": "Temple Jewellery",
       "price": 0,
       "id": 11,
-      "metal": "Gold"
+      "metal": "Gold",
+      "name_te": "లక్ష్మీ నకాషీ టెంపుల్ నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0002.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Twin Peacock Temple Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 11
+      "id": 11,
+      "name_te": "జంట నెమళ్ల టెంపుల్ నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0003.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Red Bead Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 25
+      "id": 25,
+      "name_te": "ఎరుపు పూసల లక్ష్మీ నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0004.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Pendant Gold Bead Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 34
+      "id": 34,
+      "name_te": "లక్ష్మీ లాకెట్ బంగారు పూసల నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0005.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Ranganatha Temple Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 55
+      "id": 55,
+      "name_te": "రంగనాథ స్వామి టెంపుల్ నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0006.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Mint Bead Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 62
+      "id": 62,
+      "name_te": "లేత ఆకుపచ్చ పూసల లక్ష్మీ నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0008.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Mandapam Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 77
+      "id": 77,
+      "name_te": "లక్ష్మీ మండపం నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0009.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Peacock Bead Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 84
+      "id": 84,
+      "name_te": "లక్ష్మీ నెమలి పూసల నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0010.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Kemp Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 10
+      "id": 10,
+      "name_te": "లక్ష్మీ కెంపు నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0011.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Green Stone Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 108
+      "id": 108,
+      "name_te": "ఆకుపచ్చ రాళ్ల లక్ష్మీ నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0013.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Pearl Temple Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 97
+      "id": 97,
+      "name_te": "ముత్యాల లక్ష్మీ టెంపుల్ నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0014.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Green Stone Crescent Temple Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 65
+      "id": 65,
+      "name_te": "ఆకుపచ్చ రాళ్ల చంద్రవంక టెంపుల్ నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/img-20261030-wa0015.jpg",
-      "name_en": "Temple Jewellery",
+      "name_en": "Lakshmi Panel Necklace",
       "category": "Temple Jewellery",
       "metal": "Gold",
       "price": 0,
-      "id": 29
+      "id": 29,
+      "name_te": "లక్ష్మీ పలకల నెక్లెస్"
     },
     {
       "show_price": true,
@@ -750,7 +804,8 @@
       "price": 10,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Lakshmi Pearl Cluster Necklace",
+      "name_te": "ముత్యాల గుత్తుల లక్ష్మీ నెక్లెస్"
     },
     {
       "show_price": true,
@@ -760,7 +815,8 @@
       "price": 0,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Lakshmi Nakshi Pearl Choker",
+      "name_te": "ముత్యాల లక్ష్మీ నకాషీ చోకర్"
     },
     {
       "show_price": true,
@@ -770,18 +826,20 @@
       "tag": "",
       "id": 55,
       "image": "/images/uploads/img-20261030-wa0019.jpg",
-      "name_en": "Temple Jewellery",
-      "category": "Temple Jewellery"
+      "name_en": "Peacock Pearl Necklace",
+      "category": "Temple Jewellery",
+      "name_te": "నెమలి ముత్యాల నెక్లెస్"
     },
     {
       "show_price": true,
       "tag": "",
       "image": "/images/uploads/whatsapp-image-2026-10-29-at-14.08.21.jpeg",
-      "name_en": "Name Couple Ring ",
+      "name_en": "Name-Engraved Couple Rings",
       "category": "1",
       "metal": "Gold",
       "price": 0,
-      "id": 44
+      "id": 44,
+      "name_te": "పేర్లు చెక్కిన జంట ఉంగరాలు"
     },
     {
       "show_price": true,
@@ -791,7 +849,8 @@
       "price": 2,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Ganesha Temple Necklace",
+      "name_te": "వినాయకుడి టెంపుల్ నెక్లెస్"
     },
     {
       "show_price": true,
@@ -801,8 +860,9 @@
       "tag": "",
       "id": 15,
       "image": "/images/uploads/img-20261030-wa0042.jpg",
-      "name_en": "Temple Jewellery",
-      "category": "Temple Jewellery"
+      "name_en": "Twin Peacock Nakshi Necklace",
+      "category": "Temple Jewellery",
+      "name_te": "జంట నెమళ్ల నకాషీ నెక్లెస్"
     },
     {
       "show_price": true,
@@ -812,7 +872,8 @@
       "price": 4,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Lakshmi Kemp Medallion Necklace",
+      "name_te": "లక్ష్మీ కెంపు పతకాల నెక్లెస్"
     },
     {
       "show_price": true,
@@ -822,7 +883,8 @@
       "price": 2,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Lakshmi Mango Kemp Necklace",
+      "name_te": "లక్ష్మీ మామిడి కెంపు నెక్లెస్"
     },
     {
       "show_price": true,
@@ -832,7 +894,8 @@
       "price": 0,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Lakshmi Shrine Necklace",
+      "name_te": "ఆకుపచ్చ పూసల లక్ష్మీ గుడి నెక్లెస్"
     },
     {
       "show_price": true,
@@ -842,7 +905,8 @@
       "price": 0,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Gaja Lakshmi Elephant Necklace",
+      "name_te": "గజలక్ష్మి ఏనుగుల నెక్లెస్"
     },
     {
       "show_price": true,
@@ -852,7 +916,8 @@
       "price": 0,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Lakshmi Multi-Pendant Necklace",
+      "name_te": "అనేక లక్ష్మీ లాకెట్ల నెక్లెస్"
     },
     {
       "show_price": true,
@@ -862,7 +927,8 @@
       "price": 0,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Peacock Gold Bead Necklace",
+      "name_te": "నెమలి బంగారు పూసల నెక్లెస్"
     },
     {
       "show_price": true,
@@ -871,8 +937,9 @@
       "id": 15,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery",
-      "price": 0
+      "name_en": "Peacock Medallion Necklace",
+      "price": 0,
+      "name_te": "ఆకుపచ్చ పూసల నెమలి పతకం నెక్లెస్"
     },
     {
       "show_price": true,
@@ -882,7 +949,8 @@
       "price": 0,
       "metal": "Gold",
       "category": "Temple Jewellery",
-      "name_en": "Temple Jewellery"
+      "name_en": "Floral Elephant Nakshi Necklace",
+      "name_te": "పువ్వులు & ఏనుగుల నకాషీ నెక్లెస్"
     }
   ]
 }
