@@ -1,12 +1,14 @@
 import { Home, LayoutGrid, Coins, ShoppingBag, MapPin } from "lucide-react";
-import { WHATSAPP_URL } from "../data/site";
-import { SocialDock } from "./SocialIcons";
+import { WHATSAPP_URL, STORE } from "../data/site";
+import { SocialDock, InstagramGlyph, INSTAGRAM_BG } from "./SocialIcons";
 import { useLang } from "../i18n/LanguageContext";
 import WhatsAppIcon from "./WhatsAppIcon";
 
 // App-style bar along the bottom of the screen on phones, plus a floating
 // WhatsApp button on larger screens (only when a WhatsApp number is set in
-// the admin page).
+// the admin page). The fourth spot opens the shop's Instagram (link from the
+// admin page: Homepage → Store details); without a link it shows the bag.
+// The bag is always in the top bar too.
 export default function BottomBar({ cartCount, onHome, onCategories, onRates, onBag, onVisit }) {
   const { t } = useLang();
 
@@ -36,6 +38,17 @@ export default function BottomBar({ cartCount, onHome, onCategories, onRates, on
             {t(key)}
           </button>
         ))}
+        {STORE.instagram ? (
+          <a className={item} href={STORE.instagram} target="_blank" rel="noopener noreferrer">
+            <span
+              className="inline-flex items-center justify-center rounded-[7px]"
+              style={{ width: 19, height: 19, background: INSTAGRAM_BG, color: "#fff", boxShadow: "0 0 0 1px rgba(242,196,90,0.55)" }}
+            >
+              <InstagramGlyph size={13} />
+            </span>
+            {t("bottom.instagram")}
+          </a>
+        ) : (
         <button className={item} onClick={onBag}>
           <span className="relative">
             <ShoppingBag size={19} style={{ color: "var(--gold-300)" }} />
@@ -50,6 +63,7 @@ export default function BottomBar({ cartCount, onHome, onCategories, onRates, on
           </span>
           {t("bottom.bag")}
         </button>
+        )}
         {WHATSAPP_URL ? (
           <a className={item} href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             <WhatsAppIcon size={19} className="text-[#4ade80]" />
